@@ -2,6 +2,8 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 
+
+
 console.log("✅ Express başlatılıyor...");
 
 // Route dosyasını çağırmadan önce kontrol edelim
@@ -16,7 +18,11 @@ const usersRouter = require("./routes/users");  // Eğer hata alıyorsan, burada
 console.log("✅ usersRouter import edildi.");
 
 const app = express();
-
+app.use(cors({
+  origin: "http://localhost:8100", // 🔹 Ionic uygulamasının çalıştığı port
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cors());
