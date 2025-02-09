@@ -9,13 +9,6 @@ router.post("/signup", async (req, res) => {
 
   const { name, surname, email, password, confirmPassword } = req.body;
 
-  console.log("📌 Backend'e Gelen Veriler:");
-  console.log("Name:", name);
-  console.log("Surname:", surname);
-  console.log("Email:", email);
-  console.log("Password:", password);
-  console.log("Confirm Password:", confirmPassword);
-
   try {
     if (!email.includes("@")) {
       return res.status(400).json({ error: "Geçersiz e-posta adresi! '@' eksik." });
@@ -45,5 +38,33 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+
+// Kullanıcı Giriş Servisi (POST /users/login)
+router.post("/login", async (req, res) => {
+  console.log("🟢 Login İsteği Geldi:", req.body);
+
+  const { email, password } = req.body;
+
+  try {
+    if (!email || !password) {
+      return res.status(400).json({ error: "E-posta ve şifre gereklidir!" });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: "Kullanıcı bulunamadı!" });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(400).json({ error: "Geçersiz şifre!" });
+    }
+
+    // Başarıyla giriş yapıldığında kullanıcıya başarı mesajı dönüyoruz
+    res.status(200).json({ message: "Giriş başarılı!" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 module.exports = router;
