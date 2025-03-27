@@ -1,0 +1,632 @@
+[
+    {
+        "id": 0,
+        "name": "Location_0",
+        "latitude": 40.90096549871633,
+        "longitude": 28.93706169330292,
+        "distance_to_start": 12.214996174142936,
+        "must_visit": false,
+        "category": "Museum",
+        "category_match": false,
+        "score": 5.378358036136493,
+        "visit_duration": 81,
+        "opening_hours": {
+            "Monday": [
+                -1,
+                -1
+            ],
+            "Tuesday": [
+                9,
+                24
+            ],
+            "Wednesday": [
+                9,
+                24
+            ],
+            "Thursday": [
+                10,
+                24
+            ],
+            "Friday": [
+                11,
+                24
+            ],
+            "Saturday": [
+                9,
+                24
+            ],
+            "Sunday": [
+                9,
+                24
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "name": "Location_1",
+        "latitude": 41.089055465775424,
+        "longitude": 28.899002278657967,
+        "distance_to_start": 13.030750577291668,
+        "must_visit": false,
+        "category": "Museum",
+        "category_match": false,
+        "score": 5.356360122892665,
+        "visit_duration": 95,
+        "opening_hours": {
+            "Monday": [
+                9,
+                24
+            ],
+            "Tuesday": [
+                10,
+                24
+            ],
+            "Wednesday": [
+                11,
+                24
+            ],
+            "Thursday": [
+                8,
+                24
+            ],
+            "Friday": [
+                9,
+                24
+            ],
+            "Saturday": [
+                10,
+                24
+            ],
+            "Sunday": [
+                8,
+                24
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "name": "Location_2",
+        "latitude": 40.96666802763829,
+        "longitude": 28.98197993467684,
+        "distance_to_start": 4.003127947824302,
+        "must_visit": true,
+        "category": "Museum",
+        "category_match": false,
+        "score": 15.999374801552765,
+        "visit_duration": 159,
+        "opening_hours": {
+            "Monday": [
+                11,
+                24
+            ],
+            "Tuesday": [
+                9,
+                24
+            ],
+            "Wednesday": [
+                11,
+                24
+            ],
+            "Thursday": [
+                10,
+                24
+            ],
+            "Friday": [
+                9,
+                24
+            ],
+            "Saturday": [
+                11,
+                24
+            ],
+            "Sunday": [
+                10,
+                24
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "name": "Location_3",
+        "latitude": 41.06210458040356,
+        "longitude": 29.074870049451324,
+        "distance_to_start": 9.3342827932591,
+        "must_visit": true,
+        "category": "Park",
+        "category_match": true,
+        "score": 10.48382651220474,
+        "visit_duration": 94,
+        "opening_hours": {
+            "Monday": [
+                8,
+                24
+            ],
+            "Tuesday": [
+                11,
+                24
+            ],
+            "Wednesday": [
+                8,
+                24
+            ],
+            "Thursday": [
+                9,
+                24
+            ],
+            "Friday": [
+                11,
+                24
+            ],
+            "Saturday": [
+                9,
+                24
+            ],
+            "Sunday": [
+                10,
+                24
+            ]
+        }
+    },
+    {
+        "id": 4,
+        "name": "Location_4",
+        "latitude": 41.00896639131941,
+        "longitude": 28.98575342715663,
+        "distance_to_start": 1.5566753093309136,
+        "must_visit": true,
+        "category": "Shopping",
+        "category_match": false,
+        "score": 11.955664836184658,
+        "visit_duration": 79,
+        "opening_hours": {
+            "Monday": [
+                9,
+                24
+            ],
+            "Tuesday": [
+                8,
+                24
+            ],
+            "Wednesday": [
+                11,
+                24
+            ],
+            "Thursday": [
+                9,
+                24
+            ],
+            "Friday": [
+                11,
+                24
+            ],
+            "Saturday": [
+                9,
+                24
+            ],
+            "Sunday": [
+                9,
+                24
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "name": "Location_5",
+        "latitude": 41.00115374892645,
+        "longitude": 29.002581086981017,
+        "distance_to_start": 0.25174446569118253,
+        "must_visit": false,
+        "category": "Park",
+        "category_match": true,
+        "score": 3.9944254894221745,
+        "visit_duration": 99,
+        "opening_hours": {
+            "Monday": [
+                8,
+                24
+            ],
+            "Tuesday": [
+                -1,
+                -1
+            ],
+            "Wednesday": [
+                10,
+                24
+            ],
+            "Thursday": [
+                11,
+                24
+            ],
+            "Friday": [
+                8,
+                24
+            ],
+            "Saturday": [
+                11,
+                24
+            ],
+            "Sunday": [
+                9,
+                24
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "name": "Location_6",
+        "latitude": 41.13804231921663,
+        "longitude": 29.079667481250777,
+        "distance_to_start": 0.78,
+        "must_visit": false,
+        "category": "Park",
+        "category_match": true,
+        "score": 0.28185487390122954,
+        "visit_duration": 30,
+        "opening_hours": {
+            "Monday": [
+                11,
+                24
+            ],
+            "Tuesday": [
+                9,
+                24
+            ],
+            "Wednesday": [
+                8,
+                24
+            ],
+            "Thursday": [
+                10,
+                24
+            ],
+            "Friday": [
+                9,
+                24
+            ],
+            "Saturday": [
+                10,
+                24
+            ],
+            "Sunday": [
+                10,
+                24
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "name": "Location_7",
+        "latitude": 41.04451136289386,
+        "longitude": 29.076456673673,
+        "distance_to_start": 8.101678081329872,
+        "must_visit": false,
+        "category": "Historic",
+        "category_match": false,
+        "score": 0.5493492469544073,
+        "visit_duration": 141,
+        "opening_hours": {
+            "Monday": [
+                10,
+                24
+            ],
+            "Tuesday": [
+                11,
+                24
+            ],
+            "Wednesday": [
+                -1,
+                -1
+            ],
+            "Thursday": [
+                8,
+                24
+            ],
+            "Friday": [
+                10,
+                24
+            ],
+            "Saturday": [
+                8,
+                24
+            ],
+            "Sunday": [
+                8,
+                24
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "name": "Location_8",
+        "latitude": 40.917836659774366,
+        "longitude": 29.146311412798884,
+        "distance_to_start": 15.310680987973862,
+        "must_visit": false,
+        "category": "Museum",
+        "category_match": false,
+        "score": 5.3065475931806025,
+        "visit_duration": 85,
+        "opening_hours": {
+            "Monday": [
+                8,
+                24
+            ],
+            "Tuesday": [
+                8,
+                24
+            ],
+            "Wednesday": [
+                10,
+                24
+            ],
+            "Thursday": [
+                10,
+                24
+            ],
+            "Friday": [
+                10,
+                24
+            ],
+            "Saturday": [
+                10,
+                24
+            ],
+            "Sunday": [
+                8,
+                24
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "name": "Location_9",
+        "latitude": 41.06412820508806,
+        "longitude": 29.033903863070112,
+        "distance_to_start": 7.6768909278342,
+        "must_visit": true,
+        "category": "Park",
+        "category_match": true,
+        "score": 10.576243269805401,
+        "visit_duration": 105,
+        "opening_hours": {
+            "Monday": [
+                10,
+                24
+            ],
+            "Tuesday": [
+                8,
+                24
+            ],
+            "Wednesday": [
+                8,
+                24
+            ],
+            "Thursday": [
+                10,
+                24
+            ],
+            "Friday": [
+                10,
+                24
+            ],
+            "Saturday": [
+                -1,
+                -1
+            ],
+            "Sunday": [
+                9,
+                24
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "name": "Location_10",
+        "latitude": 41.00117480469649,
+        "longitude": 29.003828397189203,
+        "distance_to_start": 0.34681827336944177,
+        "must_visit": false,
+        "category": "Historic",
+        "category_match": false,
+        "score": 3.7124533419724877,
+        "visit_duration": 49,
+        "opening_hours": {
+            "Monday": [
+                10,
+                24
+            ],
+            "Tuesday": [
+                8,
+                24
+            ],
+            "Wednesday": [
+                11,
+                24
+            ],
+            "Thursday": [
+                9,
+                24
+            ],
+            "Friday": [
+                11,
+                24
+            ],
+            "Saturday": [
+                8,
+                24
+            ],
+            "Sunday": [
+                11,
+                24
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "name": "Location_11",
+        "latitude": 40.86287624590041,
+        "longitude": 29.108805686391158,
+        "distance_to_start": 17.77731485366225,
+        "must_visit": false,
+        "category": "Park",
+        "category_match": true,
+        "score": 0.2662787538562693,
+        "visit_duration": 36,
+        "opening_hours": {
+            "Monday": [
+                8,
+                24
+            ],
+            "Tuesday": [
+                -1,
+                -1
+            ],
+            "Wednesday": [
+                11,
+                24
+            ],
+            "Thursday": [
+                -1,
+                -1
+            ],
+            "Friday": [
+                10,
+                24
+            ],
+            "Saturday": [
+                9,
+                24
+            ],
+            "Sunday": [
+                9,
+                24
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "name": "Location_12",
+        "latitude": 41.02242419170081,
+        "longitude": 29.07412275252536,
+        "distance_to_start": 6.700536314926326,
+        "must_visit": true,
+        "category": "Park",
+        "category_match": true,
+        "score": 10.6493054243908,
+        "visit_duration": 102,
+        "opening_hours": {
+            "Monday": [
+                9,
+                24
+            ],
+            "Tuesday": [
+                10,
+                24
+            ],
+            "Wednesday": [
+                9,
+                24
+            ],
+            "Thursday": [
+                9,
+                24
+            ],
+            "Friday": [
+                11,
+                24
+            ],
+            "Saturday": [
+                11,
+                24
+            ],
+            "Sunday": [
+                10,
+                24
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "name": "Location_13",
+        "latitude": 41.05750120219542,
+        "longitude": 29.04781608600965,
+        "distance_to_start": 7.54778668598748,
+        "must_visit": false,
+        "category": "Museum",
+        "category_match": false,
+        "score": 5.5849467451260315,
+        "visit_duration": 167,
+        "opening_hours": {
+            "Monday": [
+                9,
+                24
+            ],
+            "Tuesday": [
+                9,
+                24
+            ],
+            "Wednesday": [
+                10,
+                24
+            ],
+            "Thursday": [
+                9,
+                24
+            ],
+            "Friday": [
+                10,
+                24
+            ],
+            "Saturday": [
+                9,
+                24
+            ],
+            "Sunday": [
+                10,
+                24
+            ]
+        }
+    },
+    {
+        "id": 14,
+        "name": "Location_14",
+        "latitude": 41.13246438859202,
+        "longitude": 28.90026198771604,
+        "distance_to_start": 16.93724535405915,
+        "must_visit": true,
+        "category": "Museum",
+        "category_match": false,
+        "score": 15.278749601809317,
+        "visit_duration": 167,
+        "opening_hours": {
+            "Monday": [
+                10,
+                24
+            ],
+            "Tuesday": [
+                8,
+                24
+            ],
+            "Wednesday": [
+                11,
+                24
+            ],
+            "Thursday": [
+                -1,
+                -1
+            ],
+            "Friday": [
+                11,
+                24
+            ],
+            "Saturday": [
+                11,
+                24
+            ],
+            "Sunday": [
+                8,
+                24
+            ]
+        }
+    }
+]
