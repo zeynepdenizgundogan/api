@@ -1,7 +1,6 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-
 const preferencesRouter = require('./routes/preferences');
 
 
@@ -26,7 +25,7 @@ app.use(cors({
 }));
 app.use(logger("dev"));
 app.use(express.json());
-app.use(cors());
+
 app.use('/api/preferences', preferencesRouter);
 console.log("✅ app.use('/api/preferences', preferencesRouter) tanımlandı.");
 

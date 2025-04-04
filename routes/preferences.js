@@ -3,6 +3,23 @@ const router = express.Router();
 const Preference = require('../models/preferences');
 const { createRoute } = require('../services/routeService');
 
+const { filterAvailableLocations } = require('../services/routeService');
+
+router.post('/available-places', (req, res) => {
+  try {
+    const preference = new Preference(req.body);
+    const places = filterAvailableLocations(preference);
+
+    res.status(200).json({
+      message: 'Filtrelenmiş lokasyonlar',
+      data: places
+    });
+  } catch (error) {
+    console.error('❌ Lokasyon filtreleme hatası:', error);
+    res.status(500).json({ message: 'Lokasyonlar alınamadı', error: error.message });
+  }
+});
+
 router.post('/', (req, res) => {
   try {
     const preference = new Preference(req.body);
@@ -33,6 +50,7 @@ router.post('/', (req, res) => {
     }));
     
     console.log("🧭 Sadeleştirilmiş Rota:\n", JSON.stringify(simplifiedRoutes, null, 2));
+    
   
     res.status(201).json({
       message: "Rota başarıyla oluşturuldu!",
