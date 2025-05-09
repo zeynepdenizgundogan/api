@@ -1,20 +1,20 @@
 function mutate(route, mutationRate = 0.4) {
-    if (route.length < 2) return;
-  
-    if (Math.random() < mutationRate) {
-      const [i, j] = randomPair(route.length);
-      [route[i], route[j]] = [route[j], route[i]];
-    }
-  }
-  
-  function randomPair(length) {
-    const i = Math.floor(Math.random() * length);
-    let j = Math.floor(Math.random() * length);
+  if (!route || route.length < 2) return;
+
+  if (Math.random() < mutationRate) {
+    const i = Math.floor(Math.random() * route.length);
+    let j = Math.floor(Math.random() * route.length);
+
+    // i ve j farklı olana kadar yeniden seç
     while (j === i) {
-      j = Math.floor(Math.random() * length);
+      j = Math.floor(Math.random() * route.length);
     }
-    return [i, j];
+    
+    // Swap işlemi
+    const temp = route[i];
+    route[i] = route[j];
+    route[j] = temp;
   }
-  
-  module.exports = { mutate };
-  
+}
+
+module.exports = mutate;

@@ -1,28 +1,68 @@
-const { crossover } = require('../utils/crossover');
-const { mutate } = require('../utils/mutate');
-const { tournamentSelection } = require('../utils/tournamentSelection');
-const { calculateFitness } = require('../utils/calculateFitness');
-const { MAX_ROUTE_LENGTH, STAGNATION_LIMIT } = require('../utils/constants');
-
+const calculateFitness = require("../utils/calculateFitness");
+const crossover = require("../utils/crossover");
+const mutate = require("../utils/mutate");
+const tournamentSelection = require("../utils/tournamentSelection");
+const { MAX_ROUTE_LENGTH, STAGNATION_LIMIT, MAX_DISTANCE_THRESHOLD } = require("../utils/constants");
+const {
+  DEFAULT_START_HOUR,
+  DEFAULT_TOTAL_HOURS
+} = require("../utils/constants");
+startHour = DEFAULT_START_HOUR;
+totalHours = DEFAULT_TOTAL_HOURS;
 function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours, selectedCategory) {
   if (!locations || locations.length === 0) return [];
 
   const populationSize = 300;
   const generations = 500;
   const eliteCount = 30;
+  const tournamentSize = 7;
   const mutationRate = 0.4;
 
-  const mustVisitIndices = locations.map((loc, i) => loc.mustVisit ? i : null).filter(i => i !== null);
-  const categoryIndices = locations.map((loc, i) => loc.category === selectedCategory && !mustVisitIndices.includes(i) ? i : null).filter(i => i !== null);
-  const otherIndices = locations.map((_, i) => i).filter(i => !mustVisitIndices.includes(i) && !categoryIndices.includes(i));
+  const mustVisitIndices = locations.map((loc, i) => ({ loc, i }))
+    .filter(({ loc }) => loc.must_visit && loc.distance_to_start <= MAX_DISTANCE_THRESHOLD)
+    .map(({ i }) => i);
+
+  const categoryIndices = locations.map((loc, i) => ({ loc, i }))
+    .filter(({ loc, i }) => loc.category === selectedCategory && !mustVisitIndices.includes(i))
+    .map(({ i }) => i);
+
+  const otherIndices = locations.map((_, i) => i)
+    .filter(i => !mustVisitIndices.includes(i) && !categoryIndices.includes(i));
 
   let population = [];
 
-  for (let i = 0; i < populationSize; i++) {
-    const route = [...mustVisitIndices];
-    const extraCategory = shuffle(categoryIndices).slice(0, MAX_ROUTE_LENGTH - route.length);
-    const extraOthers = shuffle(otherIndices).slice(0, MAX_ROUTE_LENGTH - route.length - extraCategory.length);
-    population.push(shuffle([...route, ...extraCategory, ...extraOthers]).slice(0, MAX_ROUTE_LENGTH));
+  const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+
+  for (let i = 0; i < populationSize / 4; i++) {
+    let route = mustVisitIndices.length ? [...mustVisitIndices] : [];
+    if (categoryIndices.length && route.length < MAX_ROUTE_LENGTH) {
+      route.push(categoryIndices[Math.floor(Math.random() * categoryIndices.length)]);
+    } else if (otherIndices.length && route.length === 0) {
+      route.push(otherIndices[Math.floor(Math.random() * otherIndices.length)]);
+    }
+    population.push(shuffle(route));
+  }
+
+  for (let i = 0; i < populationSize / 4; i++) {
+    let route = [...mustVisitIndices];
+    if (categoryIndices.length && route.length < MAX_ROUTE_LENGTH) {
+      route.push(categoryIndices[Math.floor(Math.random() * categoryIndices.length)]);
+    }
+    population.push(shuffle(route));
+  }
+
+  for (let i = 0; i < populationSize / 4; i++) {
+    let route = [...mustVisitIndices];
+    let remaining = Math.min(MAX_ROUTE_LENGTH - route.length, categoryIndices.length);
+    route.push(...shuffle([...categoryIndices]).slice(0, remaining));
+    remaining = Math.min(MAX_ROUTE_LENGTH - route.length, otherIndices.length);
+    route.push(...shuffle([...otherIndices]).slice(0, remaining));
+    population.push(shuffle(route));
+  }
+
+  while (population.length < populationSize) {
+    let indices = [...Array(locations.length).keys()];
+    population.push(shuffle(indices).slice(0, MAX_ROUTE_LENGTH));
   }
 
   let fitnessValues = population.map(route =>
@@ -30,23 +70,30 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
   );
 
   let bestFitness = Math.max(...fitnessValues);
-  let stagnation = 0;
+  let stagnationCounter = 0;
 
   for (let gen = 0; gen < generations; gen++) {
-    const sortedIndices = fitnessValues.map((val, i) => ({ i, val }))
-      .sort((a, b) => b.val - a.val)
-      .map(item => item.i);
-
+    const sortedIndices = [...fitnessValues.keys()].sort((a, b) => fitnessValues[b] - fitnessValues[a]);
     const newPopulation = sortedIndices.slice(0, eliteCount).map(i => [...population[i]]);
 
     while (newPopulation.length < populationSize) {
-      const parent1 = tournamentSelection(population, fitnessValues);
-      const parent2 = tournamentSelection(population, fitnessValues);
+      const parent1 = tournamentSelection(population, fitnessValues, tournamentSize);
+      const parent2 = tournamentSelection(population, fitnessValues, tournamentSize);
       let child = crossover(parent1, parent2);
       mutate(child, mutationRate);
 
       if (child.length > MAX_ROUTE_LENGTH) {
-        child = child.slice(0, MAX_ROUTE_LENGTH);
+        const must = child.filter(idx => mustVisitIndices.includes(idx));
+        const cat = child.filter(idx => categoryIndices.includes(idx) && !must.includes(idx));
+        const other = child.filter(idx => !must.includes(idx) && !cat.includes(idx));
+
+        let newChild = [...must];
+        let remain = Math.min(MAX_ROUTE_LENGTH - newChild.length, cat.length);
+        newChild.push(...cat.slice(0, remain));
+        remain = Math.min(MAX_ROUTE_LENGTH - newChild.length, other.length);
+        newChild.push(...other.slice(0, remain));
+
+        child = newChild;
       }
 
       newPopulation.push(child);
@@ -60,22 +107,25 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
     const currentBest = Math.max(...fitnessValues);
     if (currentBest > bestFitness) {
       bestFitness = currentBest;
-      stagnation = 0;
+      stagnationCounter = 0;
     } else {
-      stagnation++;
+      stagnationCounter++;
     }
 
-    if (stagnation >= STAGNATION_LIMIT) {
-      const bestRoute = population[fitnessValues.indexOf(currentBest)];
+    if (stagnationCounter >= STAGNATION_LIMIT) {
+      const bestRoute = [...population[fitnessValues.indexOf(currentBest)]];
       population = [bestRoute];
 
       while (population.length < populationSize) {
-        const route = [
-          ...shuffle(mustVisitIndices),
-          ...shuffle(categoryIndices).slice(0, MAX_ROUTE_LENGTH - mustVisitIndices.length),
-          ...shuffle(otherIndices).slice(0, MAX_ROUTE_LENGTH - mustVisitIndices.length - categoryIndices.length)
-        ].slice(0, MAX_ROUTE_LENGTH);
-
+        let route;
+        if (Math.random() < 0.5) {
+          route = [...mustVisitIndices];
+          let remaining = Math.min(MAX_ROUTE_LENGTH - route.length, categoryIndices.length);
+          route.push(...shuffle([...categoryIndices]).slice(0, remaining));
+        } else {
+          let indices = [...Array(locations.length).keys()];
+          route = shuffle(indices).slice(0, MAX_ROUTE_LENGTH);
+        }
         population.push(route);
       }
 
@@ -83,7 +133,7 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
         calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategory)
       );
 
-      stagnation = 0;
+      stagnationCounter = 0;
     }
   }
 
@@ -91,12 +141,4 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
   return population[bestIndex];
 }
 
-// Yardımcı: array’i karıştır
-function shuffle(array) {
-  return array
-    .map(val => ({ val, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ val }) => val);
-}
-
-module.exports = { geneticAlgorithm };
+module.exports = geneticAlgorithm;

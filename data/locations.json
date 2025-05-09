@@ -1,631 +1,575 @@
 [
     {
         "id": 0,
-        "name": "Location_0",
-        "latitude": 40.90096549871633,
-        "longitude": 28.93706169330292,
-        "distance_to_start": 12.214996174142936,
-        "must_visit": false,
-        "category": "Museum",
-        "category_match": false,
-        "score": 5.378358036136493,
-        "visit_duration": 81,
+        "name": "Topkapı Sarayı",
+        "latitude": 41.0115,
+        "longitude": 28.9832,
+        "distance_to_start": 0.0,
+        "must_visit": true,
+        "category": "Historic",
+        "score": 95,
+        "visit_duration": 90,
         "opening_hours": {
             "Monday": [
-                -1,
-                -1
+                9,
+                18
             ],
             "Tuesday": [
                 9,
-                24
+                18
             ],
             "Wednesday": [
                 9,
-                24
+                18
             ],
             "Thursday": [
-                10,
-                24
+                9,
+                18
             ],
             "Friday": [
-                11,
-                24
+                9,
+                18
             ],
             "Saturday": [
                 9,
-                24
+                18
             ],
             "Sunday": [
                 9,
-                24
+                18
             ]
         }
     },
     {
         "id": 1,
-        "name": "Location_1",
-        "latitude": 41.089055465775424,
-        "longitude": 28.899002278657967,
-        "distance_to_start": 13.030750577291668,
-        "must_visit": false,
-        "category": "Museum",
-        "category_match": false,
-        "score": 5.356360122892665,
-        "visit_duration": 95,
+        "name": "Ayasofya",
+        "latitude": 41.0086,
+        "longitude": 28.9802,
+        "distance_to_start": 0.41,
+        "must_visit": true,
+        "category": "Historic",
+        "score": 98,
+        "visit_duration": 60,
         "opening_hours": {
             "Monday": [
                 9,
-                24
+                17
             ],
             "Tuesday": [
-                10,
-                24
+                9,
+                17
             ],
             "Wednesday": [
-                11,
-                24
+                9,
+                17
             ],
             "Thursday": [
-                8,
-                24
+                9,
+                17
             ],
             "Friday": [
                 9,
-                24
+                17
             ],
             "Saturday": [
-                10,
-                24
+                9,
+                17
             ],
             "Sunday": [
-                8,
-                24
+                9,
+                17
             ]
         }
     },
     {
         "id": 2,
-        "name": "Location_2",
-        "latitude": 40.96666802763829,
-        "longitude": 28.98197993467684,
-        "distance_to_start": 4.003127947824302,
+        "name": "Yerebatan Sarnıcı",
+        "latitude": 41.0084,
+        "longitude": 28.9779,
+        "distance_to_start": 0.56,
         "must_visit": true,
-        "category": "Museum",
-        "category_match": false,
-        "score": 15.999374801552765,
-        "visit_duration": 159,
+        "category": "Historic",
+        "score": 92,
+        "visit_duration": 45,
         "opening_hours": {
             "Monday": [
-                11,
-                24
+                9,
+                18
             ],
             "Tuesday": [
                 9,
-                24
+                18
             ],
             "Wednesday": [
-                11,
-                24
+                9,
+                18
             ],
             "Thursday": [
-                10,
-                24
+                9,
+                18
             ],
             "Friday": [
                 9,
-                24
+                18
             ],
             "Saturday": [
-                11,
-                24
+                9,
+                18
             ],
             "Sunday": [
-                10,
-                24
+                9,
+                18
             ]
         }
     },
     {
         "id": 3,
-        "name": "Location_3",
-        "latitude": 41.06210458040356,
-        "longitude": 29.074870049451324,
-        "distance_to_start": 9.3342827932591,
-        "must_visit": true,
-        "category": "Park",
-        "category_match": true,
-        "score": 10.48382651220474,
-        "visit_duration": 94,
+        "name": "Galata Kulesi",
+        "latitude": 41.0256,
+        "longitude": 28.9744,
+        "distance_to_start": 1.73,
+        "must_visit": false,
+        "category": "Historic",
+        "score": 90,
+        "visit_duration": 45,
         "opening_hours": {
             "Monday": [
-                8,
-                24
+                10,
+                19
             ],
             "Tuesday": [
-                11,
-                24
+                10,
+                19
             ],
             "Wednesday": [
-                8,
-                24
+                10,
+                19
             ],
             "Thursday": [
-                9,
-                24
+                10,
+                19
             ],
             "Friday": [
-                11,
-                24
+                10,
+                19
             ],
             "Saturday": [
-                9,
-                24
+                10,
+                19
             ],
             "Sunday": [
                 10,
-                24
+                19
             ]
         }
     },
     {
         "id": 4,
-        "name": "Location_4",
-        "latitude": 41.00896639131941,
-        "longitude": 28.98575342715663,
-        "distance_to_start": 1.5566753093309136,
-        "must_visit": true,
-        "category": "Shopping",
-        "category_match": false,
-        "score": 11.955664836184658,
-        "visit_duration": 79,
+        "name": "Gülhane Parkı",
+        "latitude": 41.0126,
+        "longitude": 28.981,
+        "distance_to_start": 0.22,
+        "must_visit": false,
+        "category": "Park",
+        "score": 88,
+        "visit_duration": 60,
         "opening_hours": {
             "Monday": [
-                9,
-                24
+                6,
+                21
             ],
             "Tuesday": [
-                8,
-                24
+                6,
+                21
             ],
             "Wednesday": [
-                11,
-                24
+                6,
+                21
             ],
             "Thursday": [
-                9,
-                24
+                6,
+                21
             ],
             "Friday": [
-                11,
-                24
+                6,
+                21
             ],
             "Saturday": [
-                9,
-                24
+                6,
+                21
             ],
             "Sunday": [
-                9,
-                24
+                6,
+                21
             ]
         }
     },
     {
         "id": 5,
-        "name": "Location_5",
-        "latitude": 41.00115374892645,
-        "longitude": 29.002581086981017,
-        "distance_to_start": 0.25174446569118253,
+        "name": "Emirgan Korusu",
+        "latitude": 41.1091,
+        "longitude": 29.055,
+        "distance_to_start": 12.41,
         "must_visit": false,
         "category": "Park",
-        "category_match": true,
-        "score": 3.9944254894221745,
-        "visit_duration": 99,
+        "score": 85,
+        "visit_duration": 90,
         "opening_hours": {
             "Monday": [
-                8,
-                24
+                6,
+                22
             ],
             "Tuesday": [
-                -1,
-                -1
+                6,
+                22
             ],
             "Wednesday": [
-                10,
-                24
+                6,
+                22
             ],
             "Thursday": [
-                11,
-                24
+                6,
+                22
             ],
             "Friday": [
-                8,
-                24
+                6,
+                22
             ],
             "Saturday": [
-                11,
-                24
+                6,
+                22
             ],
             "Sunday": [
-                9,
-                24
+                6,
+                22
             ]
         }
     },
     {
         "id": 6,
-        "name": "Location_6",
-        "latitude": 41.13804231921663,
-        "longitude": 29.079667481250777,
-        "distance_to_start": 0.78,
+        "name": "Bebek Sahili",
+        "latitude": 41.074,
+        "longitude": 29.0433,
+        "distance_to_start": 8.59,
         "must_visit": false,
         "category": "Park",
-        "category_match": true,
-        "score": 0.28185487390122954,
-        "visit_duration": 30,
+        "score": 80,
+        "visit_duration": 60,
         "opening_hours": {
             "Monday": [
-                11,
-                24
+                6,
+                23
             ],
             "Tuesday": [
-                9,
-                24
+                6,
+                23
             ],
             "Wednesday": [
-                8,
-                24
+                6,
+                23
             ],
             "Thursday": [
-                10,
-                24
+                6,
+                23
             ],
             "Friday": [
-                9,
-                24
+                6,
+                23
             ],
             "Saturday": [
-                10,
-                24
+                6,
+                23
             ],
             "Sunday": [
-                10,
-                24
+                6,
+                23
             ]
         }
     },
     {
         "id": 7,
-        "name": "Location_7",
-        "latitude": 41.04451136289386,
-        "longitude": 29.076456673673,
-        "distance_to_start": 8.101678081329872,
+        "name": "Nişantaşı",
+        "latitude": 41.0475,
+        "longitude": 28.994,
+        "distance_to_start": 4.1,
         "must_visit": false,
-        "category": "Historic",
-        "category_match": false,
-        "score": 0.5493492469544073,
-        "visit_duration": 141,
+        "category": "Shopping",
+        "score": 87,
+        "visit_duration": 90,
         "opening_hours": {
             "Monday": [
                 10,
-                24
+                22
             ],
             "Tuesday": [
-                11,
-                24
+                10,
+                22
             ],
             "Wednesday": [
-                -1,
-                -1
+                10,
+                22
             ],
             "Thursday": [
-                8,
-                24
+                10,
+                22
             ],
             "Friday": [
                 10,
-                24
+                22
             ],
             "Saturday": [
-                8,
-                24
+                10,
+                22
             ],
             "Sunday": [
-                8,
-                24
+                10,
+                22
             ]
         }
     },
     {
         "id": 8,
-        "name": "Location_8",
-        "latitude": 40.917836659774366,
-        "longitude": 29.146311412798884,
-        "distance_to_start": 15.310680987973862,
+        "name": "Etiler",
+        "latitude": 41.0797,
+        "longitude": 29.0265,
+        "distance_to_start": 8.4,
         "must_visit": false,
-        "category": "Museum",
-        "category_match": false,
-        "score": 5.3065475931806025,
-        "visit_duration": 85,
+        "category": "Food",
+        "score": 83,
+        "visit_duration": 60,
         "opening_hours": {
             "Monday": [
-                8,
-                24
+                11,
+                23
             ],
             "Tuesday": [
-                8,
-                24
+                11,
+                23
             ],
             "Wednesday": [
-                10,
-                24
+                11,
+                23
             ],
             "Thursday": [
-                10,
-                24
+                11,
+                23
             ],
             "Friday": [
-                10,
-                24
+                11,
+                23
             ],
             "Saturday": [
-                10,
-                24
+                11,
+                23
             ],
             "Sunday": [
-                8,
-                24
+                11,
+                23
             ]
         }
     },
     {
         "id": 9,
-        "name": "Location_9",
-        "latitude": 41.06412820508806,
-        "longitude": 29.033903863070112,
-        "distance_to_start": 7.6768909278342,
-        "must_visit": true,
-        "category": "Park",
-        "category_match": true,
-        "score": 10.576243269805401,
-        "visit_duration": 105,
+        "name": "Karaköy",
+        "latitude": 41.022,
+        "longitude": 28.9749,
+        "distance_to_start": 1.36,
+        "must_visit": false,
+        "category": "Food",
+        "score": 86,
+        "visit_duration": 60,
         "opening_hours": {
             "Monday": [
-                10,
-                24
+                9,
+                23
             ],
             "Tuesday": [
-                8,
-                24
+                9,
+                23
             ],
             "Wednesday": [
-                8,
-                24
+                9,
+                23
             ],
             "Thursday": [
-                10,
-                24
+                9,
+                23
             ],
             "Friday": [
-                10,
-                24
+                9,
+                23
             ],
             "Saturday": [
-                -1,
-                -1
+                9,
+                23
             ],
             "Sunday": [
                 9,
-                24
+                23
             ]
         }
     },
     {
         "id": 10,
-        "name": "Location_10",
-        "latitude": 41.00117480469649,
-        "longitude": 29.003828397189203,
-        "distance_to_start": 0.34681827336944177,
+        "name": "Ortaköy Meydanı",
+        "latitude": 41.0471,
+        "longitude": 29.0232,
+        "distance_to_start": 5.19,
         "must_visit": false,
-        "category": "Historic",
-        "category_match": false,
-        "score": 3.7124533419724877,
-        "visit_duration": 49,
+        "category": "Food",
+        "score": 89,
+        "visit_duration": 45,
         "opening_hours": {
             "Monday": [
                 10,
-                24
+                22
             ],
             "Tuesday": [
-                8,
-                24
+                10,
+                22
             ],
             "Wednesday": [
-                11,
-                24
+                10,
+                22
             ],
             "Thursday": [
-                9,
-                24
+                10,
+                22
             ],
             "Friday": [
-                11,
-                24
+                10,
+                22
             ],
             "Saturday": [
-                8,
-                24
+                10,
+                22
             ],
             "Sunday": [
-                11,
-                24
+                10,
+                22
             ]
         }
     },
     {
         "id": 11,
-        "name": "Location_11",
-        "latitude": 40.86287624590041,
-        "longitude": 29.108805686391158,
-        "distance_to_start": 17.77731485366225,
-        "must_visit": false,
-        "category": "Park",
-        "category_match": true,
-        "score": 0.2662787538562693,
-        "visit_duration": 36,
+        "name": "İstanbul Modern Sanat Müzesi",
+        "latitude": 41.0305,
+        "longitude": 28.9769,
+        "distance_to_start": 2.18,
+        "must_visit": true,
+        "category": "Museum",
+        "score": 91,
+        "visit_duration": 75,
         "opening_hours": {
             "Monday": [
-                8,
-                24
+                10,
+                18
             ],
             "Tuesday": [
-                -1,
-                -1
+                10,
+                18
             ],
             "Wednesday": [
-                11,
-                24
+                10,
+                18
             ],
             "Thursday": [
-                -1,
-                -1
+                10,
+                18
             ],
             "Friday": [
                 10,
-                24
+                18
             ],
             "Saturday": [
-                9,
-                24
+                10,
+                18
             ],
             "Sunday": [
-                9,
-                24
+                10,
+                18
             ]
         }
     },
     {
         "id": 12,
-        "name": "Location_12",
-        "latitude": 41.02242419170081,
-        "longitude": 29.07412275252536,
-        "distance_to_start": 6.700536314926326,
-        "must_visit": true,
-        "category": "Park",
-        "category_match": true,
-        "score": 10.6493054243908,
-        "visit_duration": 102,
+        "name": "Pera Müzesi",
+        "latitude": 41.0329,
+        "longitude": 28.976,
+        "distance_to_start": 2.45,
+        "must_visit": false,
+        "category": "Museum",
+        "score": 84,
+        "visit_duration": 60,
         "opening_hours": {
             "Monday": [
-                9,
-                24
+                10,
+                19
             ],
             "Tuesday": [
                 10,
-                24
+                19
             ],
             "Wednesday": [
-                9,
-                24
+                10,
+                19
             ],
             "Thursday": [
-                9,
-                24
+                10,
+                19
             ],
             "Friday": [
-                11,
-                24
+                10,
+                19
             ],
             "Saturday": [
-                11,
-                24
+                10,
+                19
             ],
             "Sunday": [
                 10,
-                24
+                19
             ]
         }
     },
     {
         "id": 13,
-        "name": "Location_13",
-        "latitude": 41.05750120219542,
-        "longitude": 29.04781608600965,
-        "distance_to_start": 7.54778668598748,
+        "name": "Sakıp Sabancı Müzesi",
+        "latitude": 41.0842,
+        "longitude": 29.0531,
+        "distance_to_start": 9.99,
         "must_visit": false,
         "category": "Museum",
-        "category_match": false,
-        "score": 5.5849467451260315,
-        "visit_duration": 167,
-        "opening_hours": {
-            "Monday": [
-                9,
-                24
-            ],
-            "Tuesday": [
-                9,
-                24
-            ],
-            "Wednesday": [
-                10,
-                24
-            ],
-            "Thursday": [
-                9,
-                24
-            ],
-            "Friday": [
-                10,
-                24
-            ],
-            "Saturday": [
-                9,
-                24
-            ],
-            "Sunday": [
-                10,
-                24
-            ]
-        }
-    },
-    {
-        "id": 14,
-        "name": "Location_14",
-        "latitude": 41.13246438859202,
-        "longitude": 28.90026198771604,
-        "distance_to_start": 16.93724535405915,
-        "must_visit": true,
-        "category": "Museum",
-        "category_match": false,
-        "score": 15.278749601809317,
-        "visit_duration": 167,
+        "score": 88,
+        "visit_duration": 75,
         "opening_hours": {
             "Monday": [
                 10,
-                24
+                18
             ],
             "Tuesday": [
-                8,
-                24
+                10,
+                18
             ],
             "Wednesday": [
-                11,
-                24
+                10,
+                18
             ],
             "Thursday": [
-                -1,
-                -1
+                10,
+                18
             ],
             "Friday": [
-                11,
-                24
+                10,
+                18
             ],
             "Saturday": [
-                11,
-                24
+                10,
+                18
             ],
             "Sunday": [
-                8,
-                24
+                10,
+                18
             ]
         }
     }

@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Preference = require('../models/preferences');
-const { createRoute } = require('../services/routeService');
-
-const { filterAvailableLocations } = require('../services/routeService');
-
+const {createMultiDayRoute} = require('../services/routeService');
+const {filterAvailableLocations} = require('../services/routeService');
 router.post('/available-places', (req, res) => {
   try {
     const preference = new Preference(req.body);
@@ -34,24 +32,36 @@ router.post('/', (req, res) => {
     console.log('📅 Günler:', preference.getDayStrings());
     console.log('=====================================\n');
 
-    const routes = createRoute(preference);
-
+    // ✅ Yeni sistem: Çok günlük rota üretimi
+    const routes = createMultiDayRoute({
+      startDate: preference.startDate,
+      endDate: preference.endDate,
+      startHour: preference.startHour || 10,        // örnek default
+      totalHours: preference.totalHours || 7,       // örnek default
+      selectedCategory: preference.type
+    });
+    console.log('📋 createMultiDayRoute parametreleri:', {
+      startDate: preference.startDate,
+      endDate: preference.endDate,
+      startHour: preference.startHour,
+      totalHours: preference.totalHours,
+      selectedCategory: preference.type
+    });
     // 🔥 Plain log için sadeleştir
     const simplifiedRoutes = routes.map(dayPlan => ({
-      day: dayPlan.day,
+      date: dayPlan.date,
       route: dayPlan.route.map(loc => ({
         id: loc.id,
         name: loc.name,
         category: loc.category,
-        must_visit: loc.must_visit,
-        visit_duration: loc.visit_duration,
-        distance_to_start: loc.distance_to_start
+        mustVisit: loc.mustVisit,
+        start: loc.visitStartTime,
+        end: loc.visitEndTime,
       }))
     }));
     
     console.log("🧭 Sadeleştirilmiş Rota:\n", JSON.stringify(simplifiedRoutes, null, 2));
-    
-  
+
     res.status(201).json({
       message: "Rota başarıyla oluşturuldu!",
       data: {

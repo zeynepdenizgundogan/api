@@ -8,6 +8,8 @@ class Preference {
       this.endDate = new Date(endDate);
       this.userId = userId;
       this.niceToHavePlaces = niceToHavePlaces || [];
+      this.startHour = startHour ?? 10;     // default 10:00
+      this.totalHours = totalHours ?? 7;    // default 7 saat
     }
   
     // İsteğe bağlı: startDate ve duration'dan gün gün array çıkarabiliriz
