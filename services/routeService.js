@@ -27,13 +27,21 @@ function filterAvailableLocations(preference) {
 }
 function mapCategory(type) {
   const map = {
-    Museum: ['museum'],
-    Historic: ['tourist_attraction', 'place_of_worship', 'art_gallery', 'historic', 'historical'],
-    Park: ['park'],
-    Food: ['restaurant', 'food', 'drink', 'cafe', 'bakery', 'bar'],
-    Shopping: ['store', 'shopping', 'mall', 'lodging']
+    museum: ['museum'],
+    historic: ['tourist_attraction', 'place_of_worship', 'art_gallery', 'historic', 'historical'],
+    park: ['park'],
+    food: ['restaurant', 'food', 'drink', 'cafe', 'bakery', 'bar'],
+    shopping: ['store', 'shopping', 'mall', 'lodging']
   };
-  return map[type?.toLowerCase()] || []; // ✅ güvenli erişim ve küçük harfe çevir
+
+  const lower = type?.toLowerCase();
+  for (const [mainCat, subCats] of Object.entries(map)) {
+    if (subCats.includes(lower)) {
+      return mainCat; // 🎯 Artık sadece bir ana kategori döner
+    }
+  }
+
+  return undefined; // eşleşme yoksa
 }
 
 function optimizeRouteFromPreference(preference) {
