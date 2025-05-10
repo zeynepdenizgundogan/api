@@ -1,6 +1,6 @@
 const { TRAVEL_TIME_PER_KM } = require("./constants");
 
-function checkLocationValidity(idx, location, previousIndex, currentTime, endTime, distanceMatrix, day, selectedCategory) {
+function checkLocationValidity(idx, location, previousIndex, currentTime, endTime, distanceMatrix, day, selectedCategories) {
   let travelTime = 0;
   let tempTime = currentTime;
 
@@ -24,8 +24,12 @@ function checkLocationValidity(idx, location, previousIndex, currentTime, endTim
   if (Math.floor((tempTime + location.visit_duration) / 60) > closeTime) return [false, 0, 0];
   if ((tempTime + location.visit_duration) > endTime) return [false, 0, 0];
 
+  const locCategories = Array.isArray(location.category) ? location.category : [location.category];
+  const match = locCategories.some(cat =>
+    selectedCategories.includes(cat.toLowerCase())
+  );
+  const categoryScore = match ? 100 : 0;
   const distanceScore = -travelTime;
-  const categoryScore = location.category === selectedCategory ? 100 : 0;
   const totalScore = categoryScore + distanceScore;
 
   return [true, tempTime, totalScore];

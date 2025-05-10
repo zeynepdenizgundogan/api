@@ -2,14 +2,15 @@ const calculateFitness = require("../utils/calculateFitness");
 const crossover = require("../utils/crossover");
 const mutate = require("../utils/mutate");
 const tournamentSelection = require("../utils/tournamentSelection");
-const { MAX_ROUTE_LENGTH, STAGNATION_LIMIT, MAX_DISTANCE_THRESHOLD } = require("../utils/constants");
 const {
+  MAX_ROUTE_LENGTH,
+  STAGNATION_LIMIT,
+  MAX_DISTANCE_THRESHOLD,
   DEFAULT_START_HOUR,
   DEFAULT_TOTAL_HOURS
 } = require("../utils/constants");
-startHour = DEFAULT_START_HOUR;
-totalHours = DEFAULT_TOTAL_HOURS;
-function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours, selectedCategory) {
+
+function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_START_HOUR, totalHours = DEFAULT_TOTAL_HOURS, selectedCategories) {
   if (!locations || locations.length === 0) return [];
 
   const populationSize = 300;
@@ -23,7 +24,11 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
     .map(({ i }) => i);
 
   const categoryIndices = locations.map((loc, i) => ({ loc, i }))
-    .filter(({ loc, i }) => loc.category === selectedCategory && !mustVisitIndices.includes(i))
+    .filter(({ loc, i }) => {
+      const categories = Array.isArray(loc.category) ? loc.category : [loc.category];
+      return categories.some(cat => selectedCategories.includes(cat.toLowerCase()))
+        && !mustVisitIndices.includes(i);
+    })
     .map(({ i }) => i);
 
   const otherIndices = locations.map((_, i) => i)
@@ -66,7 +71,7 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
   }
 
   let fitnessValues = population.map(route =>
-    calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategory)
+    calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
   );
 
   let bestFitness = Math.max(...fitnessValues);
@@ -101,7 +106,7 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
 
     population = newPopulation;
     fitnessValues = population.map(route =>
-      calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategory)
+      calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
     );
 
     const currentBest = Math.max(...fitnessValues);
@@ -130,7 +135,7 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
       }
 
       fitnessValues = population.map(route =>
-        calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategory)
+        calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
       );
 
       stagnationCounter = 0;

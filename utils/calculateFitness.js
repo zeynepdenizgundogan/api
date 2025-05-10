@@ -1,19 +1,17 @@
 const { TRAVEL_TIME_PER_KM, MAX_DISTANCE_THRESHOLD } = require("./constants");
-const {
-  DEFAULT_START_HOUR,
-  DEFAULT_TOTAL_HOURS
-} = require("../utils/constants");
-startHour = DEFAULT_START_HOUR;
-totalHours = DEFAULT_TOTAL_HOURS;
+const { DEFAULT_START_HOUR, DEFAULT_TOTAL_HOURS } = require("../utils/constants");
 const fs = require("fs");
+
 function logToFile(content) {
   fs.appendFileSync("fitness-log.txt", `[${new Date().toISOString()}] ${content}\n`);
 }
-function calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategory) {
+
+function calculateFitness(route, locations, distanceMatrix, day, startHour = DEFAULT_START_HOUR, totalHours = DEFAULT_TOTAL_HOURS, selectedCategories) {
   logToFile("calculateFitness CALLED");
   logToFile("DAY: " + day);
   logToFile("ROUTE: " + JSON.stringify(route));
   logToFile("OPENING_HOURS: " + JSON.stringify(locations?.[route?.[0]]?.opening_hours));
+
   if (!route || route.length === 0) return -1000;
   if (route.length === 1) return 10;
 
@@ -22,16 +20,18 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour, tota
   let currentTime = startHour * 60;
   const totalMinutes = totalHours * 60;
   let previousLocationIndex = -1;
+  let niceToHaveBonus = 0;
 
-  const categoryLocations = locations
-    .map((loc, i) => ({ loc, i }))
-    .filter(({ loc }) => loc.category.toLowerCase() === selectedCategory.toLowerCase())
+  // 🔄 Tüm lokasyonlar arasında seçilen kategorilere uyanların indeksleri
+  const categoryLocations = locations.map((loc, i) => ({ loc, i }))
+    .filter(({ loc }) => {
+      const cats = Array.isArray(loc.category) ? loc.category : [loc.category];
+      return cats.some(cat => selectedCategories.includes(cat.toLowerCase()));
+    })
     .map(({ i }) => i);
 
   const categoryInRoute = categoryLocations.filter(idx => route.includes(idx)).length;
   const categoryRatio = categoryLocations.length > 0 ? categoryInRoute / categoryLocations.length : 1.0;
-
-  let niceToHaveBonus = 0;
 
   for (let i = 0; i < route.length; i++) {
     const locationIndex = route[i];
@@ -59,8 +59,12 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour, tota
     if (Math.floor((currentTime + location.visit_duration) / 60) > closeTime) return -700;
     if (currentTime + location.visit_duration > startHour * 60 + totalMinutes) return -600;
 
+    // ✅ Çoklu kategori kontrolü
+    const locCats = Array.isArray(location.category) ? location.category : [location.category];
+    const isPreferredCategory = locCats.some(cat => selectedCategories.includes(cat.toLowerCase()));
+
     let categoryBonus = 0;
-    if (location.category.toLowerCase() === selectedCategory) {
+    if (isPreferredCategory) {
       categoryBonus = 300;
     } else if (!location.must_visit) {
       categoryBonus = 100;
