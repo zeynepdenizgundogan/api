@@ -24,25 +24,38 @@ function filterAvailableLocations(preference) {
 
     return  categoryMatch;
   });
-}
-function mapCategory(type) {
+}function mapCategory(type) {
   const map = {
     museum: ['museum'],
-    historic: ['tourist_attraction', 'place_of_worship', 'art_gallery', 'historic', 'historical'],
+    historic: ['art_gallery', 'historic', 'historical'],
     park: ['park'],
-    food: ['restaurant', 'food', 'drink', 'cafe', 'bakery', 'bar'],
-    shopping: ['store', 'shopping', 'mall', 'lodging']
+    food: ['food'],
+    shopping: ['shopping']
   };
 
-  const lower = type?.toLowerCase();
-  for (const [mainCat, subCats] of Object.entries(map)) {
-    if (subCats.includes(lower)) {
-      return mainCat; // 🎯 Artık sadece bir ana kategori döner
+  if (Array.isArray(type)) {
+    return type
+      .filter(t => typeof t === 'string')
+      .map(t => t.toLowerCase())
+      .flatMap(lower =>
+        Object.entries(map).flatMap(([mainCat, subCats]) =>
+          subCats.includes(lower) ? [mainCat] : []
+        )
+      );
+  }
+
+  if (typeof type === 'string') {
+    const lower = type.toLowerCase();
+    for (const [mainCat, subCats] of Object.entries(map)) {
+      if (subCats.includes(lower)) {
+        return [mainCat];
+      }
     }
   }
 
-  return undefined; // eşleşme yoksa
+  return [];
 }
+
 
 function optimizeRouteFromPreference(preference) {
   const dayStrings = preference.getDayStrings();
