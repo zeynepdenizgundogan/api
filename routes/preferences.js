@@ -3,10 +3,12 @@ const router = express.Router();
 const Preference = require('../models/preferences');
 const {createMultiDayRoute} = require('../services/routeService');
 const {filterAvailableLocations} = require('../services/routeService');
-router.post('/available-places', (req, res) => {
+router.post('/available-places', async (req, res) => {
   try {
     const preference = new Preference(req.body);
-    const places = filterAvailableLocations(preference);
+
+    const places = await filterAvailableLocations(preference); // önce await!
+    console.log("🎯 Filtrelenmiş lokasyon sayısı:", places.length); // sonra log!
 
     res.status(200).json({
       message: 'Filtrelenmiş lokasyonlar',
@@ -18,7 +20,7 @@ router.post('/available-places', (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const preference = new Preference(req.body);
 
@@ -33,13 +35,15 @@ router.post('/', (req, res) => {
     console.log('=====================================\n');
 
     // ✅ Yeni sistem: Çok günlük rota üretimi
-    const routes = createMultiDayRoute({
-      startDate: preference.startDate,
-      endDate: preference.endDate,
-      startHour: preference.startHour || 10,        // örnek default
-      totalHours: preference.totalHours || 7,       // örnek default
-      selectedCategory: preference.type
-    });
+  const routes = await createMultiDayRoute({
+    startDate: preference.startDate,
+    endDate: preference.endDate,
+    startHour: preference.startHour || 10,
+    totalHours: preference.totalHours || 7,
+    selectedCategory: preference.type,
+    mustVisit: preference.niceToHavePlaces // 👈 bunu da unutma
+  });
+
     console.log('📋 createMultiDayRoute parametreleri:', {
       startDate: preference.startDate,
       endDate: preference.endDate,

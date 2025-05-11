@@ -1,5 +1,5 @@
 const geneticAlgorithm = require("./geneticAlgorithm");
-const {generateLocations} = require("./locationservice");
+const { generateLocations } = require("./locationService");
 const optimizeRouteOrder = require("../utils/optimizeRouteOrder");
 const createDistanceMatrix = require("../utils/createDistanceMatrix");
 const { TRAVEL_TIME_PER_KM, MAX_DISTANCE_THRESHOLD } = require("../utils/constants");
@@ -11,58 +11,18 @@ const {
 startHour = DEFAULT_START_HOUR;
 totalHours = DEFAULT_TOTAL_HOURS;
 
-function filterAvailableLocations(preference) {
-  const locations = generateLocations('data/locations.json');
-  const days = preference.getDayStrings();
-  console.log('🧾 Gelen Preference:', preference);
-  console.log('📅 Günler:', preference.getDayStrings());
-  console.log('📂 Category map:', mapCategory(preference.type));
-  return locations.filter(loc => {
-    // En az 1 gün açık olması gerekiyor
-    // Kategori eşleşmesi
-    const categoryMatch = mapCategory(preference.type).includes(loc.category.toLowerCase());
-
-    return  categoryMatch;
-  });
-}function mapCategory(type) {
-  const map = {
-    museum: ['museum'],
-    historic: ['art_gallery', 'historic', 'historical'],
-    park: ['park'],
-    food: ['food'],
-    shopping: ['shopping']
-  };
-
-  if (Array.isArray(type)) {
-    return type
-      .filter(t => typeof t === 'string')
-      .map(t => t.toLowerCase())
-      .flatMap(lower =>
-        Object.entries(map).flatMap(([mainCat, subCats]) =>
-          subCats.includes(lower) ? [mainCat] : []
-        )
-      );
-  }
-
-  if (typeof type === 'string') {
-    const lower = type.toLowerCase();
-    for (const [mainCat, subCats] of Object.entries(map)) {
-      if (subCats.includes(lower)) {
-        return [mainCat];
-      }
-    }
-  }
-
-  return [];
-}
-
-
-function optimizeRouteFromPreference(preference) {
+async function optimizeRouteFromPreference(preference) {
   const dayStrings = preference.getDayStrings();
   const dateList = getDateRange(preference.startDate, preference.endDate);
 
-  // Lokasyonları önceden filtrele
-  const availableLocations = preference.filterAvailableLocations(); // örnek fonksiyon
+  const availableLocations = await generateLocations(preference);
+
+  const mustVisitIds = (preference.mustVisit || []).map(p => p.id);
+  availableLocations.forEach(loc => {
+    if (mustVisitIds.includes(loc.id)) {
+      loc.must_visit = true;
+    }
+  });
 
   let remainingLocations = [...availableLocations];
   const results = [];
@@ -86,7 +46,7 @@ function optimizeRouteFromPreference(preference) {
       day,
       preference.startHour,
       preference.totalHours,
-      preference.category,
+      preference.type,
       remainingLocations,
       distanceMatrix
     );
@@ -105,11 +65,10 @@ function optimizeRouteFromPreference(preference) {
   return results;
 }
 
-function optimizeRoute(day, startHour, totalHours, selectedCategory, locations, distanceMatrix) {
-  // 🔥 Başta uzak lokasyonları filtrele
-  locations = locations.filter(loc => loc.distance_to_start <= MAX_DISTANCE_THRESHOLD || !loc.must_visit);
+function optimizeRoute(day, startHour, totalHours, selectedCategories, locations, distanceMatrix) {
+  locations = locations.filter(loc => loc.distance_to_start <= MAX_DISTANCE_THRESHOLD || loc.must_visit);
 
-  const bestRoute = geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours, selectedCategory);
+  const bestRoute = geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours, selectedCategories);
   const optimizedRoute = optimizeRouteOrder(bestRoute, locations, distanceMatrix);
 
   const visitTimes = {};
@@ -146,8 +105,6 @@ function optimizeRoute(day, startHour, totalHours, selectedCategory, locations, 
 function getDateRange(startDateStr, endDateStr) {
   const start = new Date(startDateStr);
   const end = new Date(endDateStr);
-
-  // Sadece tarih kısmını karşılaştırmak için saatleri sıfırla
   start.setHours(0, 0, 0, 0);
   end.setHours(0, 0, 0, 0);
 
@@ -158,6 +115,7 @@ function getDateRange(startDateStr, endDateStr) {
 
   return dates;
 }
+
 function formatTime(mins) {
   const totalSeconds = Math.round(mins * 60);
   const h = Math.floor(totalSeconds / 3600);
@@ -165,8 +123,18 @@ function formatTime(mins) {
   const s = totalSeconds % 60;
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}.${String(s).padStart(2, "0")}`;
 }
-function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory }) {
-  const allLocations = generateLocations("data/locations.json");
+
+async function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory, mustVisit = [] }) {
+  const allLocations = await generateLocations({ type: selectedCategory });
+
+  // ✅ must_visit olarak işaretle
+  const mustVisitIds = mustVisit.map(p => p.id);
+  allLocations.forEach(loc => {
+    if (mustVisitIds.includes(loc.id)) {
+      loc.must_visit = true;
+    }
+  });
+
   let remainingLocations = [...allLocations];
   const dates = getDateRange(startDate, endDate);
   const allRoutes = [];
@@ -207,7 +175,7 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
         latitude: loc.latitude,
         longitude: loc.longitude,
         visitStartTime: formatTime(start),
-        visitEndTime: formatTime(end),
+        visitEndTime: formatTime(end)
       };
     });
 
@@ -223,10 +191,21 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
   return allRoutes;
 }
 
+
+async function filterAvailableLocations(preference) {
+  const locations = await generateLocations(preference);
+  const mustVisitIds = (preference.mustVisit || []).map(p => p.id);
+
+  return locations.map(loc => ({
+    ...loc,
+    must_visit: mustVisitIds.includes(loc.id)
+  }));
+}
+
 module.exports = {
   optimizeRoute,
   getDateRange,
   optimizeRouteFromPreference,
-  filterAvailableLocations,
   createMultiDayRoute,
+  filterAvailableLocations
 };

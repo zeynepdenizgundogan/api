@@ -1,14 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const Location = require("../models/location");
+const { getMongoLocations } = require('./mongoService');
 
-function generateLocations(filePath = "locations.json") {
-  const absolutePath = path.join(__dirname, "..", filePath);
-  const rawData = fs.readFileSync(absolutePath, "utf-8");
-  const data = JSON.parse(rawData);
+const initLocation = {
+  lat: 41.0086,
+  lng: 28.9802 // şimdilik sabit
+};
 
-  const locations = data.map((loc) => new Location(loc));
-  return locations;
+async function generateLocations(preference) {
+  return await getMongoLocations(preference, initLocation);
 }
 
 module.exports = {
