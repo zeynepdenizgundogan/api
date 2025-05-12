@@ -5,23 +5,32 @@ const tournamentSelection = require("../utils/tournamentSelection");
 const {
   MAX_ROUTE_LENGTH,
   STAGNATION_LIMIT,
-  MAX_DISTANCE_THRESHOLD,
+  MAX_DISTANCE_THRESHOLD, // Eklendi
   DEFAULT_START_HOUR,
   DEFAULT_TOTAL_HOURS
 } = require("../utils/constants");
 
 function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_START_HOUR, totalHours = DEFAULT_TOTAL_HOURS, selectedCategories) {
+  console.log("🧬 geneticAlgorithm başladı", { locCount: locations.length, day });
+
+  
   if (!locations || locations.length === 0) return [];
 
-  const populationSize = 300;
-  const generations = 500;
-  const eliteCount = 30;
-  const tournamentSize = 7;
+  const populationSize = 100; // 300 yerine
+  const generations = 100; // 500 yerine
+  const eliteCount = 10; // 30 yerine
+  const tournamentSize = 5; // 7 yerine
   const mutationRate = 0.4;
 
   const mustVisitIndices = locations.map((loc, i) => ({ loc, i }))
     .filter(({ loc }) => loc.must_visit && loc.distance_to_start <= MAX_DISTANCE_THRESHOLD)
     .map(({ i }) => i);
+
+  console.log('📍 Must-visit indices:', mustVisitIndices.map(i => ({
+    id: locations[i].id,
+    name: locations[i].name,
+    distance_to_start: locations[i].distance_to_start.toFixed(2)
+  })));
 
   const categoryIndices = locations.map((loc, i) => ({ loc, i }))
     .filter(({ loc, i }) => {
@@ -34,8 +43,11 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_ST
   const otherIndices = locations.map((_, i) => i)
     .filter(i => !mustVisitIndices.includes(i) && !categoryIndices.includes(i));
 
-  let population = [];
+  console.log("🧬 mustVisitIndices:", mustVisitIndices.length);
+  console.log("🧬 categoryIndices:", categoryIndices.length);
+  console.log("🧬 otherIndices:", otherIndices.length);
 
+  let population = [];
   const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
   for (let i = 0; i < populationSize / 4; i++) {
@@ -78,6 +90,7 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_ST
   let stagnationCounter = 0;
 
   for (let gen = 0; gen < generations; gen++) {
+    console.log(`🧬 Jenerasyon: ${gen}/${generations}`);
     const sortedIndices = [...fitnessValues.keys()].sort((a, b) => fitnessValues[b] - fitnessValues[a]);
     const newPopulation = sortedIndices.slice(0, eliteCount).map(i => [...population[i]]);
 
@@ -143,7 +156,8 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_ST
   }
 
   const bestIndex = fitnessValues.indexOf(Math.max(...fitnessValues));
+  console.log('🧬 geneticAlgorithm tamamlandı');
   return population[bestIndex];
 }
 
-module.exports = geneticAlgorithm;
+module.exports = geneticAlgorithm; 

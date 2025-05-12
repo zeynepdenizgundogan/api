@@ -25,32 +25,24 @@ function filterAvailableLocations(preference) {
     return  categoryMatch;
   });
 }function mapCategory(type) {
-  const map = {
-    museum: ['museum'],
-    historic: ['art_gallery', 'historic', 'historical'],
-    park: ['park'],
-    food: ['food'],
-    shopping: ['shopping']
-  };
+  const validCategories = [
+    'cultural',
+    'park',
+    'food',
+    'shopping',
+    'education',
+    'entertainment',
+    'scenic'
+  ];
 
   if (Array.isArray(type)) {
     return type
-      .filter(t => typeof t === 'string')
-      .map(t => t.toLowerCase())
-      .flatMap(lower =>
-        Object.entries(map).flatMap(([mainCat, subCats]) =>
-          subCats.includes(lower) ? [mainCat] : []
-        )
-      );
+      .filter((t) => typeof t === 'string' && validCategories.includes(t.toLowerCase()))
+      .map((t) => t.toLowerCase());
   }
 
-  if (typeof type === 'string') {
-    const lower = type.toLowerCase();
-    for (const [mainCat, subCats] of Object.entries(map)) {
-      if (subCats.includes(lower)) {
-        return [mainCat];
-      }
-    }
+  if (typeof type === 'string' && validCategories.includes(type.toLowerCase())) {
+    return [type.toLowerCase()];
   }
 
   return [];
@@ -165,17 +157,44 @@ function formatTime(mins) {
   const s = totalSeconds % 60;
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}.${String(s).padStart(2, "0")}`;
 }
-function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory }) {
-  const allLocations = generateLocations("data/locations.json");
+function createMultiDayRoute({ startDate, endDate, startHora, totalHours, selectedCategory, niceToHavePlaces, startLat, startLon }) {
+  console.log('🚀 createMultiDayRoute başladı');
+  let allLocations = generateLocations("data/locations.json", startLat, startLon);
+
+  // niceToHavePlaces'i must_visit olarak işaretle
+  if (niceToHavePlaces && niceToHavePlaces.length > 0) {
+    console.log('📥 niceToHavePlaces:', niceToHavePlaces.map(p => ({ id: p.id, type: typeof p.id, value: p.id })));
+    console.log('📋 allLocations sample:', allLocations.slice(0, 5).map(loc => ({ id: loc.id, type: typeof loc.id, value: loc.id })));
+    allLocations = allLocations.map((loc) => {
+      const isNiceToHave = niceToHavePlaces.some((place) => {
+        const match = String(place.id) === String(loc.id);
+        console.log(`🔍 Comparing: place.id=${place.id} (type: ${typeof place.id}), loc.id=${loc.id} (type: ${typeof loc.id}), match=${match}`);
+        return match;
+      });
+      return {
+        ...loc,
+        must_visit: isNiceToHave || loc.must_visit
+      };
+    });
+  } else {
+    console.log('⚠️ niceToHavePlaces boş veya tanımsız');
+  }
+
+  console.log('📍 Must-visit locations:', allLocations.filter(loc => loc.must_visit).map(loc => ({ id: loc.id, name: loc.name })));
+
   let remainingLocations = [...allLocations];
   const dates = getDateRange(startDate, endDate);
   const allRoutes = [];
 
+  console.log('📅 Tarih aralığı:', dates);
+
   for (const travelDate of dates) {
     const day = travelDate.toLocaleDateString("en-US", { weekday: "long" });
     const formattedDate = travelDate.toISOString().split("T")[0];
+    console.log(`🗓️ İşleniyor: ${formattedDate} (${day})`);
 
     if (remainingLocations.length === 0) {
+      console.log('⚠️ Kalan lokasyon yok');
       allRoutes.push({
         date: formattedDate,
         message: "Tüm lokasyonlar kullanıldı, rota oluşturulamadı.",
@@ -184,7 +203,9 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
       continue;
     }
 
+    console.log('📏 Mesafe matrisi oluşturuluyor');
     const distanceMatrix = createDistanceMatrix(remainingLocations);
+    console.log('🧬 optimizeRoute çağrılıyor');
     const [optimizedRoute, _, visitTimes] = optimizeRoute(
       day,
       startHour,
@@ -193,6 +214,7 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
       remainingLocations,
       distanceMatrix
     );
+    console.log('✅ optimizeRoute tamamlandı, rota uzunluğu:', optimizedRoute.length);
 
     const routeLocations = optimizedRoute.map(loc => {
       const idx = remainingLocations.findIndex(l => l.id === loc.id);
@@ -218,8 +240,10 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
       date: formattedDate,
       route: routeLocations
     });
+    console.log(`✅ ${formattedDate} rotası oluşturuldu, lokasyon sayısı: ${routeLocations.length}`);
   }
 
+  console.log('🚀 createMultiDayRoute tamamlandı');
   return allRoutes;
 }
 

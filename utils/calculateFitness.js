@@ -79,6 +79,7 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour = DEF
     if (location.must_visit && location.distance_to_start <= MAX_DISTANCE_THRESHOLD) {
       const bonus = Math.max(0, 200 - location.distance_to_start * 10);
       niceToHaveBonus += bonus;
+      logToFile(`Must-visit bonus for ${location.name}: ${bonus}`);
     }
 
     const locationScore = categoryBonus - distancePenalty;
