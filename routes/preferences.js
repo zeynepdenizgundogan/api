@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Preference = require('../models/preferences');
-const {createMultiDayRoute} = require('../services/routeService');
-const {filterAvailableLocations} = require('../services/routeService');
+const { createMultiDayRoute } = require('../services/routeService');
+const { filterAvailableLocations } = require('../services/routeService');
+
 router.post('/available-places', (req, res) => {
   try {
     const preference = new Preference(req.body);
     const places = filterAvailableLocations(preference);
-
     res.status(200).json({
       message: 'Filtrelenmiş lokasyonlar',
       data: places
@@ -32,22 +32,27 @@ router.post('/', (req, res) => {
     console.log('📅 Günler:', preference.getDayStrings());
     console.log('=====================================\n');
 
-    // ✅ Yeni sistem: Çok günlük rota üretimi
+    // createMultiDayRoute çağrısını güncelle
     const routes = createMultiDayRoute({
       startDate: preference.startDate,
       endDate: preference.endDate,
-      startHour: preference.startHour || 10,        // örnek default
-      totalHours: preference.totalHours || 7,       // örnek default
-      selectedCategory: preference.type
+      startHour: preference.startHour || 10,
+      totalHours: preference.totalHours || 7,
+      selectedCategory: preference.type,
+      niceToHavePlaces: preference.niceToHavePlaces, // Eksik parametre eklendi
+      startLat: preference.startLat,
+      startLon: preference.startLon
     });
+
     console.log('📋 createMultiDayRoute parametreleri:', {
       startDate: preference.startDate,
       endDate: preference.endDate,
       startHour: preference.startHour,
       totalHours: preference.totalHours,
-      selectedCategory: preference.type
+      selectedCategory: preference.type,
+      niceToHavePlaces: preference.niceToHavePlaces.map(p => ({ id: p.id, name: p.name }))
     });
-    // 🔥 Plain log için sadeleştir
+
     const simplifiedRoutes = routes.map(dayPlan => ({
       date: dayPlan.date,
       route: dayPlan.route.map(loc => ({

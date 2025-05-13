@@ -1,18 +1,17 @@
-// preference.js
-
 class Preference {
-    constructor({ type, duration, startDate, endDate, userId, niceToHavePlaces }) {
-      this.type = type; // Örn: "adventure", "food", "historic"
-      this.duration = duration; // Gün cinsinden
+    constructor({ type, duration, startDate, endDate, userId, niceToHavePlaces, startLat, startLon }) {
+      this.type = type;
+      this.duration = duration;
       this.startDate = new Date(startDate);
       this.endDate = new Date(endDate);
       this.userId = userId;
       this.niceToHavePlaces = niceToHavePlaces || [];
-      this.startHour = startHour ?? 10;     // default 10:00
-      this.totalHours = totalHours ?? 7;    // default 7 saat
+      this.startHour = 10; // Varsayılan
+      this.totalHours = 7; // Varsayılan
+      this.startLat = startLat || 41.0370; // Varsayılan: Taksim
+      this.startLon = startLon || 28.9850; // Varsayılan: Taksim
     }
-  
-    // İsteğe bağlı: startDate ve duration'dan gün gün array çıkarabiliriz
+
     getDayStrings() {
       const days = [];
       const current = new Date(this.startDate);
@@ -21,9 +20,8 @@ class Preference {
         days.push(dayName);
         current.setDate(current.getDate() + 1);
       }
-      return days; // Örn: ["Saturday", "Sunday", "Monday"]
+      return days;
     }
-  }
-  
-  module.exports = Preference;
-  
+}
+
+module.exports = Preference;

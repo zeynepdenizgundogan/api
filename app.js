@@ -18,11 +18,12 @@ const usersRouter = require("./routes/users");  // Eğer hata alıyorsan, burada
 console.log("✅ usersRouter import edildi.");
 
 const app = express();
-app.use(cors({
+/*app.use(cors({
   origin: "http://localhost:8100", // 🔹 Ionic uygulamasının çalıştığı port
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization"
-}));
+}));*/
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 

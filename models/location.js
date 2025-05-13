@@ -9,7 +9,9 @@ class Location {
     category,
     score,
     visit_duration,
-    opening_hours
+    opening_hours,
+    rating,
+    image_url
   }) {
     this.id = id;
     this.name = name;
@@ -21,6 +23,8 @@ class Location {
     this.score = score;
     this.visit_duration = visit_duration;
     this.opening_hours = opening_hours;
+    this.rating = rating;
+    this.image_url = image_url;
   }
 }
 
