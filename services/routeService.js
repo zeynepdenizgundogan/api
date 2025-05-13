@@ -17,13 +17,32 @@ function filterAvailableLocations(preference) {
   console.log('🧾 Gelen Preference:', preference);
   console.log('📅 Günler:', preference.getDayStrings());
   console.log('📂 Category map:', mapCategory(preference.type));
-  return locations.filter(loc => {
+  /*return locations.filter(loc => {
     // En az 1 gün açık olması gerekiyor
     // Kategori eşleşmesi
     const categoryMatch = mapCategory(preference.type).includes(loc.category.toLowerCase());
 
     return  categoryMatch;
-  });
+  });*/
+  return locations
+  .filter(loc => {
+    const categoryMatch = mapCategory(preference.type).includes(loc.category.toLowerCase());
+    return categoryMatch;
+  })
+  .map(loc => ({
+    id: loc.id,
+    name: loc.name,
+    latitude: loc.latitude,
+    longitude: loc.longitude,
+    distance_to_start: loc.distance_to_start,
+    must_visit: loc.must_visit,
+    category: loc.category,
+    score: loc.score,
+    visit_duration: loc.visit_duration,
+    opening_hours: loc.opening_hours,
+    rating: loc.rating,
+    image_url: loc.image_url  // ✅ En kritik alan burası
+  }));
 }function mapCategory(type) {
   const validCategories = [
     'cultural',
@@ -44,6 +63,7 @@ function filterAvailableLocations(preference) {
   if (typeof type === 'string' && validCategories.includes(type.toLowerCase())) {
     return [type.toLowerCase()];
   }
+  
 
   return [];
 }
@@ -230,6 +250,7 @@ function createMultiDayRoute({ startDate, endDate, startHora, totalHours, select
         longitude: loc.longitude,
         visitStartTime: formatTime(start),
         visitEndTime: formatTime(end),
+        image_url: loc.image_url
       };
     });
 
