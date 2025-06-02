@@ -92,10 +92,8 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour = DEF
   const routeLengthBonus = route.length * 5;
 
   const fitness = (totalScore * 0.8) +
-    niceToHaveBonus +
-    (categoryRatio * 250) -
-    (totalDistance * 0.2) +
-    routeLengthBonus;
+    niceToHaveBonus -
+    (totalDistance * 0.8) 
 
   return fitness;
 }

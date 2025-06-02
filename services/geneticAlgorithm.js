@@ -16,10 +16,10 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_ST
   
   if (!locations || locations.length === 0) return [];
 
-  const populationSize = 100; // 300 yerine
-  const generations = 100; // 500 yerine
-  const eliteCount = 10; // 30 yerine
-  const tournamentSize = 5; // 7 yerine
+  const populationSize = 1000; // 300 yerine
+  const generations = 30; // 500 yerine
+  const eliteCount = 5; // 30 yerine
+  const tournamentSize = 10; // 7 yerine
   const mutationRate = 0.4;
 
   const mustVisitIndices = locations.map((loc, i) => ({ loc, i }))
@@ -50,37 +50,24 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_ST
   let population = [];
   const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
-  for (let i = 0; i < populationSize / 4; i++) {
-    let route = mustVisitIndices.length ? [...mustVisitIndices] : [];
-    if (categoryIndices.length && route.length < MAX_ROUTE_LENGTH) {
-      route.push(categoryIndices[Math.floor(Math.random() * categoryIndices.length)]);
-    } else if (otherIndices.length && route.length === 0) {
-      route.push(otherIndices[Math.floor(Math.random() * otherIndices.length)]);
-    }
-    population.push(shuffle(route));
-  }
+for (let i = 0; i < populationSize; i++) {
+  let route = [...mustVisitIndices]; // Must-visit lokasyonlar her zaman dahil edilir
 
-  for (let i = 0; i < populationSize / 4; i++) {
-    let route = [...mustVisitIndices];
-    if (categoryIndices.length && route.length < MAX_ROUTE_LENGTH) {
-      route.push(categoryIndices[Math.floor(Math.random() * categoryIndices.length)]);
-    }
-    population.push(shuffle(route));
-  }
+  // Maksimum uzunluk dikkate alınarak rastgele sayıda kategori ve diğer lokasyon seçimi
+  const remainingSlots = MAX_ROUTE_LENGTH - route.length;
 
-  for (let i = 0; i < populationSize / 4; i++) {
-    let route = [...mustVisitIndices];
-    let remaining = Math.min(MAX_ROUTE_LENGTH - route.length, categoryIndices.length);
-    route.push(...shuffle([...categoryIndices]).slice(0, remaining));
-    remaining = Math.min(MAX_ROUTE_LENGTH - route.length, otherIndices.length);
-    route.push(...shuffle([...otherIndices]).slice(0, remaining));
-    population.push(shuffle(route));
-  }
+  const numCategory = Math.floor(Math.random() * (remainingSlots + 1)); // 0 ila remainingSlots arasında
+  const numOther = remainingSlots - numCategory;
 
-  while (population.length < populationSize) {
-    let indices = [...Array(locations.length).keys()];
-    population.push(shuffle(indices).slice(0, MAX_ROUTE_LENGTH));
-  }
+  const shuffledCategory = shuffle([...categoryIndices]).filter(i => !route.includes(i));
+  const shuffledOther = shuffle([...otherIndices]).filter(i => !route.includes(i));
+
+  route.push(...shuffledCategory.slice(0, numCategory));
+  route.push(...shuffledOther.slice(0, numOther));
+
+  // Her birey için farklı sıra için shuffle
+  population.push(shuffle(route));
+}
 
   let fitnessValues = population.map(route =>
     calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
@@ -90,7 +77,7 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_ST
   let stagnationCounter = 0;
 
   for (let gen = 0; gen < generations; gen++) {
-    console.log(`🧬 Jenerasyon: ${gen}/${generations}`);
+    //console.log(`🧬 Jenerasyon: ${gen}/${generations}`);
     const sortedIndices = [...fitnessValues.keys()].sort((a, b) => fitnessValues[b] - fitnessValues[a]);
     const newPopulation = sortedIndices.slice(0, eliteCount).map(i => [...population[i]]);
 

@@ -183,12 +183,12 @@ function createMultiDayRoute({ startDate, endDate, startHora, totalHours, select
 
   // niceToHavePlaces'i must_visit olarak işaretle
   if (niceToHavePlaces && niceToHavePlaces.length > 0) {
-    console.log('📥 niceToHavePlaces:', niceToHavePlaces.map(p => ({ id: p.id, type: typeof p.id, value: p.id })));
-    console.log('📋 allLocations sample:', allLocations.slice(0, 5).map(loc => ({ id: loc.id, type: typeof loc.id, value: loc.id })));
+   // console.log('📥 niceToHavePlaces:', niceToHavePlaces.map(p => ({ id: p.id, type: typeof p.id, value: p.id })));
+   // console.log('📋 allLocations sample:', allLocations.slice(0, 5).map(loc => ({ id: loc.id, type: typeof loc.id, value: loc.id })));
     allLocations = allLocations.map((loc) => {
       const isNiceToHave = niceToHavePlaces.some((place) => {
         const match = String(place.id) === String(loc.id);
-        console.log(`🔍 Comparing: place.id=${place.id} (type: ${typeof place.id}), loc.id=${loc.id} (type: ${typeof loc.id}), match=${match}`);
+        //console.log(`🔍 Comparing: place.id=${place.id} (type: ${typeof place.id}), loc.id=${loc.id} (type: ${typeof loc.id}), match=${match}`);
         return match;
       });
       return {
@@ -203,12 +203,14 @@ function createMultiDayRoute({ startDate, endDate, startHora, totalHours, select
   console.log('📍 Must-visit locations:', allLocations.filter(loc => loc.must_visit).map(loc => ({ id: loc.id, name: loc.name })));
 
   let remainingLocations = [...allLocations];
+  
   const dates = getDateRange(startDate, endDate);
   const allRoutes = [];
 
   console.log('📅 Tarih aralığı:', dates);
 
   for (const travelDate of dates) {
+    console.log("kalan lokasyon sayısı:",remainingLocations.length);
     const day = travelDate.toLocaleDateString("en-US", { weekday: "long" });
     const formattedDate = travelDate.toISOString().split("T")[0];
     console.log(`🗓️ İşleniyor: ${formattedDate} (${day})`);
