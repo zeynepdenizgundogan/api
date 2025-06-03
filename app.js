@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const routesRouter = require('./routes/routes');
 const preferencesRouter = require('./routes/preferences');
 
 
@@ -18,16 +19,22 @@ const usersRouter = require("./routes/users");  // Eğer hata alıyorsan, burada
 console.log("✅ usersRouter import edildi.");
 
 const app = express();
-app.use(cors({
+/*app.use(cors({
   origin: "http://localhost:8100", // 🔹 Ionic uygulamasının çalıştığı port
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization"
-}));
+}));*/
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 
+
 app.use('/api/preferences', preferencesRouter);
 console.log("✅ app.use('/api/preferences', preferencesRouter) tanımlandı.");
+
+app.use('/api/routes', routesRouter);
+console.log("✅ app.use('/api/routes', routesRouter) tanımlandı.");
+
 
 console.log("✅ Middleware'ler yüklendi.");
 
