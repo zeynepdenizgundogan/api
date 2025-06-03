@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const routesRouter = require('./routes/routes');
 const preferencesRouter = require('./routes/preferences');
 
 
@@ -27,8 +28,13 @@ app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 
+
 app.use('/api/preferences', preferencesRouter);
 console.log("✅ app.use('/api/preferences', preferencesRouter) tanımlandı.");
+
+app.use('/api/routes', routesRouter);
+console.log("✅ app.use('/api/routes', routesRouter) tanımlandı.");
+
 
 console.log("✅ Middleware'ler yüklendi.");
 
