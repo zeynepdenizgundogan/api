@@ -123,69 +123,265 @@ function formatTime(mins) {
 // ✅ createMultiDayRoute fonksiyonu — daha önce senin backend'de tanımladığın yapının düz hali
 function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory, niceToHavePlaces, startLat, startLon }) {
   const niceToHaveIds = new Set(niceToHavePlaces.map(p => p.id));
+  
   const allLocations = generateLocations("data/locations.json", startLat, startLon);
-  let remainingLocations = [...allLocations];
-
   const dates = getDateRange(startDate, endDate);
+  
+  // 🎯 KATEGORİ DENGESİ: Her kategori için hedef oranlar
+  const categoryBalance = {};
+  selectedCategory.forEach(cat => {
+    categoryBalance[cat.toLowerCase()] = 1.0 / selectedCategory.length; // Eşit dağılım
+  });
+  
+  console.log(`🎯 Kategori dengesi hedefi:`, categoryBalance);
+  
+  // 🔥 HİBRİT FİLTRELEME: Öncelik seçilen kategoriler, yedek diğerleri
+  const primaryLocations = allLocations.filter(loc => 
+    selectedCategory.some(cat => cat.toLowerCase() === loc.category.toLowerCase()) ||
+    niceToHaveIds.has(loc.id)
+  );
+  
+  const secondaryLocations = allLocations.filter(loc => 
+    !selectedCategory.some(cat => cat.toLowerCase() === loc.category.toLowerCase()) &&
+    !niceToHaveIds.has(loc.id)
+  );
+  
+  console.log(`🎯 Birincil lokasyonlar: ${primaryLocations.length}`);
+  console.log(`🔄 Yedek lokasyonlar: ${secondaryLocations.length}`);
+  
+  let remainingPrimary = [...primaryLocations];
+  let remainingSecondary = [...secondaryLocations];
   const allRoutes = [];
-
+  const usedLocationIds = new Set();
+  
+  // 📊 Kategori sayacı
+  const categoryUsage = {};
+  selectedCategory.forEach(cat => categoryUsage[cat.toLowerCase()] = 0);
+  
   for (const travelDate of dates) {
     const day = travelDate.toLocaleDateString("en-US", { weekday: "long" });
     const formattedDate = travelDate.toISOString().split("T")[0];
-
-    if (remainingLocations.length === 0) {
+    
+    console.log(`\n📅 İşlenen gün: ${formattedDate} (${day})`);
+    
+    // 🔥 GÜNLÜK HEDEFLENMİŞ LOKASYoN SAYISI
+    const targetLocationsPerDay = Math.max(4, Math.ceil((totalHours * 60) / 90)); // 90dk ortalama
+    console.log(`🎯 Hedef lokasyon sayısı: ${targetLocationsPerDay}`);
+    
+    // Kullanılabilir lokasyonları bul
+    const availablePrimary = remainingPrimary.filter(loc => !usedLocationIds.has(loc.id));
+    const availableSecondary = remainingSecondary.filter(loc => !usedLocationIds.has(loc.id));
+    
+    if (availablePrimary.length === 0 && availableSecondary.length === 0) {
       allRoutes.push({ date: formattedDate, route: [], message: "No more locations." });
       continue;
     }
-
-    const distanceMatrix = createDistanceMatrix(remainingLocations);
-    const bestRoute = geneticAlgorithm(remainingLocations, distanceMatrix, day, startHour, totalHours, selectedCategory, niceToHaveIds);
-    const orderedRoute = optimizeRouteOrder(bestRoute, remainingLocations, distanceMatrix);
-
-    const visitTimes = {};
-    let currentTime = startHour * 60;
-    const endTime = currentTime + totalHours * 60;
-    let previous = -1;
-    const finalRoute = [];
-
-    for (const idx of orderedRoute) {
-      const loc = remainingLocations[idx];
-      if (previous !== -1) {
-        const dist = distanceMatrix[previous][idx];
-        currentTime += dist * TRAVEL_TIME_PER_KM;
-      }
-
-      const [open, close] = loc.opening_hours[day] || [-1, -1];
-      if (open === -1 || close === -1 || currentTime + loc.visit_duration > close * 60 || currentTime + loc.visit_duration > endTime) {
-        continue;
-      }
-
-      if (currentTime < open * 60) currentTime = open * 60;
-
-      visitTimes[idx] = currentTime;
-      currentTime += loc.visit_duration;
-      finalRoute.push({
-        id: loc.id,
-        name: loc.name,
-        category: loc.category,
-        mustVisit: niceToHaveIds.has(loc.id),
-        latitude: loc.latitude,
-        longitude: loc.longitude,
-        visitStartTime: formatTime(visitTimes[idx]),
-        visitEndTime: formatTime(currentTime),
-        image_url: loc.image_url
-      });
-
-      previous = idx;
+    
+    // 🎯 AKILLI LOKASYoN SEÇİMİ
+    const selectedLocations = selectBalancedLocations(
+      availablePrimary, 
+      availableSecondary, 
+      selectedCategory, 
+      categoryUsage, 
+      categoryBalance, 
+      niceToHaveIds, 
+      targetLocationsPerDay,
+      day
+    );
+    
+    console.log(`✅ Seçilen lokasyon sayısı: ${selectedLocations.length}`);
+    
+    if (selectedLocations.length === 0) {
+      allRoutes.push({ date: formattedDate, route: [], message: "No suitable locations found." });
+      continue;
     }
-
-    const usedIds = new Set(finalRoute.map(loc => loc.id));
-    remainingLocations = remainingLocations.filter(loc => !usedIds.has(loc.id));
-
+    
+    // Genetic Algorithm ile optimize et
+    const distanceMatrix = createDistanceMatrix(selectedLocations);
+    const availableNiceToHaveIds = new Set();
+    selectedLocations.forEach(loc => {
+      if (niceToHaveIds.has(loc.id)) {
+        availableNiceToHaveIds.add(loc.id);
+      }
+    });
+    
+    const bestRoute = geneticAlgorithm(
+      selectedLocations, 
+      distanceMatrix, 
+      day, 
+      startHour, 
+      totalHours, 
+      selectedCategory, 
+      availableNiceToHaveIds
+    );
+    
+    const orderedRoute = optimizeRouteOrder(bestRoute, selectedLocations, distanceMatrix);
+    
+    // Zaman çizelgesi oluştur
+    const finalRoute = createTimeSchedule(
+      orderedRoute, 
+      selectedLocations, 
+      distanceMatrix, 
+      day, 
+      startHour, 
+      totalHours, 
+      niceToHaveIds
+    );
+    
+    // Kategori sayacını güncelle
+    finalRoute.forEach(location => {
+      const category = location.category.toLowerCase();
+      if (categoryUsage[category] !== undefined) {
+        categoryUsage[category]++;
+      }
+    });
+    
+    // Kullanılan lokasyonları işaretle
+    finalRoute.forEach(location => usedLocationIds.add(location.id));
+    
+    console.log(`✅ ${formattedDate} için ${finalRoute.length} lokasyon eklendi`);
+    console.log(`📊 Günün kategori dağılımı:`, 
+      finalRoute.reduce((acc, loc) => {
+        acc[loc.category] = (acc[loc.category] || 0) + 1;
+        return acc;
+      }, {})
+    );
+    
     allRoutes.push({ date: formattedDate, route: finalRoute });
   }
-
+  
+  console.log(`\n📊 Toplam kategori kullanımı:`, categoryUsage);
   return allRoutes;
+}
+
+// 🎯 Dengeli lokasyon seçimi fonksiyonu
+function selectBalancedLocations(primaryLocs, secondaryLocs, selectedCategories, categoryUsage, categoryBalance, niceToHaveIds, targetCount, day) {
+  const result = [];
+  const totalUsage = Object.values(categoryUsage).reduce((sum, count) => sum + count, 0);
+  
+  // 1. Nice-to-have önceliği
+  primaryLocs.forEach(loc => {
+    if (niceToHaveIds.has(loc.id) && isLocationOpenOnDay(loc, day)) {
+      result.push(loc);
+    }
+  });
+  
+  // 2. Kategori dengesi için gereken sayıları hesapla
+  const categoryNeeds = {};
+  selectedCategories.forEach(cat => {
+    const currentRatio = totalUsage > 0 ? categoryUsage[cat.toLowerCase()] / totalUsage : 0;
+    const targetRatio = categoryBalance[cat.toLowerCase()];
+    categoryNeeds[cat.toLowerCase()] = targetRatio - currentRatio;
+  });
+  
+  console.log(`📊 Kategori ihtiyaçları:`, categoryNeeds);
+  
+  // 3. En çok ihtiyaç duyulan kategorilerden seç
+  const sortedCategories = Object.entries(categoryNeeds)
+    .sort(([,a], [,b]) => b - a)
+    .map(([cat]) => cat);
+  
+  for (const category of sortedCategories) {
+    const categoryLocs = primaryLocs.filter(loc => 
+      loc.category.toLowerCase() === category && 
+      !result.some(r => r.id === loc.id) &&
+      isLocationOpenOnDay(loc, day)
+    ).slice(0, Math.ceil(targetCount / selectedCategories.length));
+    
+    result.push(...categoryLocs);
+    
+    if (result.length >= targetCount) break;
+  }
+  
+  // 4. Hedef sayıya ulaşmadıysak birincil lokasyonlardan ekle
+  if (result.length < targetCount) {
+    const remaining = primaryLocs.filter(loc => 
+      !result.some(r => r.id === loc.id) &&
+      isLocationOpenOnDay(loc, day)
+    ).slice(0, targetCount - result.length);
+    
+    result.push(...remaining);
+  }
+  
+  // 5. Hala eksikse ve mesafe uygunsa ikincil lokasyonlardan ekle
+  if (result.length < Math.max(3, targetCount * 0.7)) {
+    const nearbySecondary = secondaryLocs.filter(loc => 
+      loc.distance_to_start <= 10 && // 10km içinde
+      isLocationOpenOnDay(loc, day)
+    ).slice(0, targetCount - result.length);
+    
+    if (nearbySecondary.length > 0) {
+      console.log(`🔄 ${nearbySecondary.length} yakın ikincil lokasyon eklendi`);
+      result.push(...nearbySecondary);
+    }
+  }
+  
+  return result.slice(0, targetCount);
+}
+
+// 🕐 Zaman çizelgesi oluşturma
+function createTimeSchedule(orderedRoute, locations, distanceMatrix, day, startHour, totalHours, niceToHaveIds) {
+  const visitTimes = {};
+  let currentTime = startHour * 60; // dakikaya çevir
+  const endTime = currentTime + totalHours * 60;
+  let previous = -1;
+  const finalRoute = [];
+
+  for (const idx of orderedRoute) {
+    const loc = locations[idx];
+    
+    if (previous !== -1) {
+      const dist = distanceMatrix[previous][idx];
+      currentTime += dist * TRAVEL_TIME_PER_KM;
+    }
+
+    const [open, close] = loc.opening_hours[day] || [-1, -1];
+    if (open === -1 || close === -1) continue;
+    
+    // Açılış saatini bekle
+    if (currentTime < open * 60) {
+      currentTime = open * 60;
+    }
+    
+    // Zaman kontrolleri
+    if (currentTime + loc.visit_duration > close * 60 || 
+        currentTime + loc.visit_duration > endTime) {
+      continue;
+    }
+
+    visitTimes[idx] = currentTime;
+    const endVisitTime = currentTime + loc.visit_duration;
+    
+    finalRoute.push({
+      id: loc.id,
+      name: loc.name,
+      category: loc.category,
+      mustVisit: niceToHaveIds.has(loc.id),
+      latitude: loc.latitude,
+      longitude: loc.longitude,
+      visitStartTime: formatTimeCorrectly(currentTime / 60), // Düzeltilmiş format
+      visitEndTime: formatTimeCorrectly(endVisitTime / 60),
+      image_url: loc.image_url
+    });
+
+    currentTime = endVisitTime;
+    previous = idx;
+  }
+
+  return finalRoute;
+}
+
+// 🕐 Doğru saat formatı
+function formatTimeCorrectly(hours) {
+  const h = Math.floor(hours);
+  const m = Math.round((hours - h) * 60);
+  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+}
+
+// 📅 Lokasyonun o gün açık olup olmadığını kontrol et
+function isLocationOpenOnDay(location, day) {
+  const hours = location.opening_hours[day];
+  return hours && hours[0] !== -1 && hours[1] !== -1;
 }
 
 module.exports = {
@@ -193,4 +389,7 @@ module.exports = {
   getDateRange,
   filterAvailableLocations,
   createMultiDayRoute,
+  selectBalancedLocations,
+  createTimeSchedule,
+  formatTimeCorrectly
 };

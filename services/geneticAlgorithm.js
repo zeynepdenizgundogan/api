@@ -24,7 +24,11 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
   // 🔥 PYTHON UYUMLU: Kategori indekslerini belirle (must-visit hariç)
   const categoryIndices = [];
   for (let i = 0; i < locations.length; i++) {
-    if (selectedCategories.includes(locations[i].category) && !mustVisitIndices.includes(i)) {
+    const locationCategory = locations[i].category.toLowerCase();
+    const isInSelectedCategories = selectedCategories.some(cat => 
+      cat.toLowerCase() === locationCategory
+    );
+    if (isInSelectedCategories && !mustVisitIndices.includes(i)) {
       categoryIndices.push(i);
     }
   }

@@ -13,7 +13,11 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour, tota
   // 🔥 PYTHON UYUMLU: Category ratio calculation
   const categoryLocations = [];
   for (let i = 0; i < locations.length; i++) {
-    if (selectedCategories.includes(locations[i].category)) {
+    const locationCategory = locations[i].category.toLowerCase();
+    const isInSelectedCategories = selectedCategories.some(cat => 
+      cat.toLowerCase() === locationCategory
+    );
+    if (isInSelectedCategories) {
       categoryLocations.push(i);
     }
   }
@@ -58,8 +62,13 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour, tota
     if (currentTime + location.visit_duration > startHour * 60 + totalMinutes) return -600;
 
     // 🔥 PYTHON UYUMLU: Category bonus calculation
+    const locationCategory = location.category.toLowerCase();
+    const isInSelectedCategories = selectedCategories.some(cat => 
+      cat.toLowerCase() === locationCategory
+    );
+    
     let categoryBonus;
-    if (selectedCategories.includes(location.category)) {
+    if (isInSelectedCategories) {
       categoryBonus = 150; // Python'daki gibi
     } else if (!location.must_visit) { // Python'da bu kontrol var
       categoryBonus = 100;
