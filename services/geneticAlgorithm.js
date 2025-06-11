@@ -5,7 +5,7 @@ const tournamentSelection = require("../utils/tournamentSelection");
 const {
   MAX_ROUTE_LENGTH,
   STAGNATION_LIMIT,
-  MAX_DISTANCE_THRESHOLD, // Eklendi
+  MAX_DISTANCE_THRESHOLD,
   DEFAULT_START_HOUR,
   DEFAULT_TOTAL_HOURS
 } = require("../utils/constants");
@@ -13,61 +13,37 @@ const {
 function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_START_HOUR, totalHours = DEFAULT_TOTAL_HOURS, selectedCategories) {
   console.log("🧬 geneticAlgorithm başladı", { locCount: locations.length, day });
 
-  
   if (!locations || locations.length === 0) return [];
 
-  const populationSize = 1000; // 300 yerine
-  const generations = 30; // 500 yerine
-  const eliteCount = 5; // 30 yerine
-  const tournamentSize = 10; // 7 yerine
-  const mutationRate = 0.4;
+  // Parametreler
+  const populationSize = 300;
+  const mutationRate = 0.15;
+  const eliteCount = 45; // %15
+  const tournamentSize = 7;
+  const generations = 200;
 
-  const mustVisitIndices = locations.map((loc, i) => ({ loc, i }))
-    .filter(({ loc }) => loc.must_visit && loc.distance_to_start <= MAX_DISTANCE_THRESHOLD)
-    .map(({ i }) => i);
+  // En az 4-5 lokasyon garantisi için
+  const minLocations = Math.min(5, locations.length);
+  const targetLocations = Math.min(MAX_ROUTE_LENGTH, Math.max(minLocations, 4));
 
-  console.log('📍 Must-visit indices:', mustVisitIndices.map(i => ({
-    id: locations[i].id,
-    name: locations[i].name,
-    distance_to_start: locations[i].distance_to_start.toFixed(2)
-  })));
+  // Lokasyon kategorileri ve kalite analizi
+  const locationAnalysis = analyzeLocations(locations, selectedCategories);
+  
+  console.log("🔍 Lokasyon analizi:", {
+    mustVisit: locationAnalysis.mustVisitIndices.length,
+    category: locationAnalysis.categoryIndices.length,
+    other: locationAnalysis.otherIndices.length
+  });
 
-  const categoryIndices = locations.map((loc, i) => ({ loc, i }))
-    .filter(({ loc, i }) => {
-      const categories = Array.isArray(loc.category) ? loc.category : [loc.category];
-      return categories.some(cat => selectedCategories.includes(cat.toLowerCase()))
-        && !mustVisitIndices.includes(i);
-    })
-    .map(({ i }) => i);
-
-  const otherIndices = locations.map((_, i) => i)
-    .filter(i => !mustVisitIndices.includes(i) && !categoryIndices.includes(i));
-
-  console.log("🧬 mustVisitIndices:", mustVisitIndices.length);
-  console.log("🧬 categoryIndices:", categoryIndices.length);
-  console.log("🧬 otherIndices:", otherIndices.length);
-
-  let population = [];
-  const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
-
-for (let i = 0; i < populationSize; i++) {
-  let route = [...mustVisitIndices]; // Must-visit lokasyonlar her zaman dahil edilir
-
-  // Maksimum uzunluk dikkate alınarak rastgele sayıda kategori ve diğer lokasyon seçimi
-  const remainingSlots = MAX_ROUTE_LENGTH - route.length;
-
-  const numCategory = Math.floor(Math.random() * (remainingSlots + 1)); // 0 ila remainingSlots arasında
-  const numOther = remainingSlots - numCategory;
-
-  const shuffledCategory = shuffle([...categoryIndices]).filter(i => !route.includes(i));
-  const shuffledOther = shuffle([...otherIndices]).filter(i => !route.includes(i));
-
-  route.push(...shuffledCategory.slice(0, numCategory));
-  route.push(...shuffledOther.slice(0, numOther));
-
-  // Her birey için farklı sıra için shuffle
-  population.push(shuffle(route));
-}
+  // Akıllı popülasyon oluşturma
+  let population = createBalancedPopulation(
+    populationSize,
+    locationAnalysis,
+    locations,
+    selectedCategories,
+    targetLocations,
+    day
+  );
 
   let fitnessValues = population.map(route =>
     calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
@@ -76,32 +52,33 @@ for (let i = 0; i < populationSize; i++) {
   let bestFitness = Math.max(...fitnessValues);
   let stagnationCounter = 0;
 
-  for (let gen = 0; gen < generations; gen++) {
-    //console.log(`🧬 Jenerasyon: ${gen}/${generations}`);
+  // Ana evrim döngüsü
+  for (let generation = 0; generation < generations; generation++) {
+    // Elitleri seç
     const sortedIndices = [...fitnessValues.keys()].sort((a, b) => fitnessValues[b] - fitnessValues[a]);
     const newPopulation = sortedIndices.slice(0, eliteCount).map(i => [...population[i]]);
 
+    // Yeni nesil oluştur
     while (newPopulation.length < populationSize) {
-      const parent1 = tournamentSelection(population, fitnessValues, tournamentSize);
-      const parent2 = tournamentSelection(population, fitnessValues, tournamentSize);
-      let child = crossover(parent1, parent2);
-      mutate(child, mutationRate);
-
-      if (child.length > MAX_ROUTE_LENGTH) {
-        const must = child.filter(idx => mustVisitIndices.includes(idx));
-        const cat = child.filter(idx => categoryIndices.includes(idx) && !must.includes(idx));
-        const other = child.filter(idx => !must.includes(idx) && !cat.includes(idx));
-
-        let newChild = [...must];
-        let remain = Math.min(MAX_ROUTE_LENGTH - newChild.length, cat.length);
-        newChild.push(...cat.slice(0, remain));
-        remain = Math.min(MAX_ROUTE_LENGTH - newChild.length, other.length);
-        newChild.push(...other.slice(0, remain));
-
-        child = newChild;
+      let child;
+      
+      // %30 ihtimalle yeni balanced route oluştur
+      if (Math.random() < 0.3) {
+        child = createBalancedRoute(locationAnalysis, locations, selectedCategories, targetLocations, day);
+      } else {
+        // Normal crossover
+        const parent1 = tournamentSelection(population, fitnessValues, tournamentSize);
+        const parent2 = tournamentSelection(population, fitnessValues, tournamentSize);
+        child = crossover(parent1, parent2);
+        mutate(child, mutationRate);
       }
 
-      newPopulation.push(child);
+      // Rota kalitesini garantile
+      child = ensureRouteQuality(child, locationAnalysis, locations, selectedCategories, targetLocations, day);
+      
+      if (child.length >= minLocations) {
+        newPopulation.push(child);
+      }
     }
 
     population = newPopulation;
@@ -109,29 +86,26 @@ for (let i = 0; i < populationSize; i++) {
       calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
     );
 
-    const currentBest = Math.max(...fitnessValues);
-    if (currentBest > bestFitness) {
-      bestFitness = currentBest;
+    const currentBestFitness = Math.max(...fitnessValues);
+    if (currentBestFitness > bestFitness) {
+      bestFitness = currentBestFitness;
       stagnationCounter = 0;
+      console.log(`🚀 Gen ${generation}: Yeni en iyi fitness: ${currentBestFitness.toFixed(2)}`);
     } else {
       stagnationCounter++;
     }
 
+    // Stagnation kontrolü
     if (stagnationCounter >= STAGNATION_LIMIT) {
-      const bestRoute = [...population[fitnessValues.indexOf(currentBest)]];
+      console.log(`⏹️ Erken durma: ${generation} generasyonda`);
+      
+      // Yeni balanced popülasyon oluştur
+      const bestRoute = [...population[fitnessValues.indexOf(Math.max(...fitnessValues))]];
       population = [bestRoute];
 
-      while (population.length < populationSize) {
-        let route;
-        if (Math.random() < 0.5) {
-          route = [...mustVisitIndices];
-          let remaining = Math.min(MAX_ROUTE_LENGTH - route.length, categoryIndices.length);
-          route.push(...shuffle([...categoryIndices]).slice(0, remaining));
-        } else {
-          let indices = [...Array(locations.length).keys()];
-          route = shuffle(indices).slice(0, MAX_ROUTE_LENGTH);
-        }
-        population.push(route);
+      for (let i = 0; i < populationSize - 1; i++) {
+        const newRoute = createBalancedRoute(locationAnalysis, locations, selectedCategories, targetLocations, day);
+        population.push(newRoute);
       }
 
       fitnessValues = population.map(route =>
@@ -143,8 +117,156 @@ for (let i = 0; i < populationSize; i++) {
   }
 
   const bestIndex = fitnessValues.indexOf(Math.max(...fitnessValues));
+  const finalRoute = population[bestIndex];
+  
+  console.log(`🏆 Final rota: ${finalRoute.length} lokasyon, fitness: ${fitnessValues[bestIndex].toFixed(2)}`);
   console.log('🧬 geneticAlgorithm tamamlandı');
-  return population[bestIndex];
+  
+  return finalRoute;
 }
 
-module.exports = geneticAlgorithm; 
+function analyzeLocations(locations, selectedCategories) {
+  const selectedCatsLower = selectedCategories.map(cat => cat.toLowerCase());
+  
+  // Must-visit lokasyonlar
+  const mustVisitIndices = locations.map((loc, i) => ({ loc, i }))
+    .filter(({ loc }) => loc.must_visit && loc.distance_to_start <= MAX_DISTANCE_THRESHOLD)
+    .map(({ i }) => i);
+
+  // Kategori eşleşen lokasyonlar
+  const categoryIndices = locations.map((loc, i) => ({ loc, i }))
+    .filter(({ loc, i }) => {
+      if (mustVisitIndices.includes(i)) return false;
+      
+      const categories = Array.isArray(loc.category) ? loc.category : [loc.category];
+      return categories.some(cat => selectedCatsLower.includes(cat.toLowerCase()));
+    })
+    .map(({ i }) => i);
+
+  // Diğer lokasyonlar
+  const otherIndices = locations.map((_, i) => i)
+    .filter(i => !mustVisitIndices.includes(i) && !categoryIndices.includes(i));
+
+  return {
+    mustVisitIndices,
+    categoryIndices,
+    otherIndices
+  };
+}
+
+function createBalancedPopulation(size, analysis, locations, selectedCategories, targetLocations, day) {
+  const population = [];
+  
+  for (let i = 0; i < size; i++) {
+    const route = createBalancedRoute(analysis, locations, selectedCategories, targetLocations, day);
+    population.push(route);
+  }
+  
+  return population;
+}
+
+function createBalancedRoute(analysis, locations, selectedCategories, targetLocations, day) {
+  const { mustVisitIndices, categoryIndices, otherIndices } = analysis;
+  
+  let route = [];
+  
+  // 1. Önce must-visit lokasyonları ekle
+  route.push(...mustVisitIndices);
+  
+  // 2. Kalan slot sayısını hesapla
+  let remainingSlots = targetLocations - route.length;
+  
+  // 3. Kategori eşleşen lokasyonlardan seç (en az %70)
+  if (remainingSlots > 0 && categoryIndices.length > 0) {
+    const categoryCount = Math.min(
+      Math.ceil(remainingSlots * 0.7), 
+      categoryIndices.length
+    );
+    const shuffledCategory = shuffle([...categoryIndices]);
+    
+    // Açık olan lokasyonları filtrele
+    const openCategory = shuffledCategory.filter(idx => isLocationOpen(locations[idx], day));
+    route.push(...openCategory.slice(0, categoryCount));
+    remainingSlots = targetLocations - route.length;
+  }
+  
+  // 4. Kalan yerleri diğer lokasyonlardan doldur
+  if (remainingSlots > 0 && otherIndices.length > 0) {
+    const shuffledOthers = shuffle([...otherIndices]);
+    const openOthers = shuffledOthers.filter(idx => isLocationOpen(locations[idx], day));
+    route.push(...openOthers.slice(0, remainingSlots));
+  }
+  
+  // 5. Hala eksikse, tüm kategori lokasyonlarından rastgele seç
+  remainingSlots = targetLocations - route.length;
+  if (remainingSlots > 0) {
+    const availableIndices = categoryIndices.filter(idx => 
+      !route.includes(idx) && isLocationOpen(locations[idx], day)
+    );
+    
+    if (availableIndices.length > 0) {
+      const shuffledAvailable = shuffle(availableIndices);
+      route.push(...shuffledAvailable.slice(0, remainingSlots));
+    }
+  }
+  
+  // 6. Lokasyon sırasını karıştır
+  return shuffle(route);
+}
+
+function ensureRouteQuality(route, analysis, locations, selectedCategories, targetLocations, day) {
+  if (!route || route.length === 0) {
+    return createBalancedRoute(analysis, locations, selectedCategories, targetLocations, day);
+  }
+  
+  // Minimum lokasyon sayısını garantile
+  if (route.length < 4) {
+    const additionalNeeded = 4 - route.length;
+    const { categoryIndices } = analysis;
+    
+    const availableIndices = categoryIndices
+      .filter(idx => !route.includes(idx) && isLocationOpen(locations[idx], day));
+    
+    if (availableIndices.length > 0) {
+      const shuffled = shuffle(availableIndices);
+      route.push(...shuffled.slice(0, additionalNeeded));
+    }
+  }
+  
+  // Maksimum uzunluk kontrolü
+  if (route.length > MAX_ROUTE_LENGTH) {
+    // Kaliteli olanları koru
+    const mustVisitInRoute = route.filter(idx => analysis.mustVisitIndices.includes(idx));
+    const categoryInRoute = route.filter(idx => analysis.categoryIndices.includes(idx));
+    
+    let newRoute = [...mustVisitInRoute];
+    let remaining = MAX_ROUTE_LENGTH - newRoute.length;
+    
+    if (remaining > 0) {
+      newRoute.push(...categoryInRoute.slice(0, remaining));
+    }
+    
+    route = newRoute;
+  }
+  
+  return route;
+}
+
+function isLocationOpen(location, day) {
+  const openClose = location.opening_hours?.[day];
+  if (!openClose) return false;
+  const [openTime, closeTime] = openClose;
+  return openTime !== -1 && closeTime !== -1;
+}
+
+// Yardımcı fonksiyon - array karıştırma
+function shuffle(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+module.exports = geneticAlgorithm;
