@@ -2,6 +2,7 @@ const geneticAlgorithm = require("./geneticAlgorithm");
 const {generateLocations} = require("./locationservice");
 const optimizeRouteOrder = require("../utils/optimizeRouteOrder");
 const createDistanceMatrix = require("../utils/createDistanceMatrix");
+const distanceCache = require('../utils/distanceCache');
 const { TRAVEL_TIME_PER_KM, MAX_DISTANCE_THRESHOLD } = require("../utils/constants");
 const {
   DEFAULT_START_HOUR,
@@ -119,7 +120,8 @@ function optimizeRouteFromPreference(preference) {
 
 function optimizeRoute(day, startHour, totalHours, selectedCategory, locations, distanceMatrix) {
   // 🔥 Başta uzak lokasyonları filtrele
-  locations = locations.filter(loc => loc.distance_to_start <= MAX_DISTANCE_THRESHOLD || !loc.must_visit);
+  locations = locations.filter(loc => loc.must_visit || loc.distance_to_start <= MAX_DISTANCE_THRESHOLD);
+
 
   const bestRoute = geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours, selectedCategory);
   const optimizedRoute = optimizeRouteOrder(bestRoute, locations, distanceMatrix);
@@ -181,6 +183,10 @@ function createMultiDayRoute({ startDate, endDate, startHora, totalHours, select
   console.log('🚀 createMultiDayRoute başladı');
   let allLocations = generateLocations("data/locations.json", startLat, startLon);
 
+  console.log('🔄 Ana mesafe matrisi oluşturuluyor...');
+  const fullDistanceMatrix = createDistanceMatrix(allLocations);
+  console.log('✅ Ana mesafe matrisi hazır!');
+
   // niceToHavePlaces'i must_visit olarak işaretle
   if (niceToHavePlaces && niceToHavePlaces.length > 0) {
    // console.log('📥 niceToHavePlaces:', niceToHavePlaces.map(p => ({ id: p.id, type: typeof p.id, value: p.id })));
@@ -225,9 +231,8 @@ function createMultiDayRoute({ startDate, endDate, startHora, totalHours, select
       continue;
     }
 
-    console.log('📏 Mesafe matrisi oluşturuluyor');
-    const distanceMatrix = createDistanceMatrix(remainingLocations);
-    console.log('🧬 optimizeRoute çağrılıyor');
+    console.log('📏 Mesafe matrisi subset alınıyor');
+    const distanceMatrix = getDistanceMatrixSubset(fullDistanceMatrix, allLocations, remainingLocations);
     const [optimizedRoute, _, visitTimes] = optimizeRoute(
       day,
       startHour,
@@ -266,8 +271,28 @@ function createMultiDayRoute({ startDate, endDate, startHora, totalHours, select
     console.log(`✅ ${formattedDate} rotası oluşturuldu, lokasyon sayısı: ${routeLocations.length}`);
   }
 
+  const finalStats = distanceCache.getStats();
+  console.log('📈 Final Cache İstatistikleri:', finalStats);
+
   console.log('🚀 createMultiDayRoute tamamlandı');
   return allRoutes;
+}
+
+function getDistanceMatrixSubset(fullMatrix, allLocations, subsetLocations) {
+  const subsetIndices = subsetLocations.map(loc => 
+    allLocations.findIndex(l => l.id === loc.id)
+  );
+  
+  const subsetMatrix = [];
+  for (let i = 0; i < subsetIndices.length; i++) {
+    const row = [];
+    for (let j = 0; j < subsetIndices.length; j++) {
+      row.push(fullMatrix[subsetIndices[i]][subsetIndices[j]]);
+    }
+    subsetMatrix.push(row);
+  }
+  
+  return subsetMatrix;
 }
 
 module.exports = {
@@ -276,4 +301,5 @@ module.exports = {
   optimizeRouteFromPreference,
   filterAvailableLocations,
   createMultiDayRoute,
+  getDistanceMatrixSubset
 };
