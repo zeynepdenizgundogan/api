@@ -30,6 +30,8 @@ router.post('/', (req, res) => {
     console.log('🧑 userId:', preference.userId);
     console.log('📍 niceToHavePlaces:', preference.niceToHavePlaces);
     console.log('📅 Günler:', preference.getDayStrings());
+    console.log('📅 Start Lat:', preference.startLat);
+    console.log('📅 Start Lon:', preference.startLon);
     console.log('=====================================\n');
 
     // createMultiDayRoute çağrısını güncelle

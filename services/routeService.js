@@ -15,7 +15,7 @@ function shuffle(arr) {
 }
 
 function filterAvailableLocations(preference) {
-  const locations = generateLocations('data/locations.json');
+  const locations = generateLocations('data/locations.json', preference.startLat, preference.startLon);
   const days = preference.getDayStrings();
   console.log('🧾 Gelen Preference:', preference);
   console.log('📅 Günler:', preference.getDayStrings());
@@ -37,7 +37,7 @@ function filterAvailableLocations(preference) {
     visit_duration: loc.visit_duration,
     opening_hours: loc.opening_hours,
     rating: loc.rating,
-    image_url: loc.image_url  // ✅ En kritik alan burası
+    image_url: loc.image_url 
   }));
 }function mapCategory(type) {
   const validCategories = [
@@ -66,6 +66,7 @@ function filterAvailableLocations(preference) {
 
 
 function optimizeRoute(day, startHour, totalHours, selectedCategories, locations, distanceMatrix) {
+  console.log('NICETOHVAR', locations[0].name, locations[0].distance_to_start);
   const filtered = locations.filter(loc => loc.distance_to_start <= MAX_DISTANCE_THRESHOLD || !loc.must_visit);
   console.log(`genetik algoya başladı'`);
   const bestRoute = geneticAlgorithm(filtered, distanceMatrix, day, startHour, totalHours, selectedCategories);
@@ -113,18 +114,25 @@ function getDateRange(startDateStr, endDateStr) {
 
   return dates;
 }
-function formatTime(mins) {
-  const totalSeconds = Math.round(mins * 60);
-  const h = Math.floor(totalSeconds / 3600);
-  const m = Math.floor((totalSeconds % 3600) / 60);
-  const s = totalSeconds % 60;
-  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}.${String(s).padStart(2, "0")}`;
-}
+
 // ✅ createMultiDayRoute fonksiyonu — daha önce senin backend'de tanımladığın yapının düz hali
 function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory, niceToHavePlaces, startLat, startLon }) {
   const niceToHaveIds = new Set(niceToHavePlaces.map(p => p.id));
+    // 🛠️ startLat ve startLon geldi mi kontrol et
+  console.log("📌 Gelen koordinatlar:", startLat, startLon);
+
   
   const allLocations = generateLocations("data/locations.json", startLat, startLon);
+
+  // Nice-to-have'lerin güncel mesafelerini al
+  niceToHavePlaces = niceToHavePlaces.map(place => {
+    const updated = allLocations.find(loc => loc.id === place.id);
+    if (!updated) {
+      console.warn(`⚠️ Nice-to-have lokasyon bulunamadı: ID ${place.id}`);
+    }
+    return updated || place;
+  });
+
   const dates = getDateRange(startDate, endDate);
   
   // 🎯 KATEGORİ DENGESİ: Her kategori için hedef oranlar
