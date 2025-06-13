@@ -16,9 +16,13 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
   const mustVisitIndices = [];
   for (let i = 0; i < locations.length; i++) {
     const loc = locations[i];
-    if (niceToHaveIds.has(loc.id) && loc.distance_to_start <= MAX_DISTANCE_THRESHOLD) {
-      mustVisitIndices.push(i);
+if (niceToHaveIds.has(loc.id)) {
+    if (loc.distance_to_start <= 15) { // 15km limit
+        mustVisitIndices.push(i);
+    } else {
+        console.log(`❌ Nice-to-have çok uzak: ${loc.name} (${loc.distance_to_start} km)`);
     }
+}
   }
 
   // 🔥 PYTHON UYUMLU: Kategori indekslerini belirle (must-visit hariç)

@@ -103,7 +103,7 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour, tota
     (totalScore * 0.8) +
     niceToHaveBonus +
     (categoryRatio * 300) -
-    (totalDistance * 0.5) +
+    (totalDistance * 5) +
     routeLengthBonus +
     timeEfficiency
   );

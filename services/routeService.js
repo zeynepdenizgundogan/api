@@ -194,7 +194,9 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
       categoryBalance, 
       niceToHaveIds, 
       targetLocationsPerDay,
-      day
+      day,
+      startLat,
+      startLon
     );
     
     console.log(`✅ Seçilen lokasyon sayısı: ${selectedLocations.length}`);
@@ -262,19 +264,65 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
   return allRoutes;
 }
 
-// 🎯 Dengeli lokasyon seçimi fonksiyonu
-function selectBalancedLocations(primaryLocs, secondaryLocs, selectedCategories, categoryUsage, categoryBalance, niceToHaveIds, targetCount, day) {
+// 🎯 Mesafe optimizeli dengeli lokasyon seçimi fonksiyonu
+// 🎯 Evrensel mesafe optimizeli lokasyon seçimi (tüm şehirler için)
+function selectBalancedLocations(primaryLocs, secondaryLocs, selectedCategories, categoryUsage, categoryBalance, niceToHaveIds, targetCount, day, startLat, startLon) {
   const result = [];
   const totalUsage = Object.values(categoryUsage).reduce((sum, count) => sum + count, 0);
   
-  // 1. Nice-to-have önceliği
+  // 🗺️ 1. MESAFE BAZLI GRUPLAMA (şehir bağımsız)
+  const distanceGroups = {
+    veryNear: [],      // 0-3 km (yürüme mesafesi)
+    near: [],          // 3-7 km (kısa ulaşım)
+    medium: [],        // 7-15 km (orta mesafe)
+    far: [],           // 15-25 km (uzun yolculuk)
+    veryFar: []        // 25+ km (çok uzak)
+  };
+  
+  // Lokasyonları mesafeye göre grupla
+  primaryLocs.forEach(loc => {
+    if (!isLocationOpenOnDay(loc, day)) return;
+    
+    const dist = loc.distance_to_start;
+    if (dist <= 3) distanceGroups.veryNear.push(loc);
+    else if (dist <= 7) distanceGroups.near.push(loc);
+    else if (dist <= 15) distanceGroups.medium.push(loc);
+    else if (dist <= 25) distanceGroups.far.push(loc);
+    else distanceGroups.veryFar.push(loc);
+  });
+  
+  console.log(`📏 Mesafe dağılımı:`, {
+    '0-3km': distanceGroups.veryNear.length,
+    '3-7km': distanceGroups.near.length,
+    '7-15km': distanceGroups.medium.length,
+    '15-25km': distanceGroups.far.length,
+    '25+km': distanceGroups.veryFar.length
+  });
+  
+  // 🎯 2. YAKIN NICE-TO-HAVE'LERİ EKLE
+  const nearbyNiceToHaves = [];
+  const distantNiceToHaves = [];
+  
   primaryLocs.forEach(loc => {
     if (niceToHaveIds.has(loc.id) && isLocationOpenOnDay(loc, day)) {
-      result.push(loc);
+      if (loc.distance_to_start <= 10) {
+        // 10km altı öncelikli
+        nearbyNiceToHaves.push(loc);
+      } else if (loc.distance_to_start <= 20) {
+        // 10-20km arası değerlendirilebilir
+        distantNiceToHaves.push(loc);
+      } else {
+        console.log(`⚠️ Çok uzak nice-to-have: ${loc.name} (${loc.distance_to_start.toFixed(1)} km)`);
+      }
     }
   });
   
-  // 2. Kategori dengesi için gereken sayıları hesapla
+  // Nice-to-have'leri mesafeye göre sırala ve ekle
+  nearbyNiceToHaves.sort((a, b) => a.distance_to_start - b.distance_to_start);
+  result.push(...nearbyNiceToHaves);
+  console.log(`✅ ${nearbyNiceToHaves.length} yakın nice-to-have eklendi`);
+  
+  // 📊 3. KATEGORİ DENGESİ HESAPLA
   const categoryNeeds = {};
   selectedCategories.forEach(cat => {
     const currentRatio = totalUsage > 0 ? categoryUsage[cat.toLowerCase()] / totalUsage : 0;
@@ -282,49 +330,154 @@ function selectBalancedLocations(primaryLocs, secondaryLocs, selectedCategories,
     categoryNeeds[cat.toLowerCase()] = targetRatio - currentRatio;
   });
   
-  console.log(`📊 Kategori ihtiyaçları:`, categoryNeeds);
+  // 🌐 4. BÖLGESEL YOĞUNLUK ANALİZİ (Quadrant bazlı)
+  // Başlangıç noktası etrafında 4 bölge oluştur
+  const quadrants = {
+    NE: [], // Kuzey-Doğu
+    NW: [], // Kuzey-Batı  
+    SE: [], // Güney-Doğu
+    SW: []  // Güney-Batı
+  };
   
-  // 3. En çok ihtiyaç duyulan kategorilerden seç
+  // Yakın lokasyonları bölgelere ayır
+  [...distanceGroups.veryNear, ...distanceGroups.near].forEach(loc => {
+    const isNorth = loc.latitude >= startLat;
+    const isEast = loc.longitude >= startLon;
+    
+    if (isNorth && isEast) quadrants.NE.push(loc);
+    else if (isNorth && !isEast) quadrants.NW.push(loc);
+    else if (!isNorth && isEast) quadrants.SE.push(loc);
+    else quadrants.SW.push(loc);
+  });
+  
+  // En yoğun bölgeyi bul
+  const quadrantCounts = Object.entries(quadrants).map(([dir, locs]) => ({
+    direction: dir,
+    count: locs.length,
+    locations: locs
+  })).sort((a, b) => b.count - a.count);
+  
+  console.log(`🧭 Bölgesel yoğunluk:`, quadrantCounts.map(q => `${q.direction}: ${q.count}`).join(', '));
+  
+  // 🎯 5. AKILLI SEÇİM STRATEJİSİ
+  const addedIds = new Set(result.map(loc => loc.id));
+  let remainingSlots = targetCount - result.length;
+  
+  // Strateji 1: En yoğun bölgeden başla
+  const primaryQuadrant = quadrantCounts[0];
+  if (primaryQuadrant.count > 0) {
+    const quadrantSelection = selectFromGroup(
+      primaryQuadrant.locations,
+      selectedCategories,
+      categoryNeeds,
+      addedIds,
+      Math.ceil(remainingSlots * 0.5) // Slotların yarısını en yoğun bölgeye ayır
+    );
+    
+    result.push(...quadrantSelection);
+    quadrantSelection.forEach(loc => addedIds.add(loc.id));
+    remainingSlots = targetCount - result.length;
+    
+    console.log(`📍 Ana bölgeden (${primaryQuadrant.direction}) ${quadrantSelection.length} lokasyon eklendi`);
+  }
+  
+  // Strateji 2: Mesafe gruplarından kademeli seç
+  const distanceOrder = ['veryNear', 'near', 'medium'];
+  
+  for (const distGroup of distanceOrder) {
+    if (remainingSlots <= 0) break;
+    
+    const availableLocs = distanceGroups[distGroup]
+      .filter(loc => !addedIds.has(loc.id));
+    
+    if (availableLocs.length === 0) continue;
+    
+    const groupSelection = selectFromGroup(
+      availableLocs,
+      selectedCategories,
+      categoryNeeds,
+      addedIds,
+      remainingSlots
+    );
+    
+    result.push(...groupSelection);
+    groupSelection.forEach(loc => addedIds.add(loc.id));
+    remainingSlots = targetCount - result.length;
+    
+    console.log(`📍 ${distGroup} grubundan ${groupSelection.length} lokasyon eklendi`);
+  }
+  
+  // 🚨 6. MİNİMUM SAYI GARANTİSİ
+  if (result.length < Math.max(3, targetCount * 0.6)) {
+    // Orta mesafeli nice-to-have'leri değerlendir
+    const criticalNiceToHaves = distantNiceToHaves
+      .sort((a, b) => a.distance_to_start - b.distance_to_start)
+      .slice(0, Math.max(1, targetCount - result.length));
+    
+    criticalNiceToHaves.forEach(loc => {
+      if (!addedIds.has(loc.id)) {
+        console.log(`⚠️ Uzak nice-to-have eklendi: ${loc.name} (${loc.distance_to_start.toFixed(1)} km)`);
+        result.push(loc);
+        addedIds.add(loc.id);
+      }
+    });
+  }
+  
+  // 📊 7. SONUÇ ANALİZİ
+  if (result.length > 0) {
+    const avgDistance = result.reduce((sum, loc) => sum + loc.distance_to_start, 0) / result.length;
+    const maxDistance = Math.max(...result.map(l => l.distance_to_start));
+    
+    console.log(`\n📊 Rota özeti:`, {
+      'Toplam lokasyon': result.length,
+      'Ortalama mesafe': avgDistance.toFixed(2) + ' km',
+      'Max mesafe': maxDistance.toFixed(2) + ' km',
+      'Kompaktlık skoru': (10 / avgDistance).toFixed(2), // Düşük ortalama = yüksek skor
+      'Kategori dağılımı': result.reduce((acc, loc) => {
+        acc[loc.category] = (acc[loc.category] || 0) + 1;
+        return acc;
+      }, {})
+    });
+  }
+  
+  return result.slice(0, targetCount);
+}
+
+// Yardımcı fonksiyon: Gruptan kategori dengeli seçim
+function selectFromGroup(locations, selectedCategories, categoryNeeds, excludeIds, maxCount) {
+  const selected = [];
+  const availableLocs = locations.filter(loc => !excludeIds.has(loc.id));
+  
+  // Önce ihtiyaç duyulan kategorilerden seç
   const sortedCategories = Object.entries(categoryNeeds)
     .sort(([,a], [,b]) => b - a)
     .map(([cat]) => cat);
   
   for (const category of sortedCategories) {
-    const categoryLocs = primaryLocs.filter(loc => 
-      loc.category.toLowerCase() === category && 
-      !result.some(r => r.id === loc.id) &&
-      isLocationOpenOnDay(loc, day)
-    ).slice(0, Math.ceil(targetCount / selectedCategories.length));
+    const categoryLocs = availableLocs
+      .filter(loc => 
+        loc.category.toLowerCase() === category && 
+        !selected.some(s => s.id === loc.id)
+      )
+      .sort((a, b) => a.distance_to_start - b.distance_to_start)
+      .slice(0, Math.ceil(maxCount / selectedCategories.length));
     
-    result.push(...categoryLocs);
+    selected.push(...categoryLocs);
     
-    if (result.length >= targetCount) break;
+    if (selected.length >= maxCount) break;
   }
   
-  // 4. Hedef sayıya ulaşmadıysak birincil lokasyonlardan ekle
-  if (result.length < targetCount) {
-    const remaining = primaryLocs.filter(loc => 
-      !result.some(r => r.id === loc.id) &&
-      isLocationOpenOnDay(loc, day)
-    ).slice(0, targetCount - result.length);
+  // Kalan yerler için en yakınları ekle
+  if (selected.length < maxCount) {
+    const remaining = availableLocs
+      .filter(loc => !selected.some(s => s.id === loc.id))
+      .sort((a, b) => a.distance_to_start - b.distance_to_start)
+      .slice(0, maxCount - selected.length);
     
-    result.push(...remaining);
+    selected.push(...remaining);
   }
   
-  // 5. Hala eksikse ve mesafe uygunsa ikincil lokasyonlardan ekle
-  if (result.length < Math.max(3, targetCount * 0.7)) {
-    const nearbySecondary = secondaryLocs.filter(loc => 
-      loc.distance_to_start <= 10 && // 10km içinde
-      isLocationOpenOnDay(loc, day)
-    ).slice(0, targetCount - result.length);
-    
-    if (nearbySecondary.length > 0) {
-      console.log(`🔄 ${nearbySecondary.length} yakın ikincil lokasyon eklendi`);
-      result.push(...nearbySecondary);
-    }
-  }
-  
-  return result.slice(0, targetCount);
+  return selected.slice(0, maxCount);
 }
 
 // 🕐 Zaman çizelgesi oluşturma
