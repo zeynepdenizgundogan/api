@@ -2,149 +2,172 @@ const calculateFitness = require("../utils/calculateFitness");
 const crossover = require("../utils/crossover");
 const mutate = require("../utils/mutate");
 const tournamentSelection = require("../utils/tournamentSelection");
-const {
-  MAX_ROUTE_LENGTH,
-  STAGNATION_LIMIT,
-  MAX_DISTANCE_THRESHOLD, // Eklendi
-  DEFAULT_START_HOUR,
-  DEFAULT_TOTAL_HOURS
-} = require("../utils/constants");
+const { MAX_ROUTE_LENGTH, STAGNATION_LIMIT, MAX_DISTANCE_THRESHOLD } = require("../utils/constants");
+const logRouteDetails = require("../utils/logRouteCategories");
 
-function geneticAlgorithm(locations, distanceMatrix, day, startHour = DEFAULT_START_HOUR, totalHours = DEFAULT_TOTAL_HOURS, selectedCategories) {
-  console.log("🧬 geneticAlgorithm başladı", { locCount: locations.length, day });
+function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours, selectedCategories, niceToHaveIds = new Set()) {
+  const populationSize = 500;
+  const mutationRate = 0.1;
+  const eliteCount = 75;
+  const tournamentSize = 7;
+  const generations = 500;
+
+ 
+  const mustVisitIndices = [];
+  for (let i = 0; i < locations.length; i++) {
+    const loc = locations[i];
+if (niceToHaveIds.has(loc.id)) {
+    if (loc.distance_to_start <= 15) { // 15km limit
+        mustVisitIndices.push(i);
+    } else {
+        console.log(`❌ Nice-to-have çok uzak: ${loc.name} (${loc.distance_to_start} km)`);
+    }
+}
+  }
+
+
+  const categoryIndices = [];
+  for (let i = 0; i < locations.length; i++) {
+    const locationCategory = locations[i].category.toLowerCase();
+    const isInSelectedCategories = selectedCategories.some(cat => 
+      cat.toLowerCase() === locationCategory
+    );
+    if (isInSelectedCategories && !mustVisitIndices.includes(i)) {
+      categoryIndices.push(i);
+    }
+  }
 
   
-  if (!locations || locations.length === 0) return [];
+  const otherIndices = [];
+  for (let i = 0; i < locations.length; i++) {
+    if (!mustVisitIndices.includes(i) && !categoryIndices.includes(i)) {
+      otherIndices.push(i);
+    }
+  }
 
-  const populationSize = 1000; // 300 yerine
-  const generations = 30; // 500 yerine
-  const eliteCount = 5; // 30 yerine
-  const tournamentSize = 10; // 7 yerine
-  const mutationRate = 0.4;
+  const shuffle = arr => {
+    const shuffled = [...arr];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
 
-  const mustVisitIndices = locations.map((loc, i) => ({ loc, i }))
-    .filter(({ loc }) => loc.must_visit && loc.distance_to_start <= MAX_DISTANCE_THRESHOLD)
-    .map(({ i }) => i);
+  // 🔥 PYTHON UYUMLU: İlk popülasyon üretimi
+  let population = Array.from({ length: populationSize }, () => {
+    // 1. Must-visit'leri ekle
+    const route = [...mustVisitIndices];
+    
+    // 2. Kategori lokasyonlarından rastgele seç
+    const remainingSlots = MAX_ROUTE_LENGTH - route.length;
+    const shuffledCategories = shuffle(categoryIndices);
+    const categoryToAdd = shuffledCategories.slice(0, Math.min(shuffledCategories.length, remainingSlots));
+    route.push(...categoryToAdd);
 
-  console.log('📍 Must-visit indices:', mustVisitIndices.map(i => ({
-    id: locations[i].id,
-    name: locations[i].name,
-    distance_to_start: locations[i].distance_to_start.toFixed(2)
-  })));
+    // 3. Hâlâ yer varsa diğer lokasyonlardan ekle
+    const stillRemaining = MAX_ROUTE_LENGTH - route.length;
+    if (stillRemaining > 0) {
+      const shuffledOthers = shuffle(otherIndices);
+      const othersToAdd = shuffledOthers.slice(0, Math.min(shuffledOthers.length, stillRemaining));
+      route.push(...othersToAdd);
+    }
 
-  const categoryIndices = locations.map((loc, i) => ({ loc, i }))
-    .filter(({ loc, i }) => {
-      const categories = Array.isArray(loc.category) ? loc.category : [loc.category];
-      return categories.some(cat => selectedCategories.includes(cat.toLowerCase()))
-        && !mustVisitIndices.includes(i);
-    })
-    .map(({ i }) => i);
-
-  const otherIndices = locations.map((_, i) => i)
-    .filter(i => !mustVisitIndices.includes(i) && !categoryIndices.includes(i));
-
-  console.log("🧬 mustVisitIndices:", mustVisitIndices.length);
-  console.log("🧬 categoryIndices:", categoryIndices.length);
-  console.log("🧬 otherIndices:", otherIndices.length);
-
-  let population = [];
-  const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
-
-for (let i = 0; i < populationSize; i++) {
-  let route = [...mustVisitIndices]; // Must-visit lokasyonlar her zaman dahil edilir
-
-  // Maksimum uzunluk dikkate alınarak rastgele sayıda kategori ve diğer lokasyon seçimi
-  const remainingSlots = MAX_ROUTE_LENGTH - route.length;
-
-  const numCategory = Math.floor(Math.random() * (remainingSlots + 1)); // 0 ila remainingSlots arasında
-  const numOther = remainingSlots - numCategory;
-
-  const shuffledCategory = shuffle([...categoryIndices]).filter(i => !route.includes(i));
-  const shuffledOther = shuffle([...otherIndices]).filter(i => !route.includes(i));
-
-  route.push(...shuffledCategory.slice(0, numCategory));
-  route.push(...shuffledOther.slice(0, numOther));
-
-  // Her birey için farklı sıra için shuffle
-  population.push(shuffle(route));
-}
+    // 4. Sırayı karıştır (Python'daki gibi)
+    return shuffle(route);
+  });
 
   let fitnessValues = population.map(route =>
-    calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
+    calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories, niceToHaveIds)
   );
 
   let bestFitness = Math.max(...fitnessValues);
-  let stagnationCounter = 0;
+  let stagnation = 0;
 
   for (let gen = 0; gen < generations; gen++) {
-    //console.log(`🧬 Jenerasyon: ${gen}/${generations}`);
-    const sortedIndices = [...fitnessValues.keys()].sort((a, b) => fitnessValues[b] - fitnessValues[a]);
-    const newPopulation = sortedIndices.slice(0, eliteCount).map(i => [...population[i]]);
+    // Elite selection
+    const sorted = [...population.keys()].sort((a, b) => fitnessValues[b] - fitnessValues[a]);
+    const newPop = sorted.slice(0, eliteCount).map(i => [...population[i]]);
 
-    while (newPopulation.length < populationSize) {
+    // Generate new offspring
+    while (newPop.length < populationSize) {
       const parent1 = tournamentSelection(population, fitnessValues, tournamentSize);
       const parent2 = tournamentSelection(population, fitnessValues, tournamentSize);
       let child = crossover(parent1, parent2);
       mutate(child, mutationRate);
 
+      // 🔥 PYTHON UYUMLU: Child'ı düzenle
       if (child.length > MAX_ROUTE_LENGTH) {
-        const must = child.filter(idx => mustVisitIndices.includes(idx));
-        const cat = child.filter(idx => categoryIndices.includes(idx) && !must.includes(idx));
-        const other = child.filter(idx => !must.includes(idx) && !cat.includes(idx));
+        const mustVisitInChild = child.filter(idx => mustVisitIndices.includes(idx));
+        const categoryInChild = child.filter(idx => categoryIndices.includes(idx) && !mustVisitInChild.includes(idx));
+        const otherInChild = child.filter(idx => !mustVisitInChild.includes(idx) && !categoryInChild.includes(idx));
 
-        let newChild = [...must];
-        let remain = Math.min(MAX_ROUTE_LENGTH - newChild.length, cat.length);
-        newChild.push(...cat.slice(0, remain));
-        remain = Math.min(MAX_ROUTE_LENGTH - newChild.length, other.length);
-        newChild.push(...other.slice(0, remain));
-
+        const newChild = [...mustVisitInChild];
+        const remainingSlots1 = Math.min(MAX_ROUTE_LENGTH - newChild.length, categoryInChild.length);
+        if (remainingSlots1 > 0) {
+          newChild.push(...categoryInChild.slice(0, remainingSlots1));
+        }
+        const remainingSlots2 = Math.min(MAX_ROUTE_LENGTH - newChild.length, otherInChild.length);
+        if (remainingSlots2 > 0) {
+          newChild.push(...otherInChild.slice(0, remainingSlots2));
+        }
         child = newChild;
       }
 
-      newPopulation.push(child);
+      newPop.push(child);
     }
 
-    population = newPopulation;
+    population = newPop;
     fitnessValues = population.map(route =>
-      calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
+      calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories, niceToHaveIds)
     );
 
-    const currentBest = Math.max(...fitnessValues);
-    if (currentBest > bestFitness) {
-      bestFitness = currentBest;
-      stagnationCounter = 0;
+    const currentBestFitness = Math.max(...fitnessValues);
+    if (currentBestFitness > bestFitness) {
+      bestFitness = currentBestFitness;
+      stagnation = 0;
     } else {
-      stagnationCounter++;
+      stagnation++;
     }
 
-    if (stagnationCounter >= STAGNATION_LIMIT) {
-      const bestRoute = [...population[fitnessValues.indexOf(currentBest)]];
+    // 🔥 PYTHON UYUMLU: Stagnation handling
+    if (stagnation >= STAGNATION_LIMIT) {
+      const bestRouteIndex = fitnessValues.indexOf(Math.max(...fitnessValues));
+      const bestRoute = [...population[bestRouteIndex]];
+      
       population = [bestRoute];
-
+      
+      // Yeni popülasyon üret
       while (population.length < populationSize) {
-        let route;
         if (Math.random() < 0.5) {
-          route = [...mustVisitIndices];
-          let remaining = Math.min(MAX_ROUTE_LENGTH - route.length, categoryIndices.length);
-          route.push(...shuffle([...categoryIndices]).slice(0, remaining));
+          // Must-visit tabanlı route
+          const route = [...mustVisitIndices];
+          const remainingSlots = Math.min(MAX_ROUTE_LENGTH - route.length, categoryIndices.length);
+          if (remainingSlots > 0) {
+            const randomCategories = shuffle(categoryIndices).slice(0, remainingSlots);
+            route.push(...randomCategories);
+          }
+          population.push(shuffle(route));
         } else {
-          let indices = [...Array(locations.length).keys()];
-          route = shuffle(indices).slice(0, MAX_ROUTE_LENGTH);
+          // Tamamen rastgele
+          const allIndices = Array.from({ length: locations.length }, (_, i) => i);
+          const randomRoute = shuffle(allIndices).slice(0, Math.min(allIndices.length, MAX_ROUTE_LENGTH));
+          population.push(randomRoute);
         }
-        population.push(route);
       }
 
       fitnessValues = population.map(route =>
-        calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories)
+        calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories, niceToHaveIds)
       );
-
-      stagnationCounter = 0;
+      stagnation = 0;
     }
   }
 
   const bestIndex = fitnessValues.indexOf(Math.max(...fitnessValues));
-  console.log('🧬 geneticAlgorithm tamamlandı');
-  return population[bestIndex];
+  const bestRoute = population[bestIndex];
+  
+  logRouteDetails(bestRoute, locations);
+  return bestRoute;
 }
 
-module.exports = geneticAlgorithm; 
+module.exports = geneticAlgorithm;

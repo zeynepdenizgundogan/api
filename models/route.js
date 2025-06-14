@@ -25,7 +25,7 @@ const routeSchema = new mongoose.Schema({
   startDate: Date,
   endDate: Date,
   days: [daySchema], // 👈 gün gün rotalar burada
-  userId: Number
+  userId: { type: String, required: true }
 }, { timestamps: true });
 
 

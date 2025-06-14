@@ -1,17 +1,6 @@
-const { TRAVEL_TIME_PER_KM, MAX_DISTANCE_THRESHOLD } = require("./constants");
-const { DEFAULT_START_HOUR, DEFAULT_TOTAL_HOURS } = require("../utils/constants");
-const fs = require("fs");
+const { MAX_DISTANCE_THRESHOLD, TRAVEL_TIME_PER_KM } = require("./constants");
 
-function logToFile(content) {
-  fs.appendFileSync("fitness-log.txt", `[${new Date().toISOString()}] ${content}\n`);
-}
-
-function calculateFitness(route, locations, distanceMatrix, day, startHour = DEFAULT_START_HOUR, totalHours = DEFAULT_TOTAL_HOURS, selectedCategories) {
-  logToFile("calculateFitness CALLED");
-  logToFile("DAY: " + day);
-  logToFile("ROUTE: " + JSON.stringify(route));
-  logToFile("OPENING_HOURS: " + JSON.stringify(locations?.[route?.[0]]?.opening_hours));
-
+function calculateFitness(route, locations, distanceMatrix, day, startHour, totalHours, selectedCategories, niceToHaveIds = new Set()) {
   if (!route || route.length === 0) return -1000;
   if (route.length === 1) return 10;
 
@@ -19,81 +8,105 @@ function calculateFitness(route, locations, distanceMatrix, day, startHour = DEF
   let totalScore = 0;
   let currentTime = startHour * 60;
   const totalMinutes = totalHours * 60;
-  let previousLocationIndex = -1;
-  let niceToHaveBonus = 0;
+  let previousIdx = -1;
 
-  // 🔄 Tüm lokasyonlar arasında seçilen kategorilere uyanların indeksleri
-  const categoryLocations = locations.map((loc, i) => ({ loc, i }))
-    .filter(({ loc }) => {
-      const cats = Array.isArray(loc.category) ? loc.category : [loc.category];
-      return cats.some(cat => selectedCategories.includes(cat.toLowerCase()));
-    })
-    .map(({ i }) => i);
+  // 🔥 PYTHON UYUMLU: Category ratio calculation
+  const categoryLocations = [];
+  for (let i = 0; i < locations.length; i++) {
+    const locationCategory = locations[i].category.toLowerCase();
+    const isInSelectedCategories = selectedCategories.some(cat => 
+      cat.toLowerCase() === locationCategory
+    );
+    if (isInSelectedCategories) {
+      categoryLocations.push(i);
+    }
+  }
 
-  const categoryInRoute = categoryLocations.filter(idx => route.includes(idx)).length;
+  const categoryInRoute = route.filter(idx => categoryLocations.includes(idx)).length;
   const categoryRatio = categoryLocations.length > 0 ? categoryInRoute / categoryLocations.length : 1.0;
+
+  let niceToHaveBonus = 0;
+  let timeEfficiency = 0;
 
   for (let i = 0; i < route.length; i++) {
     const locationIndex = route[i];
     const location = locations[locationIndex];
 
-    if (previousLocationIndex !== -1) {
-      const travelDistance = distanceMatrix[previousLocationIndex][locationIndex];
+    // Travel time calculation
+    if (previousIdx !== -1) {
+      const travelDistance = distanceMatrix[previousIdx][locationIndex];
       const travelTime = travelDistance * TRAVEL_TIME_PER_KM;
       currentTime += travelTime;
       totalDistance += travelDistance;
     }
 
-    const openClose = location.opening_hours?.[day];
+    // Opening hours check
+    const openClose = location.opening_hours[day];
     if (!openClose) return -1000;
-
     const [openTime, closeTime] = openClose;
     if (openTime === -1 || closeTime === -1) return -1000;
 
-    let visitHour = Math.floor(currentTime / 60);
+    // 🔥 PYTHON UYUMLU: Visit hour calculation (normal division)
+    const visitHour = currentTime / 60;
+    
+    // Waiting time penalty
     if (visitHour < openTime) {
+      const waitMinutes = (openTime * 60) - currentTime;
       currentTime = openTime * 60;
+      totalScore -= waitMinutes * 0.3; // Her bekleme dakikasına 0.3 ceza
     }
 
+    // Time constraints check
     if (visitHour >= closeTime) return -800;
     if (Math.floor((currentTime + location.visit_duration) / 60) > closeTime) return -700;
     if (currentTime + location.visit_duration > startHour * 60 + totalMinutes) return -600;
 
-    // ✅ Çoklu kategori kontrolü
-    const locCats = Array.isArray(location.category) ? location.category : [location.category];
-    const isPreferredCategory = locCats.some(cat => selectedCategories.includes(cat.toLowerCase()));
-
-    let categoryBonus = 0;
-    if (isPreferredCategory) {
-      categoryBonus = 300;
-    } else if (!location.must_visit) {
+    // 🔥 PYTHON UYUMLU: Category bonus calculation
+    const locationCategory = location.category.toLowerCase();
+    const isInSelectedCategories = selectedCategories.some(cat => 
+      cat.toLowerCase() === locationCategory
+    );
+    
+    let categoryBonus;
+    if (isInSelectedCategories) {
+      categoryBonus = 150; // Python'daki gibi
+    } else if (!location.must_visit) { // Python'da bu kontrol var
       categoryBonus = 100;
     } else {
-      categoryBonus = -100;
+      categoryBonus = 0;
     }
 
-    const distancePenalty = previousLocationIndex === -1
-      ? 0
-      : distanceMatrix[previousLocationIndex][locationIndex] * 1.0;
+    // Distance penalty
+    const distancePenalty = previousIdx === -1 ? 0 : distanceMatrix[previousIdx][locationIndex] * 1.0;
 
-    if (location.must_visit && location.distance_to_start <= MAX_DISTANCE_THRESHOLD) {
-      const bonus = Math.max(0, 200 - location.distance_to_start * 10);
+    // 🔥 PYTHON UYUMLU: Must visit bonus
+    if (niceToHaveIds.has(location.id) && location.distance_to_start <= MAX_DISTANCE_THRESHOLD) {
+      const distance = location.distance_to_start;
+      const bonus = Math.max(0, 300 - distance * 10);
       niceToHaveBonus += bonus;
-      logToFile(`Must-visit bonus for ${location.name}: ${bonus}`);
     }
 
     const locationScore = categoryBonus - distancePenalty;
     totalScore += locationScore;
 
     currentTime += location.visit_duration;
-    previousLocationIndex = locationIndex;
+    previousIdx = locationIndex;
   }
 
+  // Final calculations
   const routeLengthBonus = route.length * 5;
+  timeEfficiency = currentTime <= totalHours * 60 ? 
+    (totalHours * 60 - currentTime) / (totalHours * 60) * 100 : 0;
 
-  const fitness = (totalScore * 0.8) +
-    niceToHaveBonus -
-    (totalDistance * 0.8) 
+  // 🔥 PYTHON UYUMLU: Final fitness calculation
+  const fitness = (
+    (totalScore * 0.8) +
+    niceToHaveBonus +
+    (categoryRatio * 300) -
+    (totalDistance * 5) +
+    routeLengthBonus +
+    timeEfficiency
+  );
 
   return fitness;
 }

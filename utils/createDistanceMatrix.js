@@ -1,27 +1,10 @@
 const calculateDistance = require("./distance");
-
 function createDistanceMatrix(locations) {
-  const matrix = [];
-
-  for (let i = 0; i < locations.length; i++) {
-    const row = [];
-    for (let j = 0; j < locations.length; j++) {
-      if (i === j) {
-        row.push(0);
-      } else {
-        const dist = calculateDistance(
-          locations[i].latitude,
-          locations[i].longitude,
-          locations[j].latitude,
-          locations[j].longitude
-        );
-        row.push(dist);
-      }
-    }
-    matrix.push(row);
-  }
-
-  return matrix;
+  return locations.map(loc1 =>
+    locations.map(loc2 =>
+      loc1 === loc2 ? 0 : calculateDistance(loc1.latitude, loc1.longitude, loc2.latitude, loc2.longitude)
+    )
+  );
 }
 
 module.exports = createDistanceMatrix;
