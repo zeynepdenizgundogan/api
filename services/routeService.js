@@ -66,7 +66,6 @@ function filterAvailableLocations(preference) {
 
 
 function optimizeRoute(day, startHour, totalHours, selectedCategories, locations, distanceMatrix) {
-  console.log('NICETOHVAR', locations[0].name, locations[0].distance_to_start);
   const filtered = locations.filter(loc => loc.distance_to_start <= MAX_DISTANCE_THRESHOLD || !loc.must_visit);
   console.log(`genetik algoya başladı'`);
   const bestRoute = geneticAlgorithm(filtered, distanceMatrix, day, startHour, totalHours, selectedCategories);
@@ -134,7 +133,9 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
   });
 
   const dates = getDateRange(startDate, endDate);
-  
+  console.log('lokasyon1',allLocations[0].latitude, allLocations[0].longitude, allLocations[0].distance_to_start);
+  console.log('lokasyon2',niceToHavePlaces[0].latitude, niceToHavePlaces[0].longitude, niceToHavePlaces[0].distance_to_start);
+
   // 🎯 KATEGORİ DENGESİ: Her kategori için hedef oranlar
   const categoryBalance = {};
   selectedCategory.forEach(cat => {

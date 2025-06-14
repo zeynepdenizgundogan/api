@@ -12,7 +12,7 @@ function geneticAlgorithm(locations, distanceMatrix, day, startHour, totalHours,
   const tournamentSize = 7;
   const generations = 500;
 
-  // 🔥 PYTHON UYUMLU: Must-visit indekslerini belirle
+ 
   const mustVisitIndices = [];
   for (let i = 0; i < locations.length; i++) {
     const loc = locations[i];
@@ -25,7 +25,7 @@ if (niceToHaveIds.has(loc.id)) {
 }
   }
 
-  // 🔥 PYTHON UYUMLU: Kategori indekslerini belirle (must-visit hariç)
+
   const categoryIndices = [];
   for (let i = 0; i < locations.length; i++) {
     const locationCategory = locations[i].category.toLowerCase();
@@ -37,7 +37,7 @@ if (niceToHaveIds.has(loc.id)) {
     }
   }
 
-  // 🔥 PYTHON UYUMLU: Diğer indeksler
+  
   const otherIndices = [];
   for (let i = 0; i < locations.length; i++) {
     if (!mustVisitIndices.includes(i) && !categoryIndices.includes(i)) {
