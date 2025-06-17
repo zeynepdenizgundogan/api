@@ -1,5 +1,5 @@
 class Preference {
-    constructor({ type, duration, startDate, endDate, userId, niceToHavePlaces, startLat, startLon }) {
+    constructor({ type, duration, startDate, endDate, userId, niceToHavePlaces, startLat, startLon, city }) {
       this.type = type;
       this.duration = duration;
       this.startDate = new Date(startDate);
@@ -10,6 +10,7 @@ class Preference {
       this.totalHours = 7; // Varsayılan
       this.startLat = startLat || 41.0370; // Varsayılan: Taksim
       this.startLon = startLon || 28.9850; // Varsayılan: Taksim
+      this.city = city || 'Istanbul'; // Varsayılan şehir
     }
 
     getDayStrings() {

@@ -15,8 +15,15 @@ function shuffle(arr) {
 }
 
 function filterAvailableLocations(preference) {
-  const locations = generateLocations('data/locations.json', preference.startLat, preference.startLon);
-  const days = preference.getDayStrings();
+  let locations;
+
+  if (preference.city && preference.city.toLowerCase() === 'rome') {
+    locations = generateLocations('data/rome.json', preference.startLat, preference.startLon);
+  } else {
+    locations = generateLocations('data/istanbul.json', preference.startLat, preference.startLon);
+  }
+   const days = preference.getDayStrings();
+
   console.log('🧾 Gelen Preference:', preference);
   console.log('📅 Günler:', preference.getDayStrings());
   console.log('📂 Category map:', mapCategory(preference.type));
@@ -115,13 +122,23 @@ function getDateRange(startDateStr, endDateStr) {
 }
 
 // ✅ createMultiDayRoute fonksiyonu — daha önce senin backend'de tanımladığın yapının düz hali
-function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory, niceToHavePlaces, startLat, startLon }) {
+function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory, niceToHavePlaces, startLat, startLon, city }) {
   const niceToHaveIds = new Set(niceToHavePlaces.map(p => p.id));
     // 🛠️ startLat ve startLon geldi mi kontrol et
   console.log("📌 Gelen koordinatlar:", startLat, startLon);
 
-  
-  const allLocations = generateLocations("data/locations.json", startLat, startLon);
+  console.log("📌 Gelen şehir:", city);
+  let allLocations;
+
+  if (city && city.toLowerCase() === 'istanbul') {
+    allLocations = generateLocations("data/istanbul.json", startLat, startLon);
+  } else if (city && city.toLowerCase() === 'rome') {
+    allLocations = generateLocations("data/rome.json", startLat, startLon);
+  } else {
+    // bilinmeyen şehir gelirse varsayılan Istanbul
+    allLocations = generateLocations("data/istanbul.json", startLat, startLon);
+  }
+
 
   // Nice-to-have'lerin güncel mesafelerini al
   niceToHavePlaces = niceToHavePlaces.map(place => {

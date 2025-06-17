@@ -43,7 +43,8 @@ router.post('/', (req, res) => {
       selectedCategory: preference.type,
       niceToHavePlaces: preference.niceToHavePlaces, // Eksik parametre eklendi
       startLat: preference.startLat,
-      startLon: preference.startLon
+      startLon: preference.startLon,
+      city: preference.city
     });
 
     console.log('📋 createMultiDayRoute parametreleri:', {
@@ -52,7 +53,8 @@ router.post('/', (req, res) => {
       startHour: preference.startHour,
       totalHours: preference.totalHours,
       selectedCategory: preference.type,
-      niceToHavePlaces: preference.niceToHavePlaces.map(p => ({ id: p.id, name: p.name }))
+      niceToHavePlaces: preference.niceToHavePlaces.map(p => ({ id: p.id, name: p.name })),
+      city: preference.city,
     });
 
     const simplifiedRoutes = routes.map(dayPlan => ({
