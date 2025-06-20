@@ -151,7 +151,7 @@ function getDateRange(startDateStr, endDateStr) {
 }
 
 // ✅ createMultiDayRoute fonksiyonu — daha önce senin backend'de tanımladığın yapının düz hali
-function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory, niceToHavePlaces, startLat, startLon, city }) {
+function createMultiDayRoute({ startDate, endDate, startHour, totalHours, selectedCategory, niceToHavePlaces = [], startLat, startLon, city }) {
   const niceToHaveIds = new Set(niceToHavePlaces.map(p => p.id));
     // 🛠️ startLat ve startLon geldi mi kontrol et
   console.log("📌 Gelen koordinatlar:", startLat, startLon);
@@ -179,8 +179,6 @@ function createMultiDayRoute({ startDate, endDate, startHour, totalHours, select
   });
 
   const dates = getDateRange(startDate, endDate);
-  console.log('lokasyon1',allLocations[0].latitude, allLocations[0].longitude, allLocations[0].distance_to_start);
-  console.log('lokasyon2',niceToHavePlaces[0].latitude, niceToHavePlaces[0].longitude, niceToHavePlaces[0].distance_to_start);
 
   // 🎯 KATEGORİ DENGESİ: Her kategori için hedef oranlar
   const categoryBalance = {};
