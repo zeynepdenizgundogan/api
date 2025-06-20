@@ -24,8 +24,12 @@ const routeSchema = new mongoose.Schema({
   duration: Number,
   startDate: Date,
   endDate: Date,
+  isShared: { type: Boolean, default: false },
   days: [daySchema], // 👈 gün gün rotalar burada
-  userId: { type: String, required: true }
+  userId: { type: String, required: true },
+  userName: String,         // ✅ ekle
+  title: String,            // ✅ ekle
+  image_url: String,  
 }, { timestamps: true });
 
 
