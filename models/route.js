@@ -6,7 +6,9 @@ const placeSchema = new mongoose.Schema({
   name: String,
   latitude: Number,
   longitude: Number,
-  category: String
+  category: String,
+  startTime : String, 
+  endTime : String,   
 });
 
 const daySchema = new mongoose.Schema({
