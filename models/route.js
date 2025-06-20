@@ -30,6 +30,7 @@ const routeSchema = new mongoose.Schema({
   userName: String,         // ✅ ekle
   title: String,            // ✅ ekle
   image_url: String,  
+  city: String,
 }, { timestamps: true });
 
 

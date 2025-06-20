@@ -46,9 +46,10 @@ router.post('/', async (req, res) => {
     // Eğer frontend title, image_url ve userName gönderiyorsa doğrudan kullan
     const savedRoute = await Route.create({
       userId: req.body.userId,
-      userName: req.body.userName,                    // ✅
-      title: req.body.title?.trim(),                  // ✅
-      image_url: req.body.thumbnailImageUrl,          // ✅ ilk lokasyonun image'ı
+      userName: req.body.userName,                    
+      title: req.body.title?.trim(),  
+      city: req.body.city,                
+      image_url: req.body.thumbnailImageUrl,         
       duration: req.body.duration,
       startPlace: req.body.startPlace,
       startDate: req.body.startDate,
