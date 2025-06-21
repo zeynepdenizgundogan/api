@@ -6353,5 +6353,2508 @@
         19
       ]
     }
+  },
+  {
+    "id": 1001,
+    "name": "Yves Rocher Italia",
+    "latitude": 41.9008072,
+    "longitude": 12.5017709,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQU6DZ8DRxOIes7hQ4gmhChDIpbuogrtGY3yo8TWe3NFsmyifcxlp5UCSlSqInY58ySWsBzGjOrXdg4N1AZ5TgtSgwIxN7CQ-OT2upSM7wgGayNO30RCLQyf9e3ucOF2YhGNp48oFj174KD2yLQRQDmVdDMZGLW3VQ9UeCiZi5VFvgOgkFogj2rvNjOF2hru80ZIWY8pa8e1wVAy4hsLYUmyQV2c5ROFmSuTKk_y3h0YPTJK32a1W5repuTfIA9DGeEErGYa5PwLbMIW4KoSW_Lo4kLm2mMsLriocW5f1yGqriwwCw&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1002,
+    "name": "SOLARIS",
+    "latitude": 41.899748,
+    "longitude": 12.5020562,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 92,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSBQo85qTLd4pVtaUIssVgt0M3T0JPD0C1IgcqE2PtK9bybCOtoq5qAvFXFBzJWUXXSHFTFuViX9vRfYnmxGj0dHTmBIX29gl-5BdZVWcfhPs4Npn9YiNR4jptjf95dS9UCpUrJrtHpHA7qM0xqq-fj3nxm3PkznRLMy-ktPsnV1VVeoaJExnn9FgVyljnMMh40B_BRhTwoO73Oud5CYthPbQwlqMFP2PGJiw6KacnafEUpKfMvjH8QfNOrOZ2AZF2FqlTQxX-jVOMx94hDZhVHDU4Swbfpw4KLZYixEa0aHp3DI7w&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1003,
+    "name": "RINASCENTE Rome",
+    "latitude": 41.9027487,
+    "longitude": 12.4845887,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 88,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRNPFF8fz-3DK_O_Y8WwTcJ3RnbCcDYs83wXeXIjVIwFBflZ8xAPy9LOC_LXRC2HS77kCYBMsOzupmX9zXyHBl_cxRcTOqUPoMCQdJ2y4ThCEojptVUIG9CUni9MfW7s6X-XdLwlEg3YM6a4-1PFv3rIVJjBV_eF5e_2ipfShd4IU1Pzb8WyZd7T42xH60LF9ESVudY4NkaWzqGgzUC0zgWi2aryHXK10WDlvA2JudKuriNAPBTCBMSRPfOmCkTgv1TcCRB8KPnj0XUSImMMwdj4gqi6e4FdbRdcMiDYn4eCYSk1Ee5TRwONTWqqKP3nUTO8sj5uweuWI2b7BfhN_n49EEz4UVTHleCub7fWv14xm01EtTeTgH-0SdoNYiCNSBDVV8EhLa_POWFBHyraFcc7Cq1ICV5HQSwBNApWyuOkXN_LWBOreDIyflc6Lsb8QQXF2XmJzamX1JO2G9gqjS0a31ZMGEgU3GxzgHranJWFW8ZzCOs1OIHoHzHsOH1Mpdox4t8NKaBTRQU68UR9scmKWNzRjsygzMYkVPIvUxA7RiZ1ATBB-BJ2BJXfGCYE5uWBEE6&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1004,
+    "name": "Zeel International Store",
+    "latitude": 41.9046325,
+    "longitude": 12.4809173,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 100,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1005,
+    "name": "Galleria Alberto Sordi",
+    "latitude": 41.901049,
+    "longitude": 12.4805703,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 86,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNT5aXSSLiKo6ezaKH2hv0tIRgIfveJkmv1c_41EyoSDEmn0jIIuP2NsXWQC9GCD5QXfTDRWKKoQ4Od3g1Ky-CKzxjJWjnbIZYKktBsJPcvC-laifJBEdFl2u7qrVRvxn0q3Z1otsgPpeYgDsLlKsYBrT3eTTd6EEEOf8MPhJHDHax5pXrHq1D9BA70G_P9KpNYa-O5pOfrOQIqS7WNrsSIzFxyfsfCK5vo-O4fkYFx35eTKT1iphzU4gEbYn6MIsBLKeBH6lZdHBQ9fKqNADFmwbTCAEGfYBBznpYluDT653d-cyNo7A2xZaLB7yvjtrTEbHOg-7VBzipCj4iQcrCJQpnn00TLY0RdGYGcER_xlA1s04pP51vCC5LuEV7dfYYb-FuljeLdgJ47GBtcmq9FaumICjAwNaYtWpHoUGe5lQhrOdB8aSBpnqPfDrTa1HRfpgF6HgQEY0wtBXxPeGaUQMbjmLq855M4jRdyiNssLd7lttHRP2XypPN2PXV4wLofdzDTJThew-5PNouJABqR_5mpm57S_opALpXSRdmSKtJvBxNYbqmqfyfiEyKyN0hQEkh8g&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1006,
+    "name": "Gallery Center",
+    "latitude": 41.8847741,
+    "longitude": 12.5110698,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 74,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNS2a64SXCqXhpV2CFnPjy6GxT1Ivjq3Fp67ARvrEk14RhkOCkcgZmz6Q0ATJAOnJLDDnuPkdBMfZO7WjdPriA-C8qSWndC4QCLBbMEqOcHZ_Z2GgQL296Q_zgaqGwkxxug9hba0Z6_scxPj_ODSSd6wq_Z-ix4WtJWTixWDaaBsC_BzqLLwsbADNE8nhqWVAGWy6Nq-ItLf0_MkxxH17Lt2YPScslXXMP_0NJLOROqtJ01oZqGwwzQGNCCMS0iswYxEAGXlcHmLZvPN9vOUpNEPIbwDS_eJ-jxmjHkj0-AzdGGRHelupqJhm5woEXW3wO8VSh9bTqh6tTDasEv0ARJllmjd53ZRrbzmfUA-Ul0IJeuQl2_Yy0DGzJLPsw_d4bZOh67Ch87fru_UiFEB-2CyoQ1GBNwVoU6cZtJTjPA-0-Ie4Bdbt3Mk3RF-w8ozCDOjQM73ZzM9B7v0ikwj8gTgR7Vqb1sbtsxFFJIf2AQbbUgUoM0YR0wwMi7S0X8yF96VAQiKUG4iSGHIMSeP-C2-MpjO-RUWIvrTn016jKetcbTHFOzu6rriux9-pfQSEtUuaTVG&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1007,
+    "name": "Centro Commerciale Roma Casal Bertone",
+    "latitude": 41.89927,
+    "longitude": 12.5316604,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNS47u92oW0ptoGs8xYz6MJZouU-88bfWyxVJMyNxSWUtXFf2SwPjge2qkqaXTtoyLmeQ2ZV4O92aJ-sc-zrKfCw6K-j7g3DLCh8WZcs1qo_2RE-XLXknYdgvrlCUuqrs6NP4sB-TqUOOSIGGDZtntImW-AVSbkj_hs7bj1IuPZz95FyRjbYKLwizKorebG2quk_zJEvlddiZ2fAGUvoQ71QbDotSsZK_F6_inFpvbyWc0JW_UYsfVtKhK472PTqxO5O9gh1ONn82TRAtoaf8I7ESn0jP5NTvPp_lD5OK3OLPjvGVZD4wSF4iQgCmFHpL0YU23ul1NqJv3ZvIg0rGYA_W4rWQELkS5JK9rWKWv1zfIJWpOxjlZ7UqwW_C23cT2fK86g171zS7EX7SipEQiXk427DOJiEM25kLMo5hbNnIt9Ef59AIOywa3zXX6MOWyAAyFSAzLE4vDos6HZrrDuS0IwSW0JTdkZL-nvyYcLaTHTjABsPCO3hQh8BGaJt_gK1WjibNAL6EK9UOD0WC6cE979LvKSkzoi1P0zia0nrW15WgalSSS9NB2BzjcjaNt8es5GOWQpbgOjs0Z93yhAZGollVQ&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1008,
+    "name": "D.f.m. Servizi S.r.l.",
+    "latitude": 41.8808834,
+    "longitude": 12.5277438,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 100,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1009,
+    "name": "Galleria commerciale Esedra",
+    "latitude": 41.90335089999999,
+    "longitude": 12.4951031,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 100,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRv0JP2796CyCybkx_F0ZB3plpjbSnTbbWrH3BMknGqJb9Mn6wASy4dz9nubbCiTIY59kmeHmEfA1Y-_cEg1WZs_lW6gcSMV_Q3t5rzc2jzL2A3ZtVV1RUukcRKBxZQkPN3YT9f4uiv_LIZ81QW97A_QFVUKd0ktvGAVRwV4X7qcAH1tGCqp6CpmkRZIxAZD6Nfs6lAGm7PBScKKNEsHI8OHkV1d-vsjYwFYk4ra902LHUAAlQxvCAJ_ybQ-yc87LXcOKSJi_Sc215jjox5vwXZy5ybnHq1ArLKVO_TKPEUxboYJ4vrLNILrBaWXYkPwdAkR-XD2OvhcrrwnEzU0H6tv9KBwDbEkiNI9Eosf9PPl0yzgEurEdRtpjlf7aiBwD9L9TxllJuv1vSVuBHj2paxQnm9RDAExtA-aknRDImc-2lLs7wBjZmOR4ik9U155m5VBh3NzT7ZMmOKenxow3SiunjqeXpEXS9C8ZE1OCfn2MVYVZS0Yycf0sVPJjGkMNZ7hzlufGdsSwz8n9ThThGAHrjCBQlj5DljXc1NAfFkvpP769P_hDs-WOYXJoBvS4BLtrgWPj1-HA&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1010,
+    "name": "Galleria Esedra",
+    "latitude": 41.903468,
+    "longitude": 12.4952033,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 82,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQqzNiflUrcjlEeNdox0ZwxSaCavGRiowEFhFO1uWi1gnPFbnTbQn3k-XaKkps1MiSDXJqdJbXcfokVP3i62OXjaD3M1ZAi9Rj1HI_0VgkQ4OlVluioltUvHJiUQZKVBjJARMiEX1COaZKebQrAw7yIKJ76GFYVulo3wgHEgow4AEvzYVm08W3p5Kycrc2eW8mx28-ZcQywchYg5UQ7O-z9Hwm3z7O5IBUWasIr9sR6-zg7dgbusFD0L9CMXBu3yGm7b52D941kyV5wD_YkhQsynDh4CyhyvXlknFYtd17ZaT2zjUyOzHLlAg8msuy1VW3FzaXsgFJ8o3uF4zCDm2-8hcK5Zguvy4HqsFwjkaCUHewt-6HblKjHYMadANXHOMBClzhBOlFLATxCgpRSDDkfl6gfksNTpL07C3SkNE7m5TyfEmUhfinFWJic8ZS_xsWyUUkgF-fDt7UWNf5-9pEltdpRlTP2u90zij3rIsm9TZQeStoeAxp9U3YtosZ8pTwGlnAS4hOf4g6u_I35huGQWMrX0a_bNZlSLuWczSIFlG5OKKq6cUwrlF1deNaxbUlk7ue-&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1011,
+    "name": "Navaja",
+    "latitude": 41.9034209,
+    "longitude": 12.4951486,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 84,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQy6BnPcrGdI_Sd2kFfcCScLDbb3vBO7M3u0iFIHBr-Ein_MUGoHlBm-hc23GsG0WAUmrR1OHASN5e9a7yE8CSWJfILPwaeU0GUMIvSD-NN__XGAgsWp6m8BvWN_k_qA7HyCIwJqUeBOvp1h4LGRJbh0yMu1ClgBG-joDU7mV0GJPP1BjJOYjkAkvS4otvZpKocR-xLZtMnI_vgllFcTTfyHrsdgQ1J20IqEkTLOzCbh0usVt_1XO5y66vK9ujgF05sEYJHTEfs5e0a3dqqHRoxCqBlC9QcLHcMF3yaPgx9HS0nLAmGAwSKUzfUgU3excYaKUPkV-grtJ1yKVvVbPyLBjTiV8VjVfh5NTizbuNLNiV8rtZu2a28Rb7bLxRn_mlP-4LVHhA_pjwXjl1P-i8AdIhstKjrU3SRAw_3483kMlW2-cbv_SVrJRFVTEmOftyo-XhGM7Ttfvn4TOpHhr4S1mdvXhkg0hJgHxykUVz09eBljE-FZQFVJpkFWD8yKf9MXF5Lp8jiosl2fQ3JJ8vbsODZAYBsqJCVRAjLBiyVh7yuipmx4Nkl7bs9knaf4E0OVOtY&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1012,
+    "name": "Ellisse Srl",
+    "latitude": 41.902171,
+    "longitude": 12.4992488,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 58,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1013,
+    "name": "Centro commerciale Roma Termini",
+    "latitude": 41.9010925,
+    "longitude": 12.5012121,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 86,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNTh1yq4sNiWLDgP1IWphtFeGq9jUtHavb4fndbfmKLYKHZHbFil_FPhm5Lq1B7QmRNYSIRwliE6pQSl5TPzasxLfsBLn030lddsBFCZhNu8INR4YT2v0o-uHY20KJGCkSfEl0xbqKBV3kwK9IsmLzILGSq9OeHnVq18EEkVWGyrdrGYj7WkDEWIoyy1YEoR87ukdCeejjfZD3FNgFgJoPDnGjmGY7IHYWnn8nA_ZasYgpY8p8ZX5x5QVw8tZqAS1wq-TdVo89dVXUVxBqmHjXTPQ-MQxpy6N8TRSAhEfnh4LwUEo5c-S9FjtUs8lGo6BOWe-Na8P6Ltx86Aa9_tzmmwLCEb0HQGobdjDgSM2UyOEZKdnbu2QVJqzM1EgfYg2QlhQNDuXoJ3y2Zccy05hNQl8VkphcSqDazgkByc7AijyFKhzNOu47Y14ARzLvzm8qW6da-MFzOW4AZdyuOsv3CTqtfsjP23CQ1a2nK7QZ8gjzExIx_oRt7AUZQZIzdi8z5HxPM9yTnHHM-qO6tPIqBiheSFLzrkS-V-_P40JCKOcvhinAFodToygA2fmxmDfNq90pFF&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1014,
+    "name": "Edicola al Binario 1",
+    "latitude": 41.9015052,
+    "longitude": 12.5026637,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 76,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRExeh_uUVkwOgzjHF1n5l8xRD_cD7BsZwpUjJg68Tbb3BiwJ6pwKiv1hj7miF7TjCNR6Tx4D87SWns0zoYyUyZ1MTpCH0gczQmdwpgbMqTWWkW6ign4hrWpTt5oasFNNLhs2jQCqkFfsPUpMifkaeEICfrb2OM1tB9kOYVUIOf4qySbw22tWNtjLB2d0m7XR3Rsvh1ZFyKTY5FDC3h3aegaD5V9MC34_x_47L7cDLw4d9EoyhhkivNz8bmMsG-cHcTo-1WF6TLjJK3kEb4T8AsdLPQ-73bQKAZ1b8qWiVCusGiEq8-Yy7ice_ZJfm_x5FEqXcJwy9QAFDHFk2qmmlwDMKAPCiN9PdqcFEHRLqxZuapbEajuU1-Uajhhwa1U4RKJF27hiR2JvHbwz6BfUtGShiLKz8Rh1rniZyqBGugpkysd480rAeOc2_NLorF05nDGcHswNlq_3dsetgmgQpfa_xs9DvhzvzEIzy9B2uiNEKf6jGtW-gqeRrq1S0K-SySG_aWwZ4HHhISnIHRfVRrPlZXez98OXj9lUkql9O-AwUSiXwDfPz3SnW8MgbZMomi0Q&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1015,
+    "name": "Superette PAM local",
+    "latitude": 41.8965122,
+    "longitude": 12.491608,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 70,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1016,
+    "name": "かわやさんのちかく",
+    "latitude": 41.9051221,
+    "longitude": 12.4859774,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 70,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1017,
+    "name": "The Gallery Cafè",
+    "latitude": 41.9022983,
+    "longitude": 12.4830826,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 68,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRQ_-WmAwKD1TbVJRP0NXXuxKsZBQgy-n2N7mh7COQzcRA80CT70CCwqdOWLawP35tUHllVSc5WfZLC8DgHdo781I0qxxqWS_2x1f8e8du_w_b_WL3B7kXawZwWmr2ulKE06klREkpz_uWEP3T6HO-yWf5mINYW0TT13VGVrewRaHMbvvigCRiLb2gTg_lnzp7pO36fQoEDa8-4rl9uCVlkMxTIXIcPlepCvKyLjTOYFucCylP8hDgfo3iH0NdR6XNeOkWnaS6L2gzsPfW4CJrCrlAaCfz2gyO_yHR-zL8qkc3hrelcCVqET-uaCUrKYV9S-B_do8LruBo2gv_hvb2g7IsvFV45udmgX_02QYsI_-jrIJId1BPEbjnMBL1G_pEhag6HE3oQaxbbGN6zJSfzhMPkMm1h4NrAVb6fWg2xe645WaQQElDtXifhtM-bTIJ3dPiA547VJ435h11_b-_RwLcJPFWZBji8BpIvrdNqU-Hzlo1lkVAvtmeywRNOc1XO39FKKzc1TelteSWEIG33UzRWdeE8jh7mmQ78ZEbNVXq3lPY2rk4ZZVJ5_k6auVBlpEs7YZLdEA&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1018,
+    "name": "Residenza Dominizana",
+    "latitude": 41.89234,
+    "longitude": 12.4919778,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 70,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1019,
+    "name": "산타마리아노벨라",
+    "latitude": 41.90550579999999,
+    "longitude": 12.4796209,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRdaCdfvlEBrLEEoIPMB_GvJJSLytLny8d2AMaKC0b1_JOppRWilmq5e1knmyA8cfpbqRWMlUlIUneUTHQ0SzNgzHcJ0ICAPfey164R-dXE2D9BcO1fM97h7iSqDRbq6SzH95KPqMLOmXaXHFyiSAkDHoKG3sIkMLu1McFSctSPhbenVEaUpvmpdqVv3yl8cbxEDGpXVL62QJKCihUc8DwIK7M2oWrwnLWrCMWiloUw7E1f_8FBrLeef8socb16e9Bvpl54lB9SsLbzgirbXEhEKHM0LY-Wd1lPYh7HGtKIGg04KrAlLzc0cyemsNrw6_ZKyCwKpcoKhMTr8ApTo5tLQgDrO48Q072whjPSBRgrefrL90beHNpRhKwHitM-EGSC7jfe3CtqxJQAY8YsOrKNOTNxEUlMuZ1podIbJ4zu9hybDAf_sOL3DdPBoQkI__X4shm0h-2-8MvHLUFR10eidI3U5Sqx6yprZq74s6lYkDe-bO_bt6Ic97lo9tjIJyTQBEh1Uh4NfN8qdQYkosme3f3wWgQAfPNnwOC7Kh-fKYZDJiomWGCtg8gp0xO2k-aG8gc1&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1020,
+    "name": "Knirps Ombrelli Roma",
+    "latitude": 41.8916412,
+    "longitude": 12.5063058,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 60,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSyN8PtGA5Gxs6kuoo-eIOQUb2_fFTTNw_63Tdn0zkicICxf0Ru9cHkFS_CCgF3DoepKZCHs-hsl2XWP-4O_SXV2NqN5Vpd7-8_YJdNF9yd2tFf73w4ixOx1uzIBnms4VwodJ3yIYGKqkNB7tRlzC_aAs67QeJqOJbj_oX8wNp3xzg30GnEAi_MS_WarByDbwhY_L4ezqsXmUlFPK_EzKK1FFWtDKCyrikyYXJ_NJiceahLb5xI-59SnONUqz2etLVQFKkSOJTokhFZ5K8D7HXBHUduKEqbHNphU5cvebbg0B9eGlI&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1021,
+    "name": "Rinascente Rome",
+    "latitude": 41.9113579,
+    "longitude": 12.4978693,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 82,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSeEW4X2AxFh-MlIiagyPA_D_teJnmhr0njIYrQGpVdfm2XwGNydV_wcHzAD9vjEw_qxm4Q5kovJj77izwyea4IzmozIe67Jo0bvqPajw8lh1S1acgr8yOYQCT1APXr_mErv8HSJ0xJ6jm6f69PxNAwJuU_s9Uh8X3Cttgjm1gmM9KXpFp-_bIbbjYFaTjQWtmDd_wd8u4pt4cjvcLG49yWMa8sPWd_3O-JXBiMvo86jomJF08faY1g67LFjpuC7XTktPJMvIieu1efZjCtO7zr90rKgIkT4AIYCrIzIQ8qo7gD2eSPlk7ScBWkMpe7ksDrcRe9DV33_D3V9x_yglTQxaV0UyCIb6JgnphuUXKpuC_6omndNyEFfNV-uVWo5eTIRo0OGyyJrnm9k8kVdUIS-H74RcE7L9TeaEUP95wwNeud8ZYMKGUkfFDVqg2lEsT7OSTximLza4MG9xeiDIZszzYX_QQxY5FTujfcucrwyGWELQGP8kotNyeZlWOj2i4Z7gPV-xMLn4YMIeQ4OMZjpHQ_NGsCwPKZG0SCvYNcK42NIP7sXgxwsP4EmEFGMLX-fMxK&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1022,
+    "name": "Upim",
+    "latitude": 41.8977565,
+    "longitude": 12.4996329,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQ92f-kvORHGiFcwjdvXyd3zhUkDB-9zixOuPeGmf4lni9iLgWoq57xhuxu9XeM-oBF7NnqKG4xtfOGyIOHzxClnUCjAGqCuaVwEi45NRbY9PbCdeSfOGTjlzMOqSXI6_0cCB-l9bpsRPfukeej1y-FfVeUt-dk04lYtAcM7ppLDlvhX_t4Hj7JDhfTFJ24VttFGUdboGcI7H_WEpppCgPKiAcLgU_2Icp26o3V5qXdAZlQleC0s9--wimgvtJIsXGqgJPxV0-xtNypfwJfDWrTG2OJpcEV7JiQFSyyNNMGCqsYOWc&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1023,
+    "name": "OVS",
+    "latitude": 41.90250309999999,
+    "longitude": 12.4847951,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1024,
+    "name": "Gucci - Roma Rinascente",
+    "latitude": 41.91138509999999,
+    "longitude": 12.4977539,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 90,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQhJIDI20CSUI3_nlHKvZkfe7aGyJFqPv6N8hUcCBTqcrBKoxQqxlQYxBJ2bw6h1U_Mg6njMG6OZd1OO_vHkuTdlqWmxbf_a7StkwL5ueskreaL1sMA_i-0EzoJwNun1UYdPIBtVG-R5sF1r4AQIVGWLVESOFYKLJigQKV3d2T24jyEpR3PxSkI36e5qnXlFvMfJQ2pevXIfuYoxq2eYVnfRiiM_aWnKWXFGUANEVkBXHZmmKNNnr2Ta0UV9AaGTVYhCeaWdJYshHl7KRVrB5hzCrRZpqxB_jrWd8E7OUVZNu3H0l_ETdflMaVXXXeHGj9gDpy4dD-NNHtIVGFQdPLfg2zCLweZitmv-snyuIWRwl53zGO1wyKtqDSy4SzoxVxoY0XhrH4ett8V8qDL-ELZ9mvYnNc3KEAzMKiLKVRNy_jnFcHdJCelvlIubYgkxgOA7nFRTbLfQ5ldWL01ThsdklESLSKTCitliYqs-b724QBYCN62jdL7AVQA4al6JW589IQtwHZnPxmMYdQVziyY-n9dsUk83JO0kTZtwUbz-aphYG704ZZ4I4qMGOhBXbLFIg&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1025,
+    "name": "RINASCENTE Rome",
+    "latitude": 41.9027487,
+    "longitude": 12.4845887,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 88,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRNPFF8fz-3DK_O_Y8WwTcJ3RnbCcDYs83wXeXIjVIwFBflZ8xAPy9LOC_LXRC2HS77kCYBMsOzupmX9zXyHBl_cxRcTOqUPoMCQdJ2y4ThCEojptVUIG9CUni9MfW7s6X-XdLwlEg3YM6a4-1PFv3rIVJjBV_eF5e_2ipfShd4IU1Pzb8WyZd7T42xH60LF9ESVudY4NkaWzqGgzUC0zgWi2aryHXK10WDlvA2JudKuriNAPBTCBMSRPfOmCkTgv1TcCRB8KPnj0XUSImMMwdj4gqi6e4FdbRdcMiDYn4eCYSk1Ee5TRwONTWqqKP3nUTO8sj5uweuWI2b7BfhN_n49EEz4UVTHleCub7fWv14xm01EtTeTgH-0SdoNYiCNSBDVV8EhLa_POWFBHyraFcc7Cq1ICV5HQSwBNApWyuOkXN_LWBOreDIyflc6Lsb8QQXF2XmJzamX1JO2G9gqjS0a31ZMGEgU3GxzgHranJWFW8ZzCOs1OIHoHzHsOH1Mpdox4t8NKaBTRQU68UR9scmKWNzRjsygzMYkVPIvUxA7RiZ1ATBB-BJ2BJXfGCYE5uWBEE6&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1026,
+    "name": "OVS",
+    "latitude": 41.8939635,
+    "longitude": 12.5037875,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1027,
+    "name": "Stefanel",
+    "latitude": 41.9075657,
+    "longitude": 12.4630245,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNShO1nbpRBx1qgvf1zWiLl4e2i1vkr-Dz5RkzHQvdELhrmPswS4syNftohcQdPMYQbQ5WspjtSmnfe9akCAybrSgwAzI-5fbGH_O2Q-f9kWZN73OnALjIaf5Vj4kbQJPj1qfUbwfYO_XD66AvXQMeMwPJ4MZK95Jp41Xc1LV_VV5zDkMpaJ6cVJCVgaukDytOjKMoJI_we-lkMYQBZ130jf93_Pj3JTP_W0N01Xu9qiqy-1JER04jd7Drpiirneo46-CaCDgB5thoA_edJNrXdeb6JJIn3JmYWamRQD3m5I_nWHphqwnZ5VtbukvU-Rk2U43Z5hBy8OM2p7u3HhGxQlGk55mq6k5HWjcIWrqnnaUg2mdtFj5WcJNlhuqWW1F0RiM7aoxRZk_kKIDq7XWS-ZOQkgANwiZ7ZBVUbp0BklaMrQiVVyGhS-u9zao2DR6VhbYJPWZy-YSSouqlfhd59zuJkDA6OlCMzrFhJfxTWHlub9OfLwI0Agt7l5DdaSL8pU3N90qgEWcYa7-C6AFikdNUM3v3K19him_IAWqEwuIomy_R3X4FRsV_-zcWj3b3eyPUOG&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1028,
+    "name": "Gap",
+    "latitude": 41.90625470000001,
+    "longitude": 12.4779988,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 82,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1029,
+    "name": "OVS",
+    "latitude": 41.88070819999999,
+    "longitude": 12.5079444,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1030,
+    "name": "OVS",
+    "latitude": 41.8865899,
+    "longitude": 12.471764,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1031,
+    "name": "Maury's",
+    "latitude": 41.87834600000001,
+    "longitude": 12.482968,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 82,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSt0xwY4D9TvfaCx0iYpuDCzDNweiW9dhAWzWy0BBbDZw7IBj2TYT9xFuyXlureQtv9YNxkEQiAQoJX-BbzcCE9QTlCWyUFvJGZTRXCOyJn6n_NmkfZAwcMiZahaS8sfjRWnPjJfppuCJuDLCHDyLeTv-M99t6niI3ZCI9wTwC5fumYciJoVxxqpsjLZ1T-NBWeaqfPcaMEH89hbeOHbV7xvvSc1DSY7w4S6TuA0z8LmpKAlwBCmnAi2Jq9roS2IzxDNWvSn7G1sOXLibt0K-VgAIR7Slmit8nlAjXnAi0TIocP6K_ebJ2FJ9aDOAPFg528mJaSc5EDH3nppVKpbnEfL5VkWamtWx-gi0XGNqXSnQyXvykTTBlBXM0Co11hieRalfc-rIqaHyidhMhoN5dmn-7Pnkr3YDYOaxU60PtUAQ3KNUgwIEVRKHdGp6YpvZQ90Mv3Nz-r3mKydtk5Kb0T-X3j-1ylMgFIY-lW_v4WmUBrXNI9NmxoyMu2ApHhHhtzXzHPyCnAkRYhpfCkRF42HNE-whGkLsWVQXPHOZcbscoSdg1DETZFcdFDUKlk8lRFKA&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1032,
+    "name": "OVS",
+    "latitude": 41.89837290000001,
+    "longitude": 12.5317858,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1033,
+    "name": "Upim",
+    "latitude": 41.93236539999999,
+    "longitude": 12.5190881,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQ92f-kvORHGiFcwjdvXyd3zhUkDB-9zixOuPeGmf4lni9iLgWoq57xhuxu9XeM-oBF7NnqKG4xtfOGyIOHzxClnUCjAGqCuaVwEi45NRbY9PbCdeSfOGTjlzMOqSXI6_0cCB-l9bpsRPfukeej1y-FfVeUt-dk04lYtAcM7ppLDlvhX_t4Hj7JDhfTFJ24VttFGUdboGcI7H_WEpppCgPKiAcLgU_2Icp26o3V5qXdAZlQleC0s9--wimgvtJIsXGqgJPxV0-xtNypfwJfDWrTG2OJpcEV7JiQFSyyNNMGCqsYOWc&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1034,
+    "name": "Upim",
+    "latitude": 41.8777683,
+    "longitude": 12.5299918,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 88,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQ92f-kvORHGiFcwjdvXyd3zhUkDB-9zixOuPeGmf4lni9iLgWoq57xhuxu9XeM-oBF7NnqKG4xtfOGyIOHzxClnUCjAGqCuaVwEi45NRbY9PbCdeSfOGTjlzMOqSXI6_0cCB-l9bpsRPfukeej1y-FfVeUt-dk04lYtAcM7ppLDlvhX_t4Hj7JDhfTFJ24VttFGUdboGcI7H_WEpppCgPKiAcLgU_2Icp26o3V5qXdAZlQleC0s9--wimgvtJIsXGqgJPxV0-xtNypfwJfDWrTG2OJpcEV7JiQFSyyNNMGCqsYOWc&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1035,
+    "name": "Maury's",
+    "latitude": 41.8913805,
+    "longitude": 12.5434528,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 74,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSt0xwY4D9TvfaCx0iYpuDCzDNweiW9dhAWzWy0BBbDZw7IBj2TYT9xFuyXlureQtv9YNxkEQiAQoJX-BbzcCE9QTlCWyUFvJGZTRXCOyJn6n_NmkfZAwcMiZahaS8sfjRWnPjJfppuCJuDLCHDyLeTv-M99t6niI3ZCI9wTwC5fumYciJoVxxqpsjLZ1T-NBWeaqfPcaMEH89hbeOHbV7xvvSc1DSY7w4S6TuA0z8LmpKAlwBCmnAi2Jq9roS2IzxDNWvSn7G1sOXLibt0K-VgAIR7Slmit8nlAjXnAi0TIocP6K_ebJ2FJ9aDOAPFg528mJaSc5EDH3nppVKpbnEfL5VkWamtWx-gi0XGNqXSnQyXvykTTBlBXM0Co11hieRalfc-rIqaHyidhMhoN5dmn-7Pnkr3YDYOaxU60PtUAQ3KNUgwIEVRKHdGp6YpvZQ90Mv3Nz-r3mKydtk5Kb0T-X3j-1ylMgFIY-lW_v4WmUBrXNI9NmxoyMu2ApHhHhtzXzHPyCnAkRYhpfCkRF42HNE-whGkLsWVQXPHOZcbscoSdg1DETZFcdFDUKlk8lRFKA&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1036,
+    "name": "Upim",
+    "latitude": 41.8729126,
+    "longitude": 12.5261228,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 76,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQ92f-kvORHGiFcwjdvXyd3zhUkDB-9zixOuPeGmf4lni9iLgWoq57xhuxu9XeM-oBF7NnqKG4xtfOGyIOHzxClnUCjAGqCuaVwEi45NRbY9PbCdeSfOGTjlzMOqSXI6_0cCB-l9bpsRPfukeej1y-FfVeUt-dk04lYtAcM7ppLDlvhX_t4Hj7JDhfTFJ24VttFGUdboGcI7H_WEpppCgPKiAcLgU_2Icp26o3V5qXdAZlQleC0s9--wimgvtJIsXGqgJPxV0-xtNypfwJfDWrTG2OJpcEV7JiQFSyyNNMGCqsYOWc&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1037,
+    "name": "OVS",
+    "latitude": 41.87057359999999,
+    "longitude": 12.4678436,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 82,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1038,
+    "name": "Upim",
+    "latitude": 41.8717233,
+    "longitude": 12.4590504,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQ92f-kvORHGiFcwjdvXyd3zhUkDB-9zixOuPeGmf4lni9iLgWoq57xhuxu9XeM-oBF7NnqKG4xtfOGyIOHzxClnUCjAGqCuaVwEi45NRbY9PbCdeSfOGTjlzMOqSXI6_0cCB-l9bpsRPfukeej1y-FfVeUt-dk04lYtAcM7ppLDlvhX_t4Hj7JDhfTFJ24VttFGUdboGcI7H_WEpppCgPKiAcLgU_2Icp26o3V5qXdAZlQleC0s9--wimgvtJIsXGqgJPxV0-xtNypfwJfDWrTG2OJpcEV7JiQFSyyNNMGCqsYOWc&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1039,
+    "name": "Upim",
+    "latitude": 41.8631985,
+    "longitude": 12.4698502,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQ92f-kvORHGiFcwjdvXyd3zhUkDB-9zixOuPeGmf4lni9iLgWoq57xhuxu9XeM-oBF7NnqKG4xtfOGyIOHzxClnUCjAGqCuaVwEi45NRbY9PbCdeSfOGTjlzMOqSXI6_0cCB-l9bpsRPfukeej1y-FfVeUt-dk04lYtAcM7ppLDlvhX_t4Hj7JDhfTFJ24VttFGUdboGcI7H_WEpppCgPKiAcLgU_2Icp26o3V5qXdAZlQleC0s9--wimgvtJIsXGqgJPxV0-xtNypfwJfDWrTG2OJpcEV7JiQFSyyNNMGCqsYOWc&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1040,
+    "name": "OVS",
+    "latitude": 41.9203008,
+    "longitude": 12.4411651,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1041,
+    "name": "Hotel Dharma Style",
+    "latitude": 41.900733,
+    "longitude": 12.4966291,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 86,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQRPmdophFGICg07vWmUzTnzJdLrsVxvfuWNH9Nt98ZmxcjJMPgPF-RJqA1knFGw5dZCnWIfwTUKzYkEhCIoFYc_pJPQqJcc_cISyndTxwhg99i12Y5lwjhShhMWzwkJa8yJkH83wXzhz76O46fiXOQUtzAH4UcBVPC8sidrZ-kz_bKrd-ckzT2xceq4MOCTyVnGpazCTSCCCVMYNUTv-QvKE7jVO5D76XbFb-nulPfGFum9X-Qw7moNVcBerjbjCHsU9E7bzNXocANu3PLUCU4vw0A4AWsnaJ0xV4j7I4R61UkPrA&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1042,
+    "name": "Hotel Manfredi",
+    "latitude": 41.9074277,
+    "longitude": 12.4809695,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 94,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQtLUFA4_Zr5dxY028bQb_u_4MaRwyi5Gl63EVmxs-8boMFcqbQH2GuO_dpTav5ADYoeoF5u59rSG8EDbmyHCXnPFYq9uiwdpwMAfOlskwScmjbhvs4t0Vk76p0MyxxVooMO73viWkL-688D2FEem-W4pGFkof0C8ybR3u2VsTEzyE9sc2okJ8GWsQgpDSyPMVF_H17eoALTbby-IDLUuFHWIvRm7-LwNi-DQNsfTdplVsd1TGW7fhuvjxTB7I2PNTMzxEtP263Ec3Xbw2eUmiqg0-3CS6y7GileRikYkZbOpa6HKY&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1043,
+    "name": "Gucci - Roma Flagship",
+    "latitude": 41.9054821,
+    "longitude": 12.4817978,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 86,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSUfg1B722-jcwecO3OFLMiR_lTVMf1upBQCZTir35JdGAxWr86pxcNhpGLy6LTF0Or9UGfhdTyocyJz1RFx6zJtQO9Z4sqGLOy9pWOrnCODGkRID8D_n-SFkgmB-y5I7n3PcUwFz1PjPwMglVtaviH5HtVBKtdtNssHHCdDl-zC6CU4OUhNgxXBDurdNxRg9g5e4j8JaqvnBlb0egVPWvPqBPpdSaR6KsM6k-vb6M98Wwrb8bynW_-wQ-GSyxr66ipZt1_llkgAQdPbzYQzPcmMmuWd1I8K0iGgdaXpzOuLCgK_7md8Z6rXytVRZ-2AecI3v_YMxPuCVhdXliADmULfZcx05wRClKPEgUZ5qiE0WFYUWOMy8BpGcmp58sCEhft8PMS9_Q9T9vrWdtO_Wns4VU3LicJfCsV9RO6EZKnCjNUrCb81FgkIHT6geqo9wG8MirMP_RTh0o_pQlpRsb_GgXmhWwEqksoTKLCR6AyVuVpghp90_7Ped89bFDXGfqQERBB8CrfJZ8EzzySpBniqrQ90ZKzY9oIzzHw92PZlFmBXctZ1pNUxHXxMmhIfRrFcCo1&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1044,
+    "name": "Hogan",
+    "latitude": 41.9065815,
+    "longitude": 12.4810036,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 86,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSCrk5gjVorFl3vslOxMObZuC5AF03LHI66_aVJHmPve_guVV7761le5_ElfijCDF2uALJ7Oqw7V5ZujDZCP-O3zzy9AiAHI2xju_V4G8siKuCBsyW56Phqy9kEPAZhaNQJMjhO8dzkWx8k0-g1VSaDI4mz8VRDdoJw_ICDfPp2TI5az6uw9RYaxL09JWH5o8q4A4BHNeg4GImJwUZ9OSv86XmLbGQHGlt-EuegAQ0b5WJBGT3PzaKrcuwMpExRTTkP0aCSuDJN-C8oDAGUyALmu6ravraFwtWPJ77LoMT-3Hq5IPl6w6QlgRT4dnIcNseX-Cjpj2wneFlLcfI9WXWvoiESnmOwKMbByp4qN3i1_hKhy__CBE3StDj28O5OlF2RYiAiKY0ixHXuORUF2jyHnBOdtnfixcfXK6K5zul12AVXGtQ9vBF-65Q5Q3iDUF3XOzl_GeNKm6ssFg1hxmtBn-GyJs6tXT-bULOu5j_WqrIidK8RwNtBDaRna3QfL1JC8E_Eh7cNWLaVJ_Tjb_DFxhnxKjtqh6WwmlEtE1KH5br4SpzhlFOvC6JI4-T4HJTHHPgs&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1045,
+    "name": "Foot Locker",
+    "latitude": 41.9066337,
+    "longitude": 12.4778281,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 86,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSIEYzxSSLpOOEYU4SKipBBYezmq3dZo5-LMFVSMR6b2JCEtIPSbwFVUkFdcJo8kw9MKxMDmFhOCk5E_9404NVyGXysMaJKfU9l1mMvyMlLBPMu28iJg_MsS-vVXTT_bglEb7YkyA7GFpQhUJi3E96BP7kTSktl9Rh8JDBQ8aXrja8Wz0TdjHWOguqB6YOKlN21eVVIhfB0x06xy0a2mAiZx8S9X5g7waof8DO6Bf2ZevjjMmaLjxkrJnbDTbMSP8wNrcABbPni9IK5hneNIm9vzX_DkkLoO6NxvzfuLoLo7478dgaOIqHRrL0CyzPGYhc-N_sVj4ajYeL-MBPI4suzI5rMfYlFskeZ6dMZn37drYzajwsSFk2tem-SYylITSn-H2r6vvViF-HtZgVzVb9R6Go6QzojH0gqsrykVJq4gQvVR1m5C88UABtoe17yN9Kx-zmXkUf022RpTCjNwHiTYc5ibUaz6BvxAp-VenC0TVVG57PXJMCqiIOS4OAwYDoJylMR2KmgR6BgOZUWDM6AZVAoX9Ah5yjGaUDp3o06SW8pijnN4g61bl9YiOVhB4PjXtLk&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1046,
+    "name": "Yamamay Man",
+    "latitude": 41.904484,
+    "longitude": 12.4790524,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 64,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1047,
+    "name": "Faieta Motors - Concessionaria Ufficiale Yamaha",
+    "latitude": 41.886828,
+    "longitude": 12.5153847,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 90,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRNQBRvvgw2nX6PjhCU2WiNZxvnUTJiib2yCTnpK9801fIS65Y6XDyHRC7Gu7VrS4frHFwDmtbXdAMMBN-69RI2Laj_SP9F8B-RERirSfr9uWWPhgWbFrijOFj3SVjEvcwxg8mp76bTUeZHrHXJHuOdC12FOBygQ6tpf-OxeNvlD_UBe5_GVVdOhg5G2TKCDknAk8o3zbpGL63N_Cm2IMAa5CXO1J5T5cOa9UUzyQlknxddKXZGyEJpHSdx0LCf7nVojjfPZzXG1Wvfg0OoHqcIIusDfBwVzA-TjBNsUy9yEt4RxwUGsHjamtOPo9VNhi718Lis0m-sJ5HHfLDuPIWuIm1zNXku7J1o-v1Ure1GNQnRRFyqN0D0ruZreh-vm76WTuoWqeui05tQF5TSITgID1YIvS4bynNGH7e-me-bEPcexdiDyzfzl6hrvj6X8fVN3AEISb2soJ2YSBEpSImF1sEQ4jrW5dVvqRMNr6g9Qx5B5pHeWq0bLsvn22Z9eWCcBc2gz6XHNbnYse4M33kubRGEzfDVxV9QGYo60CDrY1STmVijjZXD8Un18iP4hrXHjmghnS7PQw&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1048,
+    "name": "Siam - Grimaldi Eleonora",
+    "latitude": 41.8825284,
+    "longitude": 12.5129465,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 96,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQUbrJjXuzGnU6UsIzAEUrqZUSd12o_L6AQmnwuRwzCmph2xTtfr1BMRSvkalfxNDkaZmb45_-QnL0rfslTcF98I27V9z8AoMSLZ1FX04qFHPFyHukQAzvTSGWC5ny569hQvfuKv-2KX_Aa6q2sKRNc_-BsQFwUwpCKsh6u8TO7D7XaVS-n9oFbfq7ZsaWcquX0sDwIjUZrt87QecDhGx5FJwlamQKL5hJ9koSnt7SzdSd4BYqsQdGzKqgfoAc3-hMjybUtYCJh2EsRQjZYO6BB5cb0D3BmlTWrRrPoqB_FfP9UnxSXfYr6V1qS4kEX8Cme9SMuVqA_Splze2nnWFopYQ2jLLP3Jr_Op8DefyZQFLUpqxUSnkG_gpXqXziw9EX8FV9Dc3fsABrOdNI4VqDH4snYDoz7aty17NfZnWMpxf9vQyiKLweC_ZgZx9FZqJNlAuKiy9QnKpD6A05Uh-vc6HBL3r-zQyg2AK6W52pxJMguHwxKJaz-us1NetcUPMlel3ohEqBNdzrt5K95d9LG2j5DFcQ2pjkA5bz4CjsVZQ6KUUdK_paamYt2F-5ZVhM&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1049,
+    "name": "Sephora",
+    "latitude": 41.900944,
+    "longitude": 12.502054,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 88,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSUhwjagu_8epQyDKgLzwLlGmltsz4vYJyWoFn0Y0xKCC1-ZgxaTytGieEPraL7McvvQgW2XQP44cFNnBCffYQz3uVA-rDFgz0JQClNvLjkfn7_8yd7HGgPQgacZ6mjtfyvAEVr65RImdf_Sb5D2EoebrGcA8goFmVDZZoubwr5i9GL-r096VCnjbYKaXHsLecV_2Ae3w01Da7GGzQShOiu2jvTl6VsYDoQhdZe2IckEt36OMwr7bvRV4e1OuXrSL3rDTNWMk3ZL41sMRXRKO9a6mxIFA2owlzKwwIFRz0qph0-1fdvpsnob5qpytZ26p8j5P0-SOba6PnQomkcgnEdRK9_0bYO8hPrPIoi3b-owJhDrM7y3FukUIEMSS8XkpCoVvAbQq-8rkynz_4XnRR25QItvAg9mU4rFc0Ei36JU0Q96wMUnAbs4t6Xm5DOySg8JtLmtzNft_RB6YIKc-5wx7Wik8bLQq2nEdFUzJsSjRVV8u-XRVxB2YpAuzh6MF87ZoPe9hzHTVMsQ3WeGThzMsw_EwD1zDXq3i8-ZAhAYYunhP6yRjfDWw9V7iGcCDXSzwNS&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1050,
+    "name": "Louis Vuitton Roma Via Condotti",
+    "latitude": 41.90532340000001,
+    "longitude": 12.481319,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 78,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQaVb74JMkSA5ij5YKagMpZuMmzpH18JRhF17eToNlwUiLlzYHAOr3lOqy6PQAQLFjcK_VcQw9RJdChftddFRYQT7qK85B_mMv1s3n_JZKs-EB8pjVlhZDKJqTVzL0mCxZ7sxm9Qci6RIZuuFUvg0j_futVLxHpTZplLNoYcrcG5VbxtgbRRarCbe60i6juyzsTW2MpOxp1kWLk8af1BdeihZZdq9GuzjoKfQZNbeCDDAS2GIFpVlO_fEIQm_yvPTS5xyCTBnUUbH4vpSAlWBlYHNDMhLBb8AF9DUK3K5USpjdV_gIvLkppyqe6PeTTzST_Ava-EKXQuP5AQoN4s_GKkBYbwXDRLBby0jyKZSlaHjubq7SDrhkxc5OouZJbAGZC5elFrbf5Sy-t1wXaxGLLtjgZQ5b0GxWHUg_9KGWeH-PCIN9t3CTy6XXXRQYnNG-A-212WaM6G6NOxEXCXWF15XZxiijU3uk7w9OeMfQdaAlWNsLccFPM6cvxCUChwtcoPlHsi9fHnGbytMpuLu0ZaraVRz9ECexVAcVux0tLUCkp7Y2zljV2bU7FRIJNT_S2daz4&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1051,
+    "name": "Luisa Spagnoli Roma Tritone",
+    "latitude": 41.90222310000001,
+    "longitude": 12.482417,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRGQ6bcUCJePdRvPpsfpemuVcMfXgGAFSlQZu18soIvKfwwNdDe3795kqm6Q9wx1l06l-dO7DBgclb23lyRhZhEBhv_hYoBW52DoYzI2FTDuZ15W_vCMtn7WD6NocoWX3oq80uJJLVvX-VTcNNwhZs9_u1cLxwvBiYMLLOdwMs4GHondPEydci_lwZtIP1x5FfiE3K2gZj33sFaA6kjQzNRWwOmN2lDlpZ4UF7oyAhH-2Lz5L5K4FRnxfTkVbvJZJpyaeiqZXaJsQWaL-Zwlw2R67ASNLQcMPNU01t7sNmgh2Dx4j0&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1052,
+    "name": "Luisa Spagnoli Roma Appia",
+    "latitude": 41.88426549999999,
+    "longitude": 12.5116042,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 84,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRhzY4r7qSVzYNfwmqY8asiKHHb5EdzDwzIYtuKYm_LdgB2VgRrmBNuEXJCE73lTjAPeJj_q1lUm9w6cAzgLv8uM1QEx-neozXaRKpzfQ55qvMInZr4gl2AejUYoFIXOIpoPAm8CSt6u5WbYtq-ILM27TowIe9ljmy-EuyFQXzWbpXoWT34e0LLHUFXd7UCB-DpTTLwWeW18GQZoj_p36uMy27-EBsNPgXOlyVA-m9wdaU-xmlxEcGnUFS_XtX66aGR9rTnzcxDnmNfe8coLuE4kCztkdlj6sVQBbrLCHdJWc81IIU&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1053,
+    "name": "Brandy Melville - Prati",
+    "latitude": 41.9080342,
+    "longitude": 12.4661726,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNTOvVBgScMdboO7ABa0dH1dcfAx4bKgC3T7hFJ6h84MEzfnDcBiakJh0L51PQgBoAyjzXGnXvfzlQHzvRCrVd3asBnn6HLsoP88wbp-_Rxxz3dxiC4zrpRYjiRjdfYwjQHJl33dCf2tzeN6OCe4wZLPj1urYcXFmU6WDCHxpeLq5iR7HJAx0zcxxnfHcsica29mp7fOJ-jnCzVq6mJuxj-TdpXlFbRJR6wk5Urd5zJWtsPLSQy3lGvxuMDiX756KytAkR_SIlNCPvVb30kiXadwN76-ZN2nZlaBOlHrd_NqeIYbUEFFMYTpSi-SDU47JXneaQaouYbviPWW8cqz6ddOlsy84ngww0jT118xDMyHNMiXdsH4wPfnQu6LLJ1cbSdKhk6z7f6elXdzQY9oMP2qb2FJakmFBKYas0UcXPC9CgODdgmIU6DkHqfQFlGKgiV4X2-SgjTKzg4JO8AwwOQLSBCouFzBDY2pf4SZIanBX-eOWPRicHaLgQYN80iRzpJM1O7hY1cG_GjJyTl21NcJziyhW2jFUe8D83W9DMuBMGcfttXwL7mZcKBsJNm34sJYFCMymIlCEQ&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1054,
+    "name": "Galassia Roma Boutique - Rick Owens - Yohji Yamamoto - Y-3 - Y's - Uma Wang - Ziggy Chen - Matsuda - Marsèll",
+    "latitude": 41.9043182,
+    "longitude": 12.4820058,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 76,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNQ6CZ2WYc24fgbjnYh5exa-qgfuBoSVKqG8ox5JKN89ULRVr4ri1PWOMyAKwVPSm3vPyrMHSMHx2ar091KlHn9GlBugRBtF0FVC-TYS-yxx0HafrQbAlsNaT6PegJlCRhHeF_RnB61-3ahZJPDusOSf56SI69lC-JkWZRgUsNZCTkk2998nDOnfNQhNyYllrHc9hcT9OojVW3ggm26WX_OyIynIUaCFP_P020O2nEtKn_7ivYpSjUyfPMapHSA49RDpLaIPKH1qOk-i7trmGTPu6kd-EFUO7lC9Nft9nvacONK5fRoj5VYncjOrBMFTOAoQ4fpQsxJWLtear-G0XBRZbi6togw0eC8u0S5Y1zD_dOQ8UxxcsHEO5PyUKWEHrD30Bt19PVDddkE_DeoR4atXeibAByirA_s2PI7tU4wgAcThPVCNdB0og7i2LHkQFiJiB6RNzyKBz8mNADVpoL9zSRxzn0yTeDwaRJViKU68qZoRa1Al4AGbxl9l_qOgXhFR84xQLQ_rhdrwYly2r4JwiomPvQwEZSo2GGnXecxVplpYdu2Ks5QF8kr1bob3YOkD4tn0EgV0ag&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1055,
+    "name": "Elena Mirò",
+    "latitude": 41.9044292,
+    "longitude": 12.4824957,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 86,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
+  },
+  {
+    "id": 1056,
+    "name": "Escape Luxury Suite",
+    "latitude": 41.9024226,
+    "longitude": 12.4901624,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 88,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNTdhKfj9SFEAjmfUO3WFEMq6EybDtU97SS-d0EaGlejgxXQNheWQAIEfpUMMLZEouoKbNaNYcmLjJ5UIBnvx0SIRDsN9SLnt1HEsEpCXribUDJWbXDtt0F1tsxz715YAKn8y6uIVQJbZM58sCgmw-fFFLXsKWQBECgV3BAqI1THGsGfheQ1t7GytftcvPilayFKRtZUm7awACYqrc7OlZcbwi6VLHk5vzenHGPPfQ7An86qu4fT4nnzh83Z-3gx1Esgr281alta7Mn1ze1fXQPOyG29VciDzUMHMKUG7Rnf4JWE5Qs&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1057,
+    "name": "Byd Boutique Roma",
+    "latitude": 41.91679140000001,
+    "longitude": 12.4983006,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 100,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNSCRICqsdnDk3kVXwkFleL77seUAvGWRFaWS8_EIEOD3w8MQ4ZEkwndgizkdibnXNwfpROor2FBO6u9Tt16tteoO4xfpwWyAC0OL2OCcbBhL9WQ2Qx7V8fGlrUxo1qZjBI3dFKto_h-99SSeKjQ51NJLS-SQnOQnmZb8dK2C44pMgyysVZyCGhqBIUriXlZVof_HYY-_m8UF_6Rgj3-0ivRwOzlA4XP4-iU7x7DJ_QnbtS3E3SZ0wovUYUs5lrslc-GfRZL6OpSta2iUwE-POgOvS5pwjNUiX9jC-O_lgEN-tVPS3c&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1058,
+    "name": "Green T.",
+    "latitude": 41.89760769999999,
+    "longitude": 12.4792824,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 82,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNS0GFFoZl6W6HeY5MPTZzTKC85bA_QppOaTMI87Bo6dg5qyWLLs0cK_Mw_ehrdpB5NbD8PDCNn765wyfsJ5FaJy7IO3qm0ehbtVrXXoLf27z7YjMOF0XMm60wfr6fRHZdaBrnnXjuGniEM3JqcE9PvoKJbKNUazEQ7DwccfeQVXhYg3J0OHGG_DdMVSlmi5qaH0R7k8E-ebjtlHMvufLFCrYStbrQd_pfXi8OH7JstCzRo_cPuxtUszl7lTdknAuo1wwXpwGyQL7KyNRBiRexzM-YLYUS-tLhMXUOyMZq08X0lIRZOmxCZAB0vubr_YvirsWSAOZiy_w_tAjcasiIDDri77MEfZ3fdliSATajgPXgUHoglDvXwOzKjCHUhR6DbwVxHifGaa1LbdesnjsU-zDn-a-rKV7jMez3avhg_HESAZMl9ZRuvrg47dL7_DDUTDTJFJBMyLaptlDqtIu-iFKsL5PigQbmErkd1rQznv6irHjqTpLrysY-d-T1KVSwaWpSiBqzzB8OQRdNGPFWBYuz14YeUSeBPlKRKB_zQ48Zr3U1c9xFF_OwHhhdHyEdBsTg&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1059,
+    "name": "Baldinini Boutique Roma Babuino",
+    "latitude": 41.9078144,
+    "longitude": 12.4796897,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 88,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    },
+    "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AXQCQNRvZ7QmmOxhw8Itgntd8sHY1eYPkJ6cce5akhcnp3yN7l0_kef3QfeBVDP35DmJf3SiKphPlCji80Ru5usMZyfs2I-UT7-ZthewKEzYYaaV4Okfk59dKXUV09P0GUn7tpZfsZ_qulnvQO2VsizUVQlUEynGR1HE05ruevfsZaI8DjJGD1LqVbhijHMQFhKvC4dr79wTj4iZ_BDbc9kQsCOuBXEh6l2-b4LGFEXhUBgG7zHywCwwFPc1tD93D3PzkpSs7u0yumAb-ltnvdXeHRDvLYP-aizwgiDN80_y5h9JrOv2T7c4dLR-FX1F3ChCu49oOBLeBlRJyFR_OyStO3N9R2akB5RedtkfCWjGRdTzMc2zdI7H8koQcWZ4LxqZ9nijQFcciS-qRl1xmYTbGwKK6wpxPELIOXkfC__WHuhY9sdv3nugwFWZ7Z07aKkHJFmBIBz_SGN2v6C_e-8ETZqb4puS6OQLsy3EEOZF7q5p34pZ16x3c82_epE9-tZMMID0RjzAj4988Hg4dDmm7E46rS_NXw4hnOuugN-G0WDsX__F-tEpKWVmqyYTP2_Mg3i18r2e&key=AIzaSyAXs1wCiXmeJgreCrQR50lHNlIeunUkQKw"
+  },
+  {
+    "id": 1060,
+    "name": "Teng Lijun",
+    "latitude": 41.8950599,
+    "longitude": 12.5011495,
+    "distance_to_start": 0.0,
+    "must_visit": false,
+    "category": "Shopping",
+    "score": 80,
+    "visit_duration": 60,
+    "opening_hours": {
+      "Monday": [
+        9,
+        18
+      ],
+      "Tuesday": [
+        9,
+        18
+      ],
+      "Wednesday": [
+        9,
+        18
+      ],
+      "Thursday": [
+        9,
+        18
+      ],
+      "Friday": [
+        9,
+        18
+      ],
+      "Saturday": [
+        9,
+        18
+      ],
+      "Sunday": [
+        9,
+        18
+      ]
+    }
   }
 ]
