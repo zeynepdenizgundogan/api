@@ -1,3 +1,4 @@
+//bu bir test yorumudur
 const geneticAlgorithm = require("./geneticAlgorithm");
 const {generateLocations} = require("./locationservice");
 const optimizeRouteOrder = require("../utils/optimizeRouteOrder");
