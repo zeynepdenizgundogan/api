@@ -13,29 +13,26 @@ router.get('/all', async (req, res) => {
   }
 });
 
-
-// ✅ Tüm paylaşılan rotaları getir (anasayfa için)
-router.get('/', async (req, res) => {
+// 🔄 Belirli bir rotayı paylaşma durumu güncelle
+router.put('/:routeId/share', async (req, res) => {
   try {
-    const filter = req.query.isShared === 'true' ? { isShared: true } : {};
-    const routes = await Route.find(filter);
-    res.status(200).json({ routes });
-  } catch (error) {
-    console.error('❌ Tüm rotaları alırken hata:', error);
-    res.status(500).json({ message: 'Tüm rotalar alınamadı', error: error.message });
-  }
-});
+    const { routeId } = req.params;
+    const { isShared } = req.body;
 
+    const updated = await Route.findByIdAndUpdate(
+      routeId,
+      { isShared },
+      { new: true }
+    );
 
-// ✅ Belirli kullanıcıya ait rotaları getir (my trips için)
-router.get('/:userId', async (req, res) => {
-  try {
-    const userId = req.params.userId;
-    const routes = await Route.find({ userId });
-    res.status(200).json({ routes });
+    if (!updated) {
+      return res.status(404).json({ message: 'Rota bulunamadı' });
+    }
+
+    res.status(200).json({ message: 'Paylaşım durumu güncellendi', route: updated });
   } catch (error) {
-    console.error('❌ Rota getirme hatası:', error);
-    res.status(500).json({ message: 'Rotalar alınamadı', error: error.message });
+    console.error('❌ Paylaşım güncelleme hatası:', error);
+    res.status(500).json({ message: 'Güncelleme başarısız', error: error.message });
   }
 });
 
@@ -70,26 +67,34 @@ router.post('/', async (req, res) => {
 });
 
 
-// 🔄 Belirli bir rotayı paylaşma durumu güncelle
-router.put('/:routeId/share', async (req, res) => {
+// ✅ Tüm paylaşılan rotaları getir (anasayfa için)
+router.get('/', async (req, res) => {
   try {
-    const { routeId } = req.params;
-    const { isShared } = req.body;
-
-    const updated = await Route.findByIdAndUpdate(
-      routeId,
-      { isShared },
-      { new: true }
-    );
-
-    if (!updated) {
-      return res.status(404).json({ message: 'Rota bulunamadı' });
-    }
-
-    res.status(200).json({ message: 'Paylaşım durumu güncellendi', route: updated });
+    const filter = req.query.isShared === 'true' ? { isShared: true } : {};
+    const routes = await Route.find(filter);
+    res.status(200).json({ routes });
   } catch (error) {
-    console.error('❌ Paylaşım güncelleme hatası:', error);
-    res.status(500).json({ message: 'Güncelleme başarısız', error: error.message });
+    console.error('❌ Tüm rotaları alırken hata:', error);
+    res.status(500).json({ message: 'Tüm rotalar alınamadı', error: error.message });
+  }
+});
+
+
+
+
+
+
+
+
+// ✅ Belirli kullanıcıya ait rotaları getir (my trips için)
+router.get('/:userId', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const routes = await Route.find({ userId });
+    res.status(200).json({ routes });
+  } catch (error) {
+    console.error('❌ Rota getirme hatası:', error);
+    res.status(500).json({ message: 'Rotalar alınamadı', error: error.message });
   }
 });
 
