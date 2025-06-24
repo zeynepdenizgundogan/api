@@ -16,8 +16,6 @@ if (!fs.existsSync("./routes/users.js")) {
 }
 
 const usersRouter = require("./routes/users");  // Eğer hata alıyorsan, burada paylaş
-const imageProxyRouter = require('./routes/imageProxy');
-
 console.log("✅ usersRouter import edildi.");
 
 const app = express();
@@ -36,9 +34,6 @@ console.log("✅ app.use('/api/preferences', preferencesRouter) tanımlandı.");
 
 app.use('/api/routes', routesRouter);
 console.log("✅ app.use('/api/routes', routesRouter) tanımlandı.");
-
-app.use('/api/image', imageProxyRouter);
-console.log("✅ app.use('/api/image', imageProxyRouter) tanımlandı.");
 
 
 console.log("✅ Middleware'ler yüklendi.");
